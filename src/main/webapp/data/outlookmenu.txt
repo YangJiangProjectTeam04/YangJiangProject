@@ -1,0 +1,9 @@
+﻿[
+	{ id: "user", text: "个人中心"},
+	{ id: "user", text: "综合管理"},
+
+	{ id: "right", text: "科研项目管理"},
+	{ id: "editRight", pid: "right", text: "项目基本信息",  url: "big.jsp"}
+
+
+]

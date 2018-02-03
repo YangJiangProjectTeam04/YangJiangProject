@@ -10,9 +10,8 @@
 <head>
     <title>主页呢</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <link href="page/css/demo.css" rel="stylesheet" type="text/css"/>
-
-    <script src="scripts/boot.js" type="text/javascript"></script>
+    <link href="../../../css/demo.css" rel="stylesheet" type="text/css"/>
+    <script src="../../../scripts/boot.js" type="text/javascript"></script>
 
     <style type="text/css">
         body {
@@ -25,20 +24,23 @@
         }
 
         .header {
-            background: url(page/img/header.gif) repeat-x 0 -1px;
+            background-image: url(../../../img/home/header.jpg);
+            background-size: 100%;
+            /*background: url(../../../img/home/header.jpg) repeat-x 0 -1px;*/
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
     </style>
 </head>
 <body>
 <!--Layout-->
 <div id="layout1" class="mini-layout" style="width:100%;height:100%;">
-    <div class="header" region="north" height="70" showSplit="false" showHeader="false">
-        <h1 style="margin:0;padding:15px;cursor:default;font-family:微软雅黑,黑体,宋体;">采购监管平台系统</h1>
+    <div class="header" region="north"  showSplit="false" showHeader="false">
         <div style="position:absolute;top:18px;right:10px;">
             <input type="submit" value="个人工作台">
         </div>
-
     </div>
+
     <div title="south" region="south" showSplit="false" showHeader="false" height="30">
         <div style="line-height:28px;text-align:center;cursor:default">Copyright © 版权归宋美冬所有 盗版必究</div>
     </div>

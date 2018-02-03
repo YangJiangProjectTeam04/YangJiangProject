@@ -14,13 +14,14 @@
     <link href="../../../css/demo.css" rel="stylesheet" type="text/css"/>
     <script src="../../../scripts/boot.js" type="text/javascript"></script>
     <style>
-        body{
-            background-image:url("../../../img/login/login2.jpg");
-            background-repeat:no-repeat;
-            background-size:100% 100%;
+        body {
+            background-image: url("../../../img/login/login2.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
             background-attachment: fixed;
 
         }
+
         .den {
             width: 220px;
             height: 30px;
@@ -28,15 +29,16 @@
             color: #ae9e6f;
             border: 1px solid #ae9e6f;
         }
-        .login{
+
+        .login {
             /*margin-top: 320px;*/
             /*margin-left: 920px;*/
             /*position: fixed;*/
             position: absolute;
             width: 400px;
             height: 200px;
-            top:35%;
-            left:62%;
+            top: 35%;
+            left: 62%;
         }
 
 
@@ -76,7 +78,7 @@
     </table>
     <input type="checkbox" style="margin-left: 160px;margin-top: 20px">记住密码
     <br>
-    <input  style="margin-top: 30px" class="den" value="登录" type="button" onclick="submitForm()"/>
+    <input style="margin-top: 30px" class="den" value="登录" type="button" onclick="submitForm()"/>
 </div>
 
 
@@ -93,12 +95,21 @@
         //提交数据
         var data = form.getData();
         var json = mini.encode(data);
+
+
         $.ajax({
 //            url: "../data/FormService.jsp?method=SaveData",
+            url: "/loginHome?method=SaveData",
             type: "post",
             data: {submitData: json},
             success: function (text) {
-                alert("提交成功，返回结果:" + text);
+//                alert("提交成功，返回结果:" + text.resultMsg);
+                if (text.resultCode==0){
+                    window.location.href = "/home";
+                }if (text.resultCode==1){
+                    alert("登陆不成功:" + text.resultMsg);
+                }
+//
             }
         });
     }
