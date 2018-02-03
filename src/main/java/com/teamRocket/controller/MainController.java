@@ -10,7 +10,7 @@ public class MainController {
     @RequestMapping(value = {"","/"})
     public String home(){
 
-        return "index";
+        return "login/login";
 
     }
 
