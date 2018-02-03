@@ -15,7 +15,7 @@
     <script src="../../../scripts/boot.js" type="text/javascript"></script>
     <style>
         body{
-            background-image:url("../../../img/login/login.png");
+            background-image:url("../../../img/login/login2.jpg");
             background-repeat:no-repeat;
             background-size:100% 100%;
             background-attachment: fixed;
@@ -36,7 +36,7 @@
             width: 400px;
             height: 200px;
             top:35%;
-            left:70%;
+            left:62%;
         }
 
 
@@ -47,7 +47,7 @@
     <table>
         <tr>
             <%--<td><label for="username$text">帐号：</label></td>--%>
-            <td><label style="size: 14px">用户名：</label></td>
+            <td><label style="size: 12px">用户名：</label></td>
             <td>
                 <input name="username" vtype="email" class="mini-textbox" required="true" requiredErrorText="帐号不能为空"/>
             </td>
@@ -65,7 +65,7 @@
             <td></td>
         </tr>
         <tr>
-            <td><label style="size: 14px">密码：</label></td>
+            <td><label style="size: 12px">密码：</label></td>
             <%--<td><label for="pwd$text">密码：</label></td>--%>
             <td>
                 <input name="pwd" class="mini-password" vtype="minLength:5" required="true"
