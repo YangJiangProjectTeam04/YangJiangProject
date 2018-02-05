@@ -71,7 +71,7 @@
             <td><label style="size: 12px">密码：</label></td>
             <%--<td><label for="pwd$text">密码：</label></td>--%>
             <td>
-                <input name="password" class="mini-password" vtype="minLength:5" required="true"/>
+                <input name="password" class="mini-password" vtype="minLength:4" required="true"/>
             </td>
         </tr>
 
