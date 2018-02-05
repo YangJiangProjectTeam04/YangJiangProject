@@ -8,7 +8,7 @@
 
 <%--主页:登录进来之后进入的页面,主要大框--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page isELIgnored="false"%>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <title>主页呢</title>
@@ -40,18 +40,20 @@
 </head>
 <body>
 <!--Layout-->
-<div id="layout1" class="mini-layout" style="width:100%;height:100%;">
+<div id="layout1" class="mini-layout" style="width:100%;height:100%;" showSplitIcon="true">
 
-    <%--个人工作台按钮--%>
-    <div class="header" region="north"  showSplit="false" showHeader="false" height="63px">
+    <%--1个人工作台按钮--%>
+    <div class="header" region="north" showSplit="false" showHeader="false" height="63px" showSplitIcon="true">
         <div style="position:absolute;top:20px;right:10px;">
             <input type="submit" value="个人工作台">
         </div>
     </div>
 
+
     <div title="center" region="center" style="margin-top:0px;border:0;" bodyStyle="overflow:hidden;">
         <!--Splitter-->
         <%--tab框框的设置--%>
+        <%--mini-splitter是分割器--%>
         <div class="mini-splitter" style="width:100%;height:100%;" borderStyle="border:0;">
             <%--设置最左边个人中心框的大小--%>
             <div size="190" maxSize="250" minSize="100"
@@ -66,7 +68,7 @@
             </div>
             <%--主框架--%>
             <div title="center" region="center" bodyStyle="overflow:hidden;">
-                <iframe id="mainframe" frameborder="0" name="main"  style="width:100%;height:100%;"border="0"></iframe>
+                <iframe id="mainframe" frameborder="0" name="main" style="width:100%;height:100%;" border="0"></iframe>
             </div>
         </div>
     </div>
