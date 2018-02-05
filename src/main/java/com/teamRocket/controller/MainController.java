@@ -10,7 +10,7 @@ public class MainController {
     @RequestMapping(value = {"","/"})
     public String home(){
 
-        return "login/login";
+        return "integrated_management/integrated_query";
 
     }
 
