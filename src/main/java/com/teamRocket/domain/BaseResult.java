@@ -1,7 +1,7 @@
 package com.teamRocket.domain;
 
 /**
- * Created by dllo on 18/2/3.
+ * 封装结果集
  */
 public class BaseResult<T> {
     private int resultCode;
