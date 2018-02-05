@@ -1,4 +1,4 @@
 ﻿[
-	{title: "项目基本信息", url: "project_base.jsp"},
-	{title: "项目其他信息", url: "project_other.jsp"},
+	{title: "代办任务", url: "/project_base"},
+	{title: "已办任务", url: "/project_other"},
 ]

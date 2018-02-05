@@ -5,7 +5,10 @@
   Time: 下午2:58
   To change this template use File | Settings | File Templates.
 --%>
+
+<%--主页:登录进来之后进入的页面,主要大框--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false"%>
 <html>
 <head>
     <title>主页呢</title>
@@ -21,43 +24,49 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
+            background-color: rgba(38, 84, 154, 0.91);
         }
 
         .header {
+            height: 36px;
             background-image: url(../../../img/home/header.jpg);
             background-size: 100%;
             /*background: url(../../../img/home/header.jpg) repeat-x 0 -1px;*/
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
+
     </style>
 </head>
 <body>
 <!--Layout-->
 <div id="layout1" class="mini-layout" style="width:100%;height:100%;">
-    <div class="header" region="north"  showSplit="false" showHeader="false">
-        <div style="position:absolute;top:18px;right:10px;">
+
+    <%--个人工作台按钮--%>
+    <div class="header" region="north"  showSplit="false" showHeader="false" height="63px">
+        <div style="position:absolute;top:20px;right:10px;">
             <input type="submit" value="个人工作台">
         </div>
     </div>
 
-    <div title="south" region="south" showSplit="false" showHeader="false" height="30">
-        <div style="line-height:28px;text-align:center;cursor:default">Copyright © 版权归宋美冬所有 盗版必究</div>
-    </div>
-    <div title="center" region="center" style="border:0;" bodyStyle="overflow:hidden;">
+    <div title="center" region="center" style="margin-top:0px;border:0;" bodyStyle="overflow:hidden;">
         <!--Splitter-->
+        <%--tab框框的设置--%>
         <div class="mini-splitter" style="width:100%;height:100%;" borderStyle="border:0;">
-            <div size="180" maxSize="250" minSize="100" showCollapseButton="true" style="border:0;">
+            <%--设置最左边个人中心框的大小--%>
+            <div size="190" maxSize="250" minSize="100"
+                 showCollapseButton="true" style="border:0;margin-left: 7px;background-color: #eff8ff">
                 <!--Outlookmenu-->
                 <div id="leftTree" class="mini-outlookmenu"
-                     url="/page/data/outlookmenu.txt"
+
+                     url="../../../data/outlookmenu.txt"
                      onitemselect="onItemSelect"
                      textField="text" idField="id" parentField="pid">
                 </div>
             </div>
-            <%----%>
+            <%--主框架--%>
             <div title="center" region="center" bodyStyle="overflow:hidden;">
-                <iframe id="mainframe" frameborder="0" name="main" style="width:100%;height:100%;" border="0"></iframe>
+                <iframe id="mainframe" frameborder="0" name="main"  style="width:100%;height:100%;"border="0"></iframe>
             </div>
         </div>
     </div>
@@ -67,9 +76,10 @@
 <script type="text/javascript">
     mini.parse();
 
+    //在homeController中声明
     //init iframe src
     var iframe = document.getElementById("mainframe");
-    iframe.src = "/home.jsp";
+    iframe.src = "/person";
 
     function onItemSelect(e) {
         var item = e.item;

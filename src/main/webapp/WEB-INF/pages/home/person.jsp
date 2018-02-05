@@ -5,7 +5,10 @@
   Time: 下午4:58
   To change this template use File | Settings | File Templates.
 --%>
+
+<%--个人中心中的代办和已办任务的框架--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false"%>
 <html>
 <head>
     <title>个人工作平台的代办任务和已办任务</title>
@@ -16,7 +19,7 @@
 </head>
 <body>
 <div id="tabs1" class="mini-tabs" activeIndex="0" style="width:100%;height:100%;"
-     url="/page/data/tabs.txt" onactivechanged="onActiveChanged">
+     url="../../../data/tabs.txt" onactivechanged="onActiveChanged">
 </div>
 
 
