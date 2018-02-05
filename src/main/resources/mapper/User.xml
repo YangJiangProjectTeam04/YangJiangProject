@@ -44,4 +44,30 @@
         (#{userId},#{username},#{email},#{loginName},#{password})
     </insert>
 
+    <!-- 根据用户名密码查询用户 -->
+    <select id="selNameAndPassword"
+            parameterType="com.teamRocket.domain.User"
+            resultMap="userMap">
+
+        SELECT
+        <include refid="userColumn"/>
+        FROM staff_info
+        WHERE
+        (LOGIN_NAME=#{loginName} OR
+          STAFF_EMAIL=#{email})
+        AND LOGIN_PASSWORD=#{password};
+
+    </select>
+
+    <!-- 查询是否存在该用户 -->
+    <select id="selUsername"
+            parameterType="com.teamRocket.domain.User"
+            resultMap="userMap">
+        SELECT
+        <include refid="userColumn"/>
+        FROM staff_info
+        WHERE LOGIN_NAME=#{loginName}
+        OR STAFF_EMAIL=#{email}
+    </select>
+
 </mapper>

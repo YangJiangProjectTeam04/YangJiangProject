@@ -8,13 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * Created by dllo on 18/2/3.
  */
-@Controller
+@Controller("homeController")
 public class HomeController {
-    @RequestMapping(value = "/loginHome")
-    @ResponseBody
-    public BaseResult home(){
-        return new BaseResult(0,"成功");
-    }
 
     @RequestMapping(value = "/person")
     public String homeJumpPerson(){
