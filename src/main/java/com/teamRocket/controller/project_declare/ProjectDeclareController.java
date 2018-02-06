@@ -37,4 +37,14 @@ public class ProjectDeclareController {
         return "integrated_management/crewManagement";
     }
 
+    /*卫星库管理人管理*/
+    @RequestMapping(value = "/bridgeSatelliteManagement")
+    public String bridgeSatelliteManagement() {
+        return "integrated_management/bridgeSatelliteManagement";
+    }
+    @RequestMapping(value = "/satelliteManagement")
+    public String satelliteManagement() {
+        return "integrated_management/satelliteManagement";
+    }
+
 }
