@@ -139,12 +139,12 @@
 
 //    grid.setUrl("searchClazz.action");
 
-    grid.load();
+    // grid.load();
 
     function onButtonEdit1(e) {
         var btnEdit = this;
         mini.open({
-            url: "select_1_gridwindow",
+            // url: "select_1_gridwindow",
             title: "选择申请人列表",
             width: '80%',
             height: '80%',
@@ -167,7 +167,7 @@
     function onButtonEdit2(e) {
         var btnEdit = this;
         mini.open({
-            url: "select_2_gridwindow",
+            // url: "select_2_gridwindow",
             title: "选择所属部门列表",
             width: '80%',
             height: '80%',
