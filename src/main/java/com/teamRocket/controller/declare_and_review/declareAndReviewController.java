@@ -18,6 +18,6 @@ public class declareAndReviewController {
     }
     @RequestMapping(value = "/scienceMangerReview")
     public String bridgeReview(){
-        return "declare_and_review//scienceMangerReview";
+        return "declare_and_review/scienceMangerReview";
     }
 }
