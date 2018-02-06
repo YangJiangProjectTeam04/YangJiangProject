@@ -1,0 +1,3 @@
+[
+	{title: "&nbsp;&nbsp; 厂房管理 &nbsp;&nbsp; ", url: "/workshopManagement"},
+]
