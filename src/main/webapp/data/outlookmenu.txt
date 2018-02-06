@@ -1,5 +1,11 @@
 ﻿[
 	{ id: "right", text: "个人中心"},
-    	{ id: "editRight", pid: "right", text: "个人工作平台",  url: "/bridge"}
+    	{ id: "editRight", pid: "right", text: "个人工作平台",  url: "/bridge"},
+
+    { id: "manager", text: "科研项目管理"},
+        { id: "mana", pid: "manager", text: "科研项目申报与评审",  url: "/bridgeDeclare"},
+
+    { id: "bridgeIntegrated", text: "综合管理"},
+            { id: "inter", pid: "bridgeIntegrated", text: "综合查询",  url: "/bridgeIntegrated"}
 
 ]

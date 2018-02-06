@@ -1,0 +1,3 @@
+[
+	{title: "&nbsp;&nbsp; 综合查询 &nbsp;&nbsp; ", url: "/integrated_query"},
+]

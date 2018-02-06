@@ -77,13 +77,17 @@
             <td colspan="2" class="tdClass"><input class="mini-textbox" width="80%" required="true"/></td>
         </tr>
         <tr>
-            <td class="inleft"><span>申请人：</span></td>
-            <td colspan="2" class="tdClass"><input class="mini-textbox" required="true" width="80%"/>
-                <img src="../../../img/home/people.jpg"></td>
+
+            <td class="inleft">申请人</td>
+            <td class="tdClass" colspan="2">
+                <input id="btnEdit1" name="" allowInput="false"
+                       class="mini-buttonedit user_add" onbuttonclick="onButtonEdit1" width="80%" required="true"/>
+            </td>
+
 
             <td class="inleft"><span>所属部门：</span></td>
-            <td colspan="2" class="tdClass"><input class="mini-textbox" required="true" width="80%"/>
-                <img src="../../../img/home/people.jpg"></td>
+            <td colspan="2" class="tdClass"><input id="btnEdit2" name="" allowInput="false"
+                                                   class="mini-buttonedit user_add" onbuttonclick="onButtonEdit1" width="80%" required="true"/>
         </tr>
         <tr class="trBorder">
             <td></td>

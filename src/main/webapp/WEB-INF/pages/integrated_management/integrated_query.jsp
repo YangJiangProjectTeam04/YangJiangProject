@@ -137,7 +137,7 @@
     mini.parse();
     var grid = mini.get('datagrid1');
 
-    grid.setUrl("searchClazz.action");
+//    grid.setUrl("searchClazz.action");
 
     grid.load();
 

@@ -12,7 +12,7 @@
 <%@ page isELIgnored="false"%>
 <html>
 <head>
-    <title>桥梁,点击出现分枝表</title>
+    <title>桥梁,点击出现分枝表.综合查询</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <link href="../../../css/demo.css" rel="stylesheet" type="text/css" />
     <script src="../../../scripts/boot.js" type="text/javascript"></script>
@@ -20,7 +20,7 @@
 <body>
 
 <div id="tabs1" class="mini-tabs" activeIndex="0" top="0px" border="solid 1px #CBD4D6" style="width:100%;height:100%;"
-     url="../../../data/tabs.txt"
+     url="../../../data/tabsBridgeIntegrated.txt"
      onactivechanged="onActiveChanged"
 >
 </div>
