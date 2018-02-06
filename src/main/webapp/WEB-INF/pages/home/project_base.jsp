@@ -5,12 +5,12 @@
   Time: 上午8:47
   To change this template use File | Settings | File Templates.
 --%>
-<%--个人中心的已办业务--%>
+<%--个人中心的待办业务--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
 <html>
 <head>
-    <title>代办业务</title>
+    <title>待办业务</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="../../../css/demo.css">
     <script src="../../../scripts/boot.js" type="text/javascript"></script>
