@@ -11,34 +11,47 @@ public class declareAndReviewController {
 
     /*部门经理审批页面*/
     @RequestMapping(value = "/declareAndReview")
-    public String declare(){
+    public String declare() {
         return "declare_and_review/declareAndReview";
     }
+
     @RequestMapping(value = "/bridgeDeclare")
-    public String bridge(){
+    public String bridge() {
         return "declare_and_review/bridgeDeclare";
     }
 
     /*科技办经理审批页面*/
     @RequestMapping(value = "/scienceMangerReview")
-    public String bridgeReview(){
+    public String bridgeReview() {
         return "declare_and_review/scienceMangerReview";
     }
+
     @RequestMapping(value = "/bridgeManager")
-    public String bridgeManager(){
+    public String bridgeManager() {
         return "declare_and_review/bridgeManager";
     }
 
     /*科技办经理审批页面*/
     @RequestMapping(value = "/bridgeEngineerReview")
-    public String bridgeEngineerReview(){
+    public String bridgeEngineerReview() {
         return "declare_and_review/bridgeEngineerReview";
     }
+
     @RequestMapping(value = "/engineerReview")
-    public String engineerReview(){
+    public String engineerReview() {
         return "declare_and_review/engineerReview";
     }
 
 
+    /*总经理审批页面*/
+    @RequestMapping(value = "/bridgeGM")
+    public String bridgeGM() {
+        return "declare_and_review/bridgeGM";
+    }
+
+    @RequestMapping(value = "/GMApprove")
+    public String GMApprove() {
+        return "declare_and_review/GMApprove";
+    }
 
 }
