@@ -9,8 +9,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>项目基本信息</title>
-    <link href="/css/demo.css" rel="stylesheet" type="text/css">
+    <title>项目基本信息的桥</title>
+    <link href="../../../css/demo.css" rel="stylesheet" type="text/css">
     <script src="/scripts/boot.js" type="text/javascript"></script>
     <script src="/scripts/thirdparty/swfupload/swfupload.js" type="text/javascript"></script>
     <script src="/js/ajaxfileupload.js" type="text/javascript"></script>
