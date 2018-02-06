@@ -27,8 +27,8 @@ public class MainTest {
 
         UserDao userDao = context.getBean(UserDao.class);
 
-        userDao.insert(new User(TRStringUtils.getUUID(),"波比",
-                "qwer@uiop.com","bobbi","qwer"));
+        userDao.insert(new User(TRStringUtils.getUUID(),"VIVIAN",
+                "123@qq.com","123","1234"));
 
         List<User> users = userDao.findAll();
 

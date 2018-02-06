@@ -11,6 +11,7 @@
     <title>工程师处理</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link href="../../../css/demo.css" rel="stylesheet" type="text/css"/>
+    <script src="../../../swfupload/swfupload.js" type="text/javascript"></script>
     <script src="../../../scripts/boot.js" type="text/javascript"></script>
     <link href="../../../scripts/miniui/themes/blue/skin.css" rel="stylesheet" type="text/css"/>
     <style>
@@ -99,29 +100,74 @@
 
 </div>
 
-<div id="exOpinion" class="mini-panel" margin-top="0px" title="与核电生产运营安全性,可靠性,经济性的适应分析" iconCls="icon-add"
+<div id="exOpinion" class="mini-panel" margin-top="0px" title="评审信息" iconCls="icon-add"
      style="width:100%;height: 200px;"
      showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
 
     <table style="width: 100%;height: 100%">
 
-        <tr>
-            <td class="td1">审批意见</td>
-            <td class="td2">
+        <tr style="height: 120px">
+            <td class="td1">审批结果</td>
+            <td class="td2" colspan="3">
                 <textarea class="mini-textarea"
-                          style="width: 90%;height: 90%"></textarea>
+                          style="width: 95%;height: 95%"></textarea>
             </td>
-            <td class="td1">常用词条</td>
-            <td class="td2">
-                <textarea class="mini-textarea"
-                          style="width: 90%;height: 90%"
-                          emptyText="同意,完成后通知我"></textarea>
+
+        </tr>
+
+        <tr>
+            <td class="td1">立项报告书<span style="color: red">&nbsp;*&nbsp;</span></td>
+            <td class="td2" colspan="3">
+                <input id="fileupload1"
+                       class="mini-fileupload"
+                       name="Fdata" limitType="*.doc"
+                       flashUrl="../../../swfupload/swfupload.swf"
+                       onuploadsuccess="onUploadSuccess"
+                       onuploaderror="onUploadError"
+                       onfileselect="onFileSelect"
+                       style="width: 50%"
+                />
+
+                <input type="button" value="Browse" onclick="startUpload()"/>
             </td>
         </tr>
 
     </table>
 
 </div>
+    <div style="background-color: #ededed;width: 100%;height: 26px">
+        <a class="mini-button" img="../../scripts/miniui/res/images/accept.png" style="float: right;margin-right: 10px">同意</a>
+        <span style="float: right">&nbsp;&nbsp;</span>
+        <a class="mini-button" img="../../scripts/miniui/res/images/cancel.png" style="float: right;">拒绝</a>
+    </div>
 </div>
 </body>
+<script type="text/javascript">
+    mini.parse();
+
+    //动态设置url
+    //    var fileupload = mini.get("fileupload1");
+    //    fileupload.setUploadUrl("upload.jsp");
+
+    function onFileSelect(e) {
+        //alert("选择文件");
+    }
+    function onUploadSuccess(e) {
+
+        alert("上传成功：" + e.serverData);
+
+        this.setText("");
+    }
+    function onUploadError(e) {
+
+    }
+
+    function startUpload() {
+        var fileupload = mini.get("fileupload1");
+
+        fileupload.startUpload();
+    }
+
+
+</script>
 </html>
