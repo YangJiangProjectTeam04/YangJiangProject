@@ -29,5 +29,16 @@ public class declareAndReviewController {
         return "declare_and_review/bridgeManager";
     }
 
+    /*科技办经理审批页面*/
+    @RequestMapping(value = "/bridgeEngineerReview")
+    public String bridgeEngineerReview(){
+        return "declare_and_review/bridgeEngineerReview";
+    }
+    @RequestMapping(value = "/engineerReview")
+    public String engineerReview(){
+        return "declare_and_review/engineerReview";
+    }
+
+
 
 }
