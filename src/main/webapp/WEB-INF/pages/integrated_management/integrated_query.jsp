@@ -71,7 +71,8 @@
         <img src="../../../img/query/head.png">
     </div>
 
-    <div id="query_condition" class="mini-panel" title="综合查询" style="width:100%;height:auto;"
+    <div id="query_condition" class="mini-panel" title="综合查询"
+         style="width:100%;height:auto;"
          showCollapseButton="true" bodyStyle="padding:0;" collapseOnTitleClick="true"
          expanded="true"
     >
