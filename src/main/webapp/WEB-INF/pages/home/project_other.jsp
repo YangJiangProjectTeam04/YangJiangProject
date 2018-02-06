@@ -65,7 +65,7 @@
 
 <%--查询条件--%>
 <div id="QueryConditions" class="mini-panel" margin-top="0px" title="查询条件" iconCls="icon-add"
-     style="width:100%;height:300px;"
+     style="width:100%;height:100%;"
      showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
     <!--body-->
     <table border="1" style="font-size: 12px">
