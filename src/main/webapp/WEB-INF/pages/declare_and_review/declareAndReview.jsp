@@ -130,9 +130,6 @@
                 <input class="mini-textarea" style="width:100%;height:60px;"/>
             </td>
         </tr>
-
-
-
         <tr class="trBorder">
             <td></td>
             <td></td>
@@ -143,6 +140,14 @@
             <td></td>
         </tr>
     </table>
+
+</div>
+
+<%--拒绝删除按钮--%>
+<div style="background-color: #ededed;width: 100%;height: 26px">
+    <a class="mini-button" img="../../scripts/miniui/res/images/accept.png" style="float: right;margin-right: 10px">同意</a>
+    <span style="float: right">&nbsp;&nbsp;</span>
+    <a class="mini-button" img="../../scripts/miniui/res/images/cancel.png" style="float: right;">拒绝</a>
 </div>
 
 <script type="text/javascript">

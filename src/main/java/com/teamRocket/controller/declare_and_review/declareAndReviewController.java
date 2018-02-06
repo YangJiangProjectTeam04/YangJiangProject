@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class declareAndReviewController {
+
+    /*部门经理审批页面*/
     @RequestMapping(value = "/declareAndReview")
     public String declare(){
         return "declare_and_review/declareAndReview";
@@ -16,8 +18,16 @@ public class declareAndReviewController {
     public String bridge(){
         return "declare_and_review/bridgeDeclare";
     }
+
+    /*科技办经理审批页面*/
     @RequestMapping(value = "/scienceMangerReview")
     public String bridgeReview(){
         return "declare_and_review/scienceMangerReview";
     }
+    @RequestMapping(value = "/bridgeManager")
+    public String bridgeManager(){
+        return "declare_and_review/bridgeManager";
+    }
+
+
 }
