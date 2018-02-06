@@ -10,6 +10,7 @@
 
     { id: "bridgeIntegrated", text: "综合管理"},
             { id: "inter", pid: "bridgeIntegrated", text: "综合查询",  url: "/bridgeIntegrated"},
+            { id: "unit", pid: "bridgeIntegrated", text: "机组管理",  url: "/bridgeCrewManagement"},
 
 
 
