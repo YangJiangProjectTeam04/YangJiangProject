@@ -1,0 +1,4 @@
+[
+ 	{title: "&nbsp;&nbsp; 项目基本信息 &nbsp;&nbsp; ", url: "/project_baseMsg"},
+ 	{title: "&nbsp;&nbsp; 项目其他信息 &nbsp;&nbsp; ", url: "/project_otherMsg"},
+]

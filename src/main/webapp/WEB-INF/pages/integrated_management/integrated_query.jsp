@@ -72,7 +72,7 @@
     </div>
 
     <div id="query_condition" class="mini-panel" title="综合查询" style="width:100%;height:auto;"
-         showCollapseButton="true" bodyStyle="padding:0;" collapseOnTitleClick="true"
+         showCollapseButton="true" collapseOnTitleClick="true"
          expanded="true"
     >
         <table id="query_condition_table" border="0" cellpadding="1" cellspacing="2"
