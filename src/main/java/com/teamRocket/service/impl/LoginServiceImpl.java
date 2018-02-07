@@ -5,9 +5,14 @@ import com.teamRocket.domain.User;
 import com.teamRocket.mapper.login.UserDao;
 import com.teamRocket.service.LoginService;
 import com.teamRocket.service.TRException;
+import com.teamRocket.utils.mail.Mail;
+import com.teamRocket.utils.mail.MailUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import java.io.IOException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -81,6 +86,37 @@ public class LoginServiceImpl implements LoginService {
         return matcher.find();
     }
 
+    /* 推送邮件方法 */
+    private String sendEmail(String email,String msg) throws IOException, MessagingException {
+
+        String nonce = getNonce() + "";
+
+        Session session = MailUtils.createSession("smtp.163.com","shidifenniya@163.com","19970731SDB");
+
+        String from = "shidifenniya@163.com";
+
+        String to = email;
+
+        String subject = "邮箱验证";
+
+        String content = "<h2>" + nonce + "</h2>";
+
+        String content2 = "<p>邮箱验证码,仅用于邮箱登录验证 power by TeamRocket</p>";
+
+        Mail mail = new Mail(from,to,subject, content + msg + content2);
+
+        MailUtils.send(session,mail);
+
+        return nonce;
+
+    }
+
+    /* 获取4位验证码 */
+    private int getNonce(){
+
+        return (int) Math.rint((Math.random()*10000 + 1000));
+
+    }
 
 
 }
