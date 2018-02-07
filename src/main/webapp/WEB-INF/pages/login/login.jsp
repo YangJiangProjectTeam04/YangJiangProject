@@ -35,10 +35,10 @@
             /*margin-left: 920px;*/
             /*position: fixed;*/
             position: absolute;
-            width: 400px;
+            width: 250px;
             height: 200px;
             top: 35%;
-            left: 62%;
+            left: 63%;
         }
 
 
@@ -78,7 +78,14 @@
     </table>
     <span id="msgMain"></span>
     <br>
-    <input type="checkbox" style="margin-left: 160px;margin-top: 20px">记住密码
+
+    <%--手机登录图标 和 邮箱登录图标--%>
+
+        <div id="phoneLogin" style="margin-top: 25px"><img src="../../../img/login/phone.png" style="width: 20px;height: 20px;margin-left: 30px;float: left"></div>
+        <div id="emailLogin" style="margin-top: 20px"><img src="../../../img/login/email.png" style="width: 25px;height: 25px;margin-left: 30px;float: left"></div>
+
+
+    <input type="checkbox" style="margin-left: 54px;margin-top: 10px;">记住密码
     <br>
     <input style="margin-top: 30px" class="den" value="登录" type="button" onclick="submitForm()"/>
 </div>
@@ -119,7 +126,7 @@
 
                     $("#userMsg").empty();
 
-                    $("#userMsg").append("<span style='color: red;font-size: small'>"+ text.resultMsg +"</span>");
+                    $("#userMsg").append("<span style='color: red;font-size: small;'>"+ text.resultMsg +"</span>");
 
                 }
 
@@ -161,7 +168,7 @@
 
                     $("#msgMain").empty();
 
-                    $("#msgMain").append("<span style='color: red'>"+ text.resultMsg +"</span>");
+                    $("#msgMain").append("<span style='color: red;margin-left: 70px'>"+ text.resultMsg +"</span>");
 
                 }
 
