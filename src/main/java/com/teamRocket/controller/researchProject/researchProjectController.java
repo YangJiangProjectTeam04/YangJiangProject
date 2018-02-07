@@ -27,6 +27,17 @@ public class researchProjectController {
         return "researchProject/personalWorkbenchAlready";
     }
 
+    /*合同推荐申报*/
+    @RequestMapping(value = "/recommendingDeclaration")
+    public String recommendingDeclaration() {
+        return "researchProject/recommendingDeclaration";
+    }
+
+    /*合同推荐审批*/
+    @RequestMapping(value = "/recommendingApprove")
+    public String recommendingApprove() {
+        return "researchProject/recommendingApprove";
+    }
 
 
 }
