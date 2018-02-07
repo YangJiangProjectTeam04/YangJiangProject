@@ -9,7 +9,7 @@ public class MainController {
     /* 用于测试项目是否能进入启动页 */
     @RequestMapping(value = {"","/"})
     public String login(){
-        return "declare_and_review/reviewTeam";
+        return "researchProject/bridgePersonalWorkbench";
     }
 
     /*从登陆页面跳转到个人中心home界面*/

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by dllo on 18/2/6.
  */
 @Controller
-public class declareAndReviewController {
+public class DeclareAndReviewController {
 
     /*部门经理审批页面*/
     @RequestMapping(value = "/declareAndReview")
