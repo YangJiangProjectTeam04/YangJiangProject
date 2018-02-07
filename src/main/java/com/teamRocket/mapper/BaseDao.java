@@ -8,4 +8,6 @@ public interface BaseDao<T> {
 
     int insert(T t);
 
+    T findOne(T t);
+
 }

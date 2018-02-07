@@ -74,6 +74,22 @@ public class LoginServiceImpl implements LoginService {
         return result;
     }
 
+    public String findEmail(User user) throws TRException, IOException, MessagingException {
+
+        List<User> users = userDao.selEmail(user);
+
+        if (users == null || users.size() < 1){
+
+            throw new TRException("邮箱未注册");
+
+        }
+
+        String msg = "<p>用户:"+ users.get(0).getUsername() +",正在登录</p>";
+
+        return sendEmail(user.getEmail(), msg);
+
+    }
+
     //邮箱正则判断
     private boolean regEmail(String str){
 

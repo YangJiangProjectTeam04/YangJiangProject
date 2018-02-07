@@ -9,6 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.mail.MessagingException;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
 /**
  * Created by dllo on 18/2/3.
@@ -62,6 +66,35 @@ public class LoginController  {
 
     }
 
-    /*  */
+    /* 判断邮箱验证 */
+    @RequestMapping(value = "/emailPass", method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResult emailPass(@RequestBody User user, HttpServletRequest request){
+
+        try {
+
+            String code = loginService.findEmail(user);
+
+            request.getSession(true).setAttribute("emailCode", code);
+
+        } catch (TRException e) {
+
+            return new BaseResult(1,e.getMessage());
+
+        } catch (MessagingException e) {
+
+            return new BaseResult(1,"消息发送错误");
+
+        } catch (IOException e) {
+
+            return new BaseResult(1,"消息流异常");
+
+        }
+
+        return new BaseResult(0,"邮箱正确");
+
+    }
+
+
 
 }
