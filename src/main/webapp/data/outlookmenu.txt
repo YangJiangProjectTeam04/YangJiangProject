@@ -16,6 +16,8 @@
             { id: "unit", pid: "bridgeIntegrated", text: "射线探伤人员管理",  url: "/bridgeRayManagement"},
             { id: "unit", pid: "bridgeIntegrated", text: "厂房管理",  url: "/bridgeWorkshopManagement"},
 
+        { id: "contract", text: "合同"},
+
 
 
 
