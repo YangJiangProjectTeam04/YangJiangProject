@@ -32,10 +32,11 @@ public class MainTest {
 
         UserDao userDao = context.getBean(UserDao.class);
 
-        userDao.insert(new User(TRStringUtils.getUUID(),"VIVIAN",
-                "123@qq.com","123","1234"));
+        User user = new User();
 
-        List<User> users = userDao.findAll();
+        user.setEmail("shidifenniya@gmail.com");
+
+        List<User> users = userDao.selEmail(user);
 
         System.out.println(users);
 

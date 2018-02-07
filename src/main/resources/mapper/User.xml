@@ -70,4 +70,15 @@
         OR STAFF_EMAIL=#{email}
     </select>
 
+    <!-- 查询是否存在该邮箱 -->
+    <select id="selEmail"
+            parameterType="com.teamRocket.domain.User"
+            resultMap="userMap">
+        SELECT
+        <include refid="userColumn"/>
+        FROM staff_info
+        WHERE
+        STAFF_EMAIL=#{email}
+    </select>
+
 </mapper>
