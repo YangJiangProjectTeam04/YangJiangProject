@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class ButtonController {
-
     /*综合查询*/
     @RequestMapping(value = "/bridgeIntegrated")
     public String bridge(){
@@ -27,7 +26,6 @@ public class ButtonController {
     public String rayManagement(){
         return "integrated_management/rayManagement";
     }
-
     /*厂房管理*/
     @RequestMapping(value = "/bridgeWorkshopManagement")
     public String bridgeWorkshopManagement(){
@@ -37,5 +35,6 @@ public class ButtonController {
     public String workshopManagement(){
         return "integrated_management/workshopManagement";
     }
+
 
 }

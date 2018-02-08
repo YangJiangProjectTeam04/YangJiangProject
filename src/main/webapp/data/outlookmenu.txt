@@ -2,8 +2,8 @@
 	{ id: "right", text: "个人中心"},
     	{ id: "editRight", pid: "right", text: "个人工作平台",  url: "/bridge"},
 
-    { id: "manager", text: "科研项目申报与评审"},
-        { id: "mana", pid: "manager", text: "科研项目申报",url:"/project_home"},
+    { id: "manager", text: "科研项目管理"},
+        { id: "mana", pid: "manager", text: "科研项目申报与评审",url:"/bridgeIntegrated"},
         { id: "man", pid: "manager", text: "部门经理审批",url: "/bridgeDeclare" },
         { id: "scienceMangerReview", pid: "manager", text: "科技办经理审批",url: "/bridgeManager" },
         { id: "engineerReview", pid: "manager", text: "工程师组织审核",url: "/bridgeEngineerReview" },
@@ -17,6 +17,9 @@
             { id: "unit", pid: "bridgeIntegrated", text: "厂房管理",  url: "/bridgeWorkshopManagement"},
 
         { id: "contract", text: "合同"},
+                { id: "con1", pid: "contract", text: "合同推荐审批",  url: "/bridgeDeclaractionApprovebench"},
+                { id: "con2", pid: "contract", text: "合同推荐申报",  url: "/recommendingDeclaration"},
+
 
 
 
