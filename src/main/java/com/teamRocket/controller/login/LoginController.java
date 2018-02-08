@@ -1,10 +1,12 @@
 package com.teamRocket.controller.login;
 
 import com.teamRocket.domain.BaseResult;
+import com.teamRocket.domain.CodeMessage;
 import com.teamRocket.domain.User;
 import com.teamRocket.service.LoginService;
 import com.teamRocket.service.TRException;
 import com.teamRocket.utils.TRStringUtils;
+import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,6 +41,9 @@ public class LoginController {
         //同步邮箱
         user.setEmail(user.getLoginName());
 
+        //同步手机
+        user.setPhoneNumber(user.getLoginName());
+
         try {
 
             //开始查询
@@ -63,6 +68,9 @@ public class LoginController {
         //同步邮箱
         user.setEmail(user.getLoginName());
 
+        //同步手机
+        user.setPhoneNumber(user.getLoginName());
+
         return loginService.findUsername(user);
 
     }
@@ -74,7 +82,7 @@ public class LoginController {
         try {
 
             code = loginService.findEmail(user);
-            System.out.println(code);
+
             request.getSession().setAttribute("emailCode", code);
 
         } catch (TRException e) {
@@ -98,13 +106,86 @@ public class LoginController {
     //邮箱验证码验证
     @RequestMapping(value = "/getEmailCode", method = RequestMethod.POST)
     @ResponseBody
-    public BaseResult getEmailCode(HttpServletRequest request) {
+    public BaseResult getEmailCode(@RequestBody User user,HttpServletRequest request) {
 
         String code = (String) request.getSession(true).getAttribute("emailCode");
+
+        try {
+
+            loginService.codePass(user.getEmail());
+
+            if (code.equals(user.getEmail().trim())){
+
+                return new BaseResult(0,"成功");
+
+            }
+
+        } catch (TRException e) {
+
+            return new BaseResult(1, e.getMessage());
+
+        }
+
+        return new BaseResult(1, "验证码不正确");
+
+    }
+
+    /* 发送短信验证码 */
+    @RequestMapping(value = "/phonePass", method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResult phoneMessagePass(@RequestBody User user, HttpServletRequest request){
+
+        try {
+
+            String codeBody = loginService.findPhone(user);
+
+            //编译JSON对象
+            CodeMessage codeMessage = (CodeMessage) JSONObject.toBean(
+                    JSONObject.fromObject(codeBody),CodeMessage.class);
+
+            request.getSession().setAttribute("phoneCode", codeMessage.getObj());
+
+            System.out.println(codeMessage);
+
+        } catch (TRException e) {
+
+            return new BaseResult(1, e.getMessage());
+
+        } catch (IOException e) {
+
+            return new BaseResult(1, "消息流异常");
+
+        }
 
         return new BaseResult(0, code);
 
     }
 
+    /* 短信验证码验证 */
+    @RequestMapping(value = "/getPhoneCode", method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResult getPhoneCode(@RequestBody User user,HttpServletRequest request){
+
+        String code = (String) request.getSession(true).getAttribute("phoneCode");
+
+        try {
+
+            loginService.codePass(user.getPhoneNumber());
+
+            if (code.equals(user.getPhoneNumber().trim())){
+
+                return new BaseResult(0,"成功");
+
+            }
+
+        } catch (TRException e) {
+
+            return new BaseResult(1, e.getMessage());
+
+        }
+
+        return new BaseResult(1, "验证码不正确");
+
+    }
 
 }

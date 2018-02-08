@@ -14,4 +14,8 @@ public interface LoginService {
 
     String findEmail(User user) throws TRException, IOException, MessagingException;
 
+    void codePass(String code) throws TRException;
+
+    String findPhone(User user) throws TRException, IOException;
+
 }

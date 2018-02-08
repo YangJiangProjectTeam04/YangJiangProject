@@ -5,6 +5,8 @@ import com.teamRocket.domain.User;
 import com.teamRocket.mapper.login.UserDao;
 import com.teamRocket.service.LoginService;
 import com.teamRocket.service.TRException;
+import com.teamRocket.utils.CheckSumBuilder;
+import com.teamRocket.utils.HttpClientUtil;
 import com.teamRocket.utils.mail.Mail;
 import com.teamRocket.utils.mail.MailUtils;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,12 @@ public class LoginServiceImpl implements LoginService {
     private UserDao userDao;
 
     public void findUser(User user) throws TRException {
+
+        //进行密码md5加密
+        String passwordEncode = CheckSumBuilder.getMD5(user.getPassword());
+
+        //重置密码
+        user.setPassword(passwordEncode);
 
         List<User> users = userDao.selNameAndPassword(user);
 
@@ -49,6 +57,10 @@ public class LoginServiceImpl implements LoginService {
 
                 result.setResultMsg("邮箱错误");
 
+            } else if(regPhone(user.getEmail())){
+
+                result.setResultMsg("手机错误");
+
             } else {
 
                 result.setResultMsg("用户错误");
@@ -63,6 +75,10 @@ public class LoginServiceImpl implements LoginService {
 
                 result.setResultMsg("邮箱正确");
 
+            } else if(regPhone(user.getEmail())){
+
+                result.setResultMsg("手机正确");
+
             } else {
 
                 result.setResultMsg("用户正确");
@@ -72,6 +88,28 @@ public class LoginServiceImpl implements LoginService {
         }
 
         return result;
+    }
+
+    public String findPhone(User user) throws TRException, IOException {
+
+        if (!regPhone(user.getPhoneNumber())) {
+
+            throw new TRException("手机号格式不正确");
+
+        }
+
+
+        List<User> users = userDao.selPhone(user);
+
+        if (users == null || users.size() < 1) {
+
+            throw new TRException("手机号未注册");
+
+        }
+
+        //对该号码发送手机短信
+       return HttpClientUtil.sendMessage(user.getPhoneNumber());
+
     }
 
     public String findEmail(User user) throws TRException, IOException, MessagingException {
@@ -95,6 +133,28 @@ public class LoginServiceImpl implements LoginService {
 
         return sendEmail(user.getEmail(), msg);
 
+    }
+
+    public void codePass(String code) throws TRException {
+
+        if (code.trim().length() != 4 && code.trim().length() != 5){
+
+            throw new TRException("验证码长度不正确");
+
+        }
+
+    }
+
+    //手机正则判断
+    private boolean regPhone(String str) {
+
+        String regEx = "^((13[0-9])|(15[^4])|(18[0-9])|(17[0-9])|(147))\\d{8}$";
+
+        Pattern pattern = Pattern.compile(regEx);
+
+        Matcher matcher = pattern.matcher(str);
+
+        return matcher.find();
     }
 
     //邮箱正则判断

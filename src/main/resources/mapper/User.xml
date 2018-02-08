@@ -5,7 +5,7 @@
 <mapper namespace="com.teamRocket.mapper.login.UserDao">
 
     <sql id="userColumn">
-        staff_ID,staff_name,staff_email,login_name,login_password
+        staff_ID,staff_name,staff_email,login_name,login_password,staff_phone
     </sql>
 
     <resultMap id="userMap"
@@ -20,6 +20,8 @@
         <result property="loginName" column="LOGIN_NAME"/>
 
         <result property="password" column="LOGIN_PASSWORD"/>
+
+        <result property="phoneNumber" column="LOGIN_PHONE"/>
 
     </resultMap>
 
@@ -41,7 +43,7 @@
         <include refid="userColumn"/>
         )
         VALUES
-        (#{userId},#{username},#{email},#{loginName},#{password})
+        (#{userId},#{username},#{email},#{loginName},#{password},#{phoneNumber})
     </insert>
 
     <!-- 根据用户名密码查询用户 -->
@@ -54,7 +56,8 @@
         FROM staff_info
         WHERE
         (LOGIN_NAME=#{loginName} OR
-          STAFF_EMAIL=#{email})
+          STAFF_EMAIL=#{email} OR
+          STAFF_PHONE=#{phoneNumber})
         AND LOGIN_PASSWORD=#{password};
 
     </select>
@@ -68,6 +71,7 @@
         FROM staff_info
         WHERE LOGIN_NAME=#{loginName}
         OR STAFF_EMAIL=#{email}
+        OR STAFF_PHONE=#{phoneNumber}
     </select>
 
     <!-- 查询是否存在该邮箱 -->
@@ -79,6 +83,17 @@
         FROM staff_info
         WHERE
         STAFF_EMAIL=#{email}
+    </select>
+
+    <!-- 查询是否存在该手机号 -->
+    <select id="selPhone"
+            parameterType="com.teamRocket.domain.User"
+            resultMap="userMap">
+        SELECT
+        <include refid="userColumn"/>
+        FROM staff_info
+        WHERE
+        STAFF_PHONE=#{phoneNumber}
     </select>
 
 </mapper>

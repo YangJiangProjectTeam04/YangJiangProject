@@ -55,12 +55,12 @@
             <td><label style="size: 12px">用户名：</label></td>
             <td>
                 <input name="loginName" id="loginName" placeholder="用户名或邮箱"
-                       class="mini-textbox" required="true"/><span id="userMsg"></span>
+                       class="mini-textbox" required="true"/>
             </td>
         </tr>
         <tr>
             <td></td>
-            <td></td>
+            <td><span id="userMsg"></span></td>
         </tr>
         <tr>
             <td></td>
@@ -188,14 +188,14 @@
         });
     }
 
-//w2ui手机号
+    //w2ui手机号
     function popupPhone() {
         w2popup.open({
             title     : '手机登录',
-            body      : '<div class="w2ui-centered">请输入手机号 <input name="first_name" type="text" maxlength="100" style="width: 200px"/></div>',
+            body      : '<div class="w2ui-centered">请输入手机号 <input id="phoneNumber" name="first_name" type="text" maxlength="100" style="width: 200px"/></div>',
             buttons   : '<button class="w2ui-btn" onclick="w2popup.close();">关闭</button> '+
             '<button id="phone" class="w2ui-btn" onclick="w2popup.lock(\'Loading\', true); '+
-            '        setTimeout(function () { w2popup.unlock(); }, 2000);">下一步</button>',
+            '        setTimeout(function () {buttonPhone(); w2popup.unlock(); }, 2000);">下一步</button>',
             width     : 400,
             height    : 250,
             overflow  : 'hidden',
@@ -213,10 +213,10 @@
         });
     }
 
-//w2ui邮箱
+    //w2ui邮箱
     function popupEmail() {
         w2popup.open({
-            title     : '邮箱登录',
+            title     : '<span style="text-align: center">邮箱登录</span>',
             body      : '<div class="w2ui-centered">请输入邮箱 <input id="emailName" name="first_name" type="text" maxlength="100" style="width: 200px"/></div>',
             buttons   : '<button class="w2ui-btn" onclick="w2popup.close();">关闭</button> '+
             '<span id="emailSpan"><button id="email" class="w2ui-btn" onclick="w2popup.lock(\'Loading\', true); '+
@@ -237,13 +237,12 @@
             onKeydown : function (event) { console.log('keydown'); }
         });
     }
-//邮箱登录点击下一步
-var tempCode;
+
+    //邮箱登录点击下一步
     function buttonEmail() {
         var data = {email:$("#emailName").val()};
         var json = mini.encode(data);
 
-//        alert(json);
         $.ajax({
 
             url: "/emailPass",
@@ -258,17 +257,13 @@ var tempCode;
             success: function (text) {
 
                 if (text.resultCode == 0) {
+
                    popEmail();
 
-//                    window.location.href = "/home";
-                    tempCode = code;
-                    return tempCode;
 
                 } else {
 
-                    $("#msgMain").empty();
-
-                    $("#msgMain").append("<span style='color: red;margin-left: 70px'>" + text.resultMsg + "</span>");
+                    showMessage(text.resultMsg);
 
                 }
 
@@ -276,10 +271,10 @@ var tempCode;
         });
     }
 
-//邮件发送验证码
+    //邮件发送验证码
     function popEmail() {
         w2popup.open({
-            title     : '邮件发送成功',
+            title     : '<span style="text-align: center">邮件发送成功</span>',
             body      : '<div class="w2ui-centered">请输入验证码 <input id="CodeSureName" name="first_name" type="text" maxlength="100" style="width: 200px"/></div>',
             buttons   :
             '<span id="emailSpan"><button id="email" class="w2ui-btn" onclick="w2popup.lock(\'Loading\', true); '+
@@ -300,24 +295,148 @@ var tempCode;
             onKeydown : function (event) { console.log('keydown'); }
         });
     }
-//    邮件确认按钮
+
+    //邮件确认按钮
     function sureEmail() {
-        <%--var dataCode = $("#CodeSureName").val();--%>
-       <%--var emailCode = "${emailCode}";--%>
-//        alert(emailCode);
 
-//        var dataCode = {email:$("#CodeSureName").val()};
-//        var json = mini.encode(dataCode);
-//     if (tempCode == $("#CodeSureName").val()){
-//
-//         window.location.href="/home";
-//     }
+        var data = {email:$("#CodeSureName").val()};
 
+        var json = mini.encode(data);
 
+        $.ajax({
 
+            url: "/getEmailCode",
+
+            type: "post",
+
+            //发起ajax -> controller接收必须加入的响应头
+            contentType: 'application/json',
+
+            data: json,
+
+            success: function (text) {
+
+                if (text.resultCode == 0) {
+
+                    window.location.href = '/home';
+
+                } else {
+
+                    showMessage(text.resultMsg);
+
+                }
+
+            }
+        });
 
 
     }
+
+    //短信登录点击下一步
+    function buttonPhone() {
+        var data = {phoneNumber:$("#phoneNumber").val()};
+        var json = mini.encode(data);
+
+        $.ajax({
+
+            url: "/phonePass",
+
+            type: "post",
+
+            //发起ajax -> controller接收必须加入的响应头
+            contentType: 'application/json',
+
+            data: json,
+
+            success: function (text) {
+
+                if (text.resultCode == 0) {
+
+                    popPhone();
+
+
+                } else {
+
+                    showMessage(text.resultMsg);
+
+                }
+
+            }
+        });
+    }
+
+    //短信登录验证窗口
+    function popPhone() {
+
+        w2popup.open({
+            title     : '<span style="text-align: center">短信发送成功</span>',
+            body      : '<div class="w2ui-centered">请输入验证码 <input id="CodeSureName" name="first_name" type="text" maxlength="100" style="width: 200px"/></div>',
+            buttons   :
+            '<span id="emailSpan"><button id="email" class="w2ui-btn" onclick="w2popup.lock(\'Loading\', true); '+
+            '        setTimeout(function () {surePhone();w2popup.unlock(); }, 2000);">确认</button></span>',
+            width     : 400,
+            height    : 250,
+            overflow  : 'hidden',
+            color     : '#333',
+            speed     : '0.3',
+            opacity   : '0.8',
+            modal     : true,
+            showClose : true,
+            showMax   : true,
+            onOpen    : function (event) { console.log('open'); },
+            onClose   : function (event) { console.log('close'); },
+            onMax     : function (event) { console.log('max'); },
+            onMin     : function (event) { console.log('min'); },
+            onKeydown : function (event) { console.log('keydown'); }
+        });
+
+    }
+
+    //短信确认验证码
+    function surePhone() {
+
+        var data = {phoneNumber:$("#CodeSureName").val()};
+
+        var json = mini.encode(data);
+
+        $.ajax({
+
+            url: "/getPhoneCode",
+
+            type: "post",
+
+            //发起ajax -> controller接收必须加入的响应头
+            contentType: 'application/json',
+
+            data: json,
+
+            success: function (text) {
+
+                if (text.resultCode == 0) {
+
+                    window.location.href = '/home';
+
+                } else {
+
+                    showMessage(text.resultMsg);
+
+                }
+
+            }
+        });
+
+    }
+
+
+    function showMessage (msg) {
+        w2popup.message({
+            width   : 400,
+            height  : 180,
+            html    : '<div style="padding: 60px; text-align: center">'+ msg +'</div>'+
+            '<div style="text-align: center"><button class="w2ui-btn" onclick="w2popup.message()">知道了</button>'
+        });
+    }
+
 </script>
 </body>
 </html>

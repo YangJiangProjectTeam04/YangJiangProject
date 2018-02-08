@@ -14,4 +14,5 @@ public interface UserDao extends BaseDao<User> {
 
     List<User> selEmail(User user);
 
+    List<User> selPhone(User user);
 }

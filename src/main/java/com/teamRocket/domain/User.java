@@ -14,6 +14,8 @@ public class User implements Serializable{
 
     private String password;
 
+    private String phoneNumber;
+
     public User() {
 
     }
@@ -29,6 +31,15 @@ public class User implements Serializable{
         this.email = email;
         this.loginName = loginName;
         this.password = password;
+    }
+
+    public User(String userId, String username, String email, String loginName, String password, String phoneNumber) {
+        this.userId = userId;
+        this.username = username;
+        this.email = email;
+        this.loginName = loginName;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getUserId() {
@@ -69,6 +80,14 @@ public class User implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override

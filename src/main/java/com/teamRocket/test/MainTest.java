@@ -5,6 +5,7 @@ import com.teamRocket.domain.User;
 import com.teamRocket.mapper.login.UserDao;
 import com.teamRocket.mapper.satellite_lib.SatelliteLibDao;
 import com.teamRocket.service.SatelliteLibService;
+import com.teamRocket.utils.CheckSumBuilder;
 import com.teamRocket.utils.TRStringUtils;
 import com.teamRocket.utils.mail.Mail;
 import com.teamRocket.utils.mail.MailUtils;
@@ -64,6 +65,15 @@ public class MainTest {
 //            e.printStackTrace();
 //
 //        }
+
+    }
+
+    @Test
+    public void md5Password(){
+
+        String md5 = CheckSumBuilder.getMD5("qwer");
+
+        System.out.println(md5);
 
     }
 
