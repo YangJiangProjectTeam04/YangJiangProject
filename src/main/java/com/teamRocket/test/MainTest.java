@@ -1,7 +1,10 @@
 package com.teamRocket.test;
 
+import com.teamRocket.domain.SatelliteLib;
 import com.teamRocket.domain.User;
 import com.teamRocket.mapper.login.UserDao;
+import com.teamRocket.mapper.satellite_lib.SatelliteLibDao;
+import com.teamRocket.service.SatelliteLibService;
 import com.teamRocket.utils.TRStringUtils;
 import com.teamRocket.utils.mail.Mail;
 import com.teamRocket.utils.mail.MailUtils;
@@ -20,15 +23,15 @@ public class MainTest {
     private ApplicationContext context;
 
     @Before
-    public void init(){
+    public void init() {
 
         context = new ClassPathXmlApplicationContext("classpath:spring-*.xml");
 
     }
 
-//  测试数据库
+    //  测试数据库
     @Test
-    public void startSpring(){
+    public void startSpring() {
 
         UserDao userDao = context.getBean(UserDao.class);
 
@@ -42,9 +45,9 @@ public class MainTest {
 
     }
 
-//  测试邮件借口
+    //  测试邮件借口
     @Test
-    public void sendEmail(){
+    public void sendEmail() {
 
 //        try {
 //
@@ -86,10 +89,21 @@ public class MainTest {
 //    }
 
     /* 获取4位验证码 */
-    private static int getNonce(){
+    private static int getNonce() {
 
-        return (int) Math.rint((Math.random()*10000 + 1000));
+        return (int) Math.rint((Math.random() * 10000 + 1000));
 
     }
 
+    /**
+     * 卫星库查询测试
+     * */
+    @Test
+    public void testSatelliteLib() {
+        SatelliteLibService satelliteLibService = context.getBean(SatelliteLibService.class);
+        List<SatelliteLib> satelliteLibs = satelliteLibService.selAll();
+        for (SatelliteLib satelliteLib : satelliteLibs) {
+            System.out.println(satelliteLib);
+        }
+    }
 }

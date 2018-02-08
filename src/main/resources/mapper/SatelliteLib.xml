@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTDMapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamRocket.mapper.satellite_lib.SatelliteLibDao">
+    <sql id="satelliteLibColumn">
+         BIMS_STORE_ID,BIMS_STORE_NAME,MANAGE_STAFF_NO,MANAGE_STAFF_NAME,EFFECT_FLAG,CREATE_STAFF_NO,CREATE_STAFF_NAME,CREATE_DATE
+    </sql>
+    <resultMap id="satelliteLib" type="com.teamRocket.domain.SatelliteLib">
+        <result property="BIMSStoreId" column="BIMS_STORE_ID"/>
+        <result property="BIMSStoreName" column="BIMS_STORE_NAME"/>
+        <result property="manageStaffNo" column="MANAGE_STAFF_NO"/>
+        <result property="manageStaffName" column="MANAGE_STAFF_NAME"/>
+        <result property="effectFlag" column="EFFECT_FLAG"/>
+        <result property="createStaffNo" column="CREATE_STAFF_NO"/>
+        <result property="createStaffName" column="CREATE_STAFF_NAME"/>
+        <result property="createDate" column="CREATE_DATE"/>
+    </resultMap>
+
+    <!-- 查询卫星库 -->
+    <select id="findAll" resultMap="satelliteLib">
+
+        SELECT
+        <include refid="satelliteLibColumn"/>
+        FROM
+        pms_bims_store
+
+    </select>
+
+</mapper>

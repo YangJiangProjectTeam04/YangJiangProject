@@ -65,6 +65,7 @@
         }
     </style>
 </head>
+<body>
 <div id="query_body">
 
     <div id="query_head">

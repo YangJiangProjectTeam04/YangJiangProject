@@ -12,7 +12,7 @@
 <%@ page isELIgnored="false"%>
 <html>
 <head>
-    <title>桥梁,点击出现分枝表,科研项目管理的桥梁表</title>
+    <title>桥梁,点击出现分枝表,部门经理的桥梁表</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <link href="../../../css/demo.css" rel="stylesheet" type="text/css" />
     <script src="../../../scripts/boot.js" type="text/javascript"></script>

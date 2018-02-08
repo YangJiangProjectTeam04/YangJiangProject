@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller("homeController")
 public class HomeController {
 
+    /* 个人中心 */
     @RequestMapping(value = "/person")
     public String homeJumpPerson(){
         return "home/person";
