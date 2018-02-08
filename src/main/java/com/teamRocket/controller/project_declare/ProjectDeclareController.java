@@ -14,14 +14,12 @@ public class ProjectDeclareController {
     public String project_baseMsg() {
         return "project_declare/project_baseMsg";
     }
-    @RequestMapping(value = "/project_home")
-    public String project_home() {
-        return "project_declare/project_home";
+    @RequestMapping(value = "/projectDeclare")
+    public String projectDeclare() {
+        return "project_declare/projectDeclare";
     }
     @RequestMapping(value = "/project_otherMsg")
     public String project_otherMsg() {
         return "project_declare/project_otherMsg";
     }
-
-
 }

@@ -39,7 +39,6 @@ public class DeclareAndReviewController {
         return "declare_and_review/engineerReview";
     }
 
-
     /*总经理审批页面*/
     @RequestMapping(value = "/bridgeGM")
     public String bridgeGM() {
