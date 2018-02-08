@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ButtonController {
 
+    /* 综合管理 */
+
     /*综合查询*/
     @RequestMapping(value = "/bridgeIntegrated")
     public String bridge(){
@@ -18,6 +20,7 @@ public class ButtonController {
     public String integratedQuery(){
         return "integrated_management/integrated_query";
     }
+
     /*射线探伤人员管理*/
     @RequestMapping(value = "/bridgeRayManagement")
     public String bridgeRayManagement(){
@@ -36,6 +39,26 @@ public class ButtonController {
     @RequestMapping(value = "/workshopManagement")
     public String workshopManagement(){
         return "integrated_management/workshopManagement";
+    }
+
+    /*机组管理*/
+    @RequestMapping(value = "/bridgeCrewManagement")
+    public String bridgeCrewManagement() {
+        return "integrated_management/bridgeCrewManagement";
+    }
+    @RequestMapping(value = "/crewManagement")
+    public String crewManagement() {
+        return "integrated_management/crewManagement";
+    }
+
+    /*卫星库管理人管理*/
+    @RequestMapping(value = "/bridgeSatelliteManagement")
+    public String bridgeSatelliteManagement() {
+        return "integrated_management/bridgeSatelliteManagement";
+    }
+    @RequestMapping(value = "/satelliteManagement")
+    public String satelliteManagement() {
+        return "integrated_management/satelliteManagement";
     }
 
 }

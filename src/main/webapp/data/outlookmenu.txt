@@ -9,17 +9,18 @@
         { id: "engineerReview", pid: "manager", text: "工程师组织审核",url: "/bridgeEngineerReview" },
         { id: "GMApprove", pid: "manager", text: "总经理部审批",url: "/bridgeGM" },
 
-    { id: "bridgeIntegrated", text: "综合管理"},
-            { id: "inter", pid: "bridgeIntegrated", text: "综合查询",  url: "/bridgeIntegrated"},
-            { id: "unit", pid: "bridgeIntegrated", text: "机组管理",  url: "/bridgeCrewManagement"},
-            { id: "unit", pid: "bridgeIntegrated", text: "卫星库管理人管理",  url: "/bridgeSatelliteManagement"},
-            { id: "unit", pid: "bridgeIntegrated", text: "射线探伤人员管理",  url: "/bridgeRayManagement"},
-            { id: "unit", pid: "bridgeIntegrated", text: "厂房管理",  url: "/bridgeWorkshopManagement"},
+    { id: "project_declare", text: "综合管理"},
+        { id: "inter", pid: "project_declare", text: "综合查询",  url: "/bridgeIntegrated"},
+        { id: "unit", pid: "project_declare", text: "机组管理",  url: "/bridgeCrewManagement"},
+        { id: "unit", pid: "project_declare", text: "卫星库管理人管理",  url: "/bridgeSatelliteManagement"},
+        { id: "unit", pid: "project_declare", text: "射线探伤人员管理",  url: "/bridgeRayManagement"},
+        { id: "unit", pid: "project_declare", text: "厂房管理",  url: "/bridgeWorkshopManagement"},
 
-        { id: "contract", text: "合同"},
-
-
-
-
+    { id: "contract", text: "合同"},
+        { id: "", pid: "", text: "",  url: "/"},
+        { id: "", pid: "", text: "",  url: "/"},
+        { id: "", pid: "", text: "",  url: "/"},
+        { id: "", pid: "", text: "",  url: "/"},
+        { id: "", pid: "", text: "",  url: "/"},
 
 ]
