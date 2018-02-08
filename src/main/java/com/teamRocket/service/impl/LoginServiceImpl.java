@@ -27,7 +27,7 @@ public class LoginServiceImpl implements LoginService {
 
         List<User> users = userDao.selNameAndPassword(user);
 
-        if(users == null || users.size() < 1){
+        if (users == null || users.size() < 1) {
 
             throw new TRException("用户名密码不匹配");
 
@@ -41,11 +41,11 @@ public class LoginServiceImpl implements LoginService {
 
         BaseResult<User> result = new BaseResult<User>();
 
-        if (users == null || users.size() < 1){
+        if (users == null || users.size() < 1) {
 
             result.setResultCode(1);
 
-            if(regEmail(user.getEmail())){
+            if (regEmail(user.getEmail())) {
 
                 result.setResultMsg("邮箱错误");
 
@@ -55,11 +55,11 @@ public class LoginServiceImpl implements LoginService {
 
             }
 
-        }else {
+        } else {
 
             result.setResultCode(0);
 
-            if(regEmail(user.getEmail())){
+            if (regEmail(user.getEmail())) {
 
                 result.setResultMsg("邮箱正确");
 
@@ -76,24 +76,31 @@ public class LoginServiceImpl implements LoginService {
 
     public String findEmail(User user) throws TRException, IOException, MessagingException {
 
+        if (!regEmail(user.getEmail())) {
+
+            throw new TRException("邮箱格式不正确");
+
+        }
+
+
         List<User> users = userDao.selEmail(user);
 
-        if (users == null || users.size() < 1){
+        if (users == null || users.size() < 1) {
 
             throw new TRException("邮箱未注册");
 
         }
 
-        String msg = "<p>用户:"+ users.get(0).getUsername() +",正在登录</p>";
+        String msg = "<p>用户:" + users.get(0).getUsername() + ",正在登录</p>";
 
         return sendEmail(user.getEmail(), msg);
 
     }
 
     //邮箱正则判断
-    private boolean regEmail(String str){
+    private boolean regEmail(String str) {
 
-        String regEx = "[a-zA-Z_]{1,}[0-9]{0,}@(([a-zA-z0-9]-*){1,}\\.){1,3}[a-zA-z\\-]{1,}";
+        String regEx = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
 
         Pattern pattern = Pattern.compile(regEx);
 
@@ -103,11 +110,11 @@ public class LoginServiceImpl implements LoginService {
     }
 
     /* 推送邮件方法 */
-    private String sendEmail(String email,String msg) throws IOException, MessagingException {
+    private String sendEmail(String email, String msg) throws IOException, MessagingException {
 
         String nonce = getNonce() + "";
 
-        Session session = MailUtils.createSession("smtp.163.com","shidifenniya@163.com","19970731SDB");
+        Session session = MailUtils.createSession("smtp.163.com", "shidifenniya@163.com", "19970731SDB");
 
         String from = "shidifenniya@163.com";
 
@@ -119,18 +126,18 @@ public class LoginServiceImpl implements LoginService {
 
         String content2 = "<p>邮箱验证码,仅用于邮箱登录验证 power by TeamRocket</p>";
 
-        Mail mail = new Mail(from,to,subject, content + msg + content2);
+        Mail mail = new Mail(from, to, subject, content + msg + content2);
 
-        MailUtils.send(session,mail);
+        MailUtils.send(session, mail);
 
         return nonce;
 
     }
 
     /* 获取4位验证码 */
-    private int getNonce(){
+    private int getNonce() {
 
-        return (int) Math.rint((Math.random()*10000 + 1000));
+        return (int) Math.rint((Math.random() * 10000 + 1000));
 
     }
 
