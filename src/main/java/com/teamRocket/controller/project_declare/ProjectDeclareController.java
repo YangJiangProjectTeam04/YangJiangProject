@@ -10,16 +10,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ProjectDeclareController {
 
     /* 科研项目申报 */
-    @RequestMapping(value = "/project_baseMsg")
-    public String project_baseMsg() {
-        return "project_declare/project_baseMsg";
-    }
+
+    /*项目申报页面的桥*/
     @RequestMapping(value = "/projectDeclare")
     public String projectDeclare() {
         return "project_declare/projectDeclare";
     }
+
+    /*项目基本信息*/
+    @RequestMapping(value = "/project_baseMsg")
+    public String project_baseMsg() {
+        return "project_declare/project_baseMsg";
+    }
+
+    /*项目其他信息*/
     @RequestMapping(value = "/project_otherMsg")
     public String project_otherMsg() {
         return "project_declare/project_otherMsg";
     }
-}
+

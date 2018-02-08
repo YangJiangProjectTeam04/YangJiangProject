@@ -1,4 +1,4 @@
-package com.teamRocket.controller.integratedManagement;
+package com.teamRocket.controller.integrated_query;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,4 +60,5 @@ public class IntegratedManagementController {
     public String workshopManagement(){
         return "integrated_management/workshopManagement";
     }
+
 }
