@@ -1,0 +1,3 @@
+[
+	{title: "&nbsp;&nbsp; 个人工作台页面 &nbsp;&nbsp; ", url: "/recommendingDeclaration"}
+]
