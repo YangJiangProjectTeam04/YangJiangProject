@@ -13,6 +13,9 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link href="../../../css/demo.css" rel="stylesheet" type="text/css"/>
     <script src="../../../scripts/boot.js" type="text/javascript"></script>
+    <script src="../../../BS/js/jquery-3.2.1.js" type="text/javascript"></script>
+    <link href="../../../w2ui-1.5.rc1/w2ui-1.5.rc1.css" rel="stylesheet" type="text/css">
+    <script src="../../../w2ui-1.5.rc1/w2ui-1.5.rc1.js" type="text/javascript"></script>
     <style>
         body {
             background-image: url("../../../img/login/login2.jpg");
@@ -81,8 +84,17 @@
 
     <%--手机登录图标 和 邮箱登录图标--%>
 
-        <div id="phoneLogin" style="margin-top: 25px"><img src="../../../img/login/phone.png" style="width: 20px;height: 20px;margin-left: 30px;float: left"></div>
-        <div id="emailLogin" style="margin-top: 20px"><img src="../../../img/login/email.png" style="width: 25px;height: 25px;margin-left: 30px;float: left"></div>
+    <div id="phoneLogin" style="margin-top: 25px">
+        <img src="../../../img/login/phone.png"
+             class="w2ui-btn" onclick="popupPhone()"
+             style="width: 20px;height: 20px;margin-left: 30px;float: left">
+    </div>
+
+    <div id="emailLogin" style="margin-top: 20px">
+        <img src="../../../img/login/email.png"
+             class="w2ui-btn" onclick="popupEmail()"
+             style="width: 25px;height: 25px;margin-left: 30px;float: left">
+    </div>
 
 
     <input type="checkbox" style="margin-left: 54px;margin-top: 10px;">记住密码
@@ -110,23 +122,23 @@
             type: "post",
 
             //发起ajax -> controller接收必须加入的响应头
-            contentType:'application/json',
+            contentType: 'application/json',
 
             data: json,
 
             success: function (text) {
 
-                if (text.resultCode==0){
+                if (text.resultCode == 0) {
 
                     $("#userMsg").empty();
 
-                    $("#userMsg").append("<span style='color: green;font-size: small'>"+ text.resultMsg +"</span>");
+                    $("#userMsg").append("<span style='color: green;font-size: small'>" + text.resultMsg + "</span>");
 
-                }else {
+                } else {
 
                     $("#userMsg").empty();
 
-                    $("#userMsg").append("<span style='color: red;font-size: small;'>"+ text.resultMsg +"</span>");
+                    $("#userMsg").append("<span style='color: red;font-size: small;'>" + text.resultMsg + "</span>");
 
                 }
 
@@ -154,21 +166,21 @@
             type: "post",
 
             //发起ajax -> controller接收必须加入的响应头
-            contentType:'application/json',
+            contentType: 'application/json',
 
             data: json,
 
             success: function (text) {
 
-                if (text.resultCode==0){
+                if (text.resultCode == 0) {
 
                     window.location.href = "/home";
 
-                }else {
+                } else {
 
                     $("#msgMain").empty();
 
-                    $("#msgMain").append("<span style='color: red;margin-left: 70px'>"+ text.resultMsg +"</span>");
+                    $("#msgMain").append("<span style='color: red;margin-left: 70px'>" + text.resultMsg + "</span>");
 
                 }
 
@@ -176,6 +188,55 @@
         });
     }
 
+//w2ui手机号
+    function popupPhone() {
+        w2popup.open({
+            title     : '手机登录',
+            body      : '<div class="w2ui-centered">请输入手机号 <input name="first_name" type="text" maxlength="100" style="width: 200px"/></div>',
+            buttons   : '<button class="w2ui-btn" onclick="w2popup.close();">关闭</button> '+
+            '<button class="w2ui-btn" onclick="w2popup.lock(\'Loading\', true); '+
+            '        setTimeout(function () { w2popup.unlock(); }, 2000);">下一步</button>',
+            width     : 400,
+            height    : 250,
+            overflow  : 'hidden',
+            color     : '#333',
+            speed     : '0.3',
+            opacity   : '0.8',
+            modal     : true,
+            showClose : true,
+            showMax   : true,
+            onOpen    : function (event) { console.log('open'); },
+            onClose   : function (event) { console.log('close'); },
+            onMax     : function (event) { console.log('max'); },
+            onMin     : function (event) { console.log('min'); },
+            onKeydown : function (event) { console.log('keydown'); }
+        });
+    }
+
+//w2ui邮箱
+    function popupEmail() {
+        w2popup.open({
+            title     : '邮箱登录',
+            body      : '<div class="w2ui-centered">请输入邮箱 <input name="first_name" type="text" maxlength="100" style="width: 200px"/></div>',
+            buttons   : '<button class="w2ui-btn" onclick="w2popup.close();">关闭</button> '+
+            '<button class="w2ui-btn" onclick="w2popup.lock(\'Loading\', true); '+
+            '        setTimeout(function () { w2popup.unlock(); }, 2000);">下一步</button>',
+            width     : 400,
+            height    : 250,
+            overflow  : 'hidden',
+            color     : '#333',
+            speed     : '0.3',
+            opacity   : '0.8',
+            modal     : true,
+            showClose : true,
+            showMax   : true,
+            onOpen    : function (event) { console.log('open'); },
+            onClose   : function (event) { console.log('close'); },
+            onMax     : function (event) { console.log('max'); },
+            onMin     : function (event) { console.log('min'); },
+            onKeydown : function (event) { console.log('keydown'); }
+        });
+    }
 </script>
 </body>
 </html>
