@@ -194,7 +194,7 @@
             title     : '手机登录',
             body      : '<div class="w2ui-centered">请输入手机号 <input name="first_name" type="text" maxlength="100" style="width: 200px"/></div>',
             buttons   : '<button class="w2ui-btn" onclick="w2popup.close();">关闭</button> '+
-            '<button class="w2ui-btn" onclick="w2popup.lock(\'Loading\', true); '+
+            '<button id="phone" class="w2ui-btn" onclick="w2popup.lock(\'Loading\', true); '+
             '        setTimeout(function () { w2popup.unlock(); }, 2000);">下一步</button>',
             width     : 400,
             height    : 250,
@@ -217,10 +217,10 @@
     function popupEmail() {
         w2popup.open({
             title     : '邮箱登录',
-            body      : '<div class="w2ui-centered">请输入邮箱 <input name="first_name" type="text" maxlength="100" style="width: 200px"/></div>',
+            body      : '<div class="w2ui-centered">请输入邮箱 <input id="emailName" name="first_name" type="text" maxlength="100" style="width: 200px"/></div>',
             buttons   : '<button class="w2ui-btn" onclick="w2popup.close();">关闭</button> '+
-            '<button class="w2ui-btn" onclick="w2popup.lock(\'Loading\', true); '+
-            '        setTimeout(function () { w2popup.unlock(); }, 2000);">下一步</button>',
+            '<span id="emailSpan"><button id="email" class="w2ui-btn" onclick="w2popup.lock(\'Loading\', true); '+
+            '        setTimeout(function () {buttonEmail(); w2popup.unlock(); }, 2000);">下一步</button></span>',
             width     : 400,
             height    : 250,
             overflow  : 'hidden',
@@ -236,6 +236,87 @@
             onMin     : function (event) { console.log('min'); },
             onKeydown : function (event) { console.log('keydown'); }
         });
+    }
+//邮箱登录点击下一步
+var tempCode;
+    function buttonEmail() {
+        var data = {email:$("#emailName").val()};
+        var json = mini.encode(data);
+
+//        alert(json);
+        $.ajax({
+
+            url: "/emailPass",
+
+            type: "post",
+
+            //发起ajax -> controller接收必须加入的响应头
+            contentType: 'application/json',
+
+            data: json,
+
+            success: function (text) {
+
+                if (text.resultCode == 0) {
+                   popEmail();
+
+//                    window.location.href = "/home";
+                    tempCode = code;
+                    return tempCode;
+
+                } else {
+
+                    $("#msgMain").empty();
+
+                    $("#msgMain").append("<span style='color: red;margin-left: 70px'>" + text.resultMsg + "</span>");
+
+                }
+
+            }
+        });
+    }
+
+//邮件发送验证码
+    function popEmail() {
+        w2popup.open({
+            title     : '邮件发送成功',
+            body      : '<div class="w2ui-centered">请输入验证码 <input id="CodeSureName" name="first_name" type="text" maxlength="100" style="width: 200px"/></div>',
+            buttons   :
+            '<span id="emailSpan"><button id="email" class="w2ui-btn" onclick="w2popup.lock(\'Loading\', true); '+
+            '        setTimeout(function () {sureEmail();w2popup.unlock(); }, 2000);">确认</button></span>',
+            width     : 400,
+            height    : 250,
+            overflow  : 'hidden',
+            color     : '#333',
+            speed     : '0.3',
+            opacity   : '0.8',
+            modal     : true,
+            showClose : true,
+            showMax   : true,
+            onOpen    : function (event) { console.log('open'); },
+            onClose   : function (event) { console.log('close'); },
+            onMax     : function (event) { console.log('max'); },
+            onMin     : function (event) { console.log('min'); },
+            onKeydown : function (event) { console.log('keydown'); }
+        });
+    }
+//    邮件确认按钮
+    function sureEmail() {
+        <%--var dataCode = $("#CodeSureName").val();--%>
+       <%--var emailCode = "${emailCode}";--%>
+//        alert(emailCode);
+
+//        var dataCode = {email:$("#CodeSureName").val()};
+//        var json = mini.encode(dataCode);
+//     if (tempCode == $("#CodeSureName").val()){
+//
+//         window.location.href="/home";
+//     }
+
+
+
+
+
     }
 </script>
 </body>

@@ -18,20 +18,21 @@ import java.io.IOException;
  * Created by dllo on 18/2/3.
  */
 @Controller("loginController")
-public class LoginController  {
+public class LoginController {
 
     @Resource
     private LoginService loginService;
+    private String code;
 
     /* 登录判断方法 */
     @RequestMapping(value = "/loginHome", method = RequestMethod.POST)
     @ResponseBody
-    public BaseResult home(@RequestBody User user){
+    public BaseResult home(@RequestBody User user) {
 
         //空值判断
-        if(!TRStringUtils.regular(user.getLoginName())){
+        if (!TRStringUtils.regular(user.getLoginName())) {
 
-            return new BaseResult(1,"用户名或邮箱不能为空");
+            return new BaseResult(1, "用户名或邮箱不能为空");
 
         }
 
@@ -43,21 +44,21 @@ public class LoginController  {
             //开始查询
             loginService.findUser(user);
 
-        //处理自定义异常
+            //处理自定义异常
         } catch (TRException e) {
 
-            return new BaseResult(2,e.getMessage());
+            return new BaseResult(2, e.getMessage());
 
         }
 
-        return new BaseResult(0,"成功");
+        return new BaseResult(0, "成功");
 
     }
 
     /* 判断用户名是否存在于表中 */
     @RequestMapping(value = "/userPass", method = RequestMethod.POST)
     @ResponseBody
-    public BaseResult<User> loginNamePass(@RequestBody User user){
+    public BaseResult<User> loginNamePass(@RequestBody User user) {
 
         //同步邮箱
         user.setEmail(user.getLoginName());
@@ -69,32 +70,41 @@ public class LoginController  {
     /* 判断邮箱验证 */
     @RequestMapping(value = "/emailPass", method = RequestMethod.POST)
     @ResponseBody
-    public BaseResult emailPass(@RequestBody User user, HttpServletRequest request){
-
+    public BaseResult emailPass(@RequestBody User user, HttpServletRequest request) {
         try {
 
-            String code = loginService.findEmail(user);
-
-            request.getSession(true).setAttribute("emailCode", code);
+            code = loginService.findEmail(user);
+            System.out.println(code);
+            request.getSession().setAttribute("emailCode", code);
 
         } catch (TRException e) {
 
-            return new BaseResult(1,e.getMessage());
+            return new BaseResult(1, e.getMessage());
 
         } catch (MessagingException e) {
 
-            return new BaseResult(1,"消息发送错误");
+            return new BaseResult(1, "消息发送错误");
 
         } catch (IOException e) {
 
-            return new BaseResult(1,"消息流异常");
+            return new BaseResult(1, "消息流异常");
 
         }
 
-        return new BaseResult(0,"邮箱正确");
+        return new BaseResult(0, code);
 
     }
 
+    //邮箱验证码验证
+    @RequestMapping(value = "/getEmailCode", method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResult getEmailCode(HttpServletRequest request) {
+
+        String code = (String) request.getSession(true).getAttribute("emailCode");
+
+        return new BaseResult(0, code);
+
+    }
 
 
 }
