@@ -23,6 +23,14 @@
             width: 100%;
             border-bottom: 1px solid #A4DCF6;
         }
+
+        body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -34,7 +42,7 @@
 
 <div id="tabs2" class="mini-tabs"
      activeIndex="0"
-     style="width:100%;height:100%;"
+     style="width:100%;height:100%"
      url="../../../data/tabsGM.txt"
      onactivechanged="onActiveChanged">
 </div>

@@ -14,6 +14,13 @@
     <script src="../../../scripts/boot.js" type="text/javascript"></script>
     <link href="../../../scripts/miniui/themes/blue/skin.css" rel="stylesheet" type="text/css"/>
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+        }
 
         #query_button > .mini-button {
             float: right;
@@ -49,19 +56,19 @@
         html body .group_add .mini-buttonedit-icon {
             background: url(../../../scripts/miniui/res/images/group_add.png) no-repeat 50% 50%;
         }
-        .text {
-            background-image: url("../../../img/home/currentPosition.jpg");
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
+        #location {
+            height: 30px;
+            background-image: url("../../../img/query/head_color.jpg");
+            width: 100%;
+            border-bottom: 1px solid #A4DCF6;
         }
     </style>
 </head>
-<div id="currentPosition" style="margin: 0px">
-    <div id="current" class="text">
-        <p><span style="font-family:'宋体';font-weight:400;;margin-left: 40px">当前位置：</span>
-            <span style="font-family:'宋体 Bold', '宋体 Regular', '宋体';font-weight:700;">综合管理 &gt;&gt; 厂房管理</span></p>
-    </div>
+
+<div id="location">
+    <img src="../../../img/query/workshopManagement.png">
 </div>
+
 <div id="query_condition" class="mini-panel" title="综合查询" style="width:100%;height:auto;"
      showCollapseButton="true" collapseOnTitleClick="true"
      expanded="true"

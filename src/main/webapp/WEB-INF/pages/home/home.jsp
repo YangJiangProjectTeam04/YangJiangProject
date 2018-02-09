@@ -24,18 +24,78 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: rgba(38, 84, 154, 0.91);
+            background-image: url(../../../img/home/background.jpg)
         }
 
         .header {
-            height: 36px;
-            background-image: url(../../../img/home/header.jpg);
+            background-image: url(../../../img/home/background.jpg);
             background-size: 100%;
-            /*background: url(../../../img/home/header.jpg) repeat-x 0 -1px;*/
-            background-repeat: no-repeat;
-            background-attachment: fixed;
         }
 
+        #left {
+            margin-top: 7px;
+            border: 0;
+            float: left;
+        }
+
+        #right {
+            border: 0;
+            float: right;
+        }
+
+        .layout {
+            padding-left: 220px;
+            height: 100%;
+            position: relative;
+        }
+
+        .layout-left {
+            width: 100%;
+            height: 100%;
+            background: #eff8ff;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border:0;
+            margin-left: 7px;
+        }
+
+        .layout-splitter {
+            width: 7px;
+            height: 100%;
+            overflow: hidden;
+            background-image: url(../../../img/home/background.jpg);
+            position: absolute;
+            left: 213px;
+            top: 0;
+        }
+
+        .layout-handler {
+            position: absolute;
+            width: 7px;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .layout-center {
+            width: auto;
+            height: 100%;
+            background: #efefef;
+            position: relative;
+        }
+
+        /*折叠*/
+        .layout-collapse {
+            padding-left: 7px;
+        }
+
+        .layout-collapse .layout-left {
+            display: none;
+        }
+
+        .layout-collapse .layout-splitter {
+            left: 0px;
+        }
     </style>
 </head>
 <body>
@@ -44,7 +104,13 @@
 
     <%--1个人工作台按钮--%>
     <div class="header" region="north" showSplit="false" showHeader="false" height="63px" showSplitIcon="true">
-        <div style="position:absolute;top:20px;right:10px;">
+        <div id="left">
+            <img src="../../../img/home/left.png">
+        </div>
+        <div id="right">
+            <img src="../../../img/home/right.png">
+        </div>
+        <div style="position:absolute;top:24px;right:15px;">
             <input type="submit" value="个人工作台">
         </div>
     </div>
@@ -54,22 +120,54 @@
         <!--Splitter-->
         <%--tab框框的设置--%>
         <%--mini-splitter是分割器--%>
-        <div class="mini-splitter" style="width:100%;height:100%;" borderStyle="border:0;">
-            <%--设置最左边个人中心框的大小--%>
-            <div size="190" maxSize="250" minSize="100"
-                 showCollapseButton="true" style="border:0;margin-left: 7px;background-color: #eff8ff">
+        <%--<div class="mini-splitter" style="width:100%;height:100%;" borderStyle="border:0;">--%>
+            <%--&lt;%&ndash;设置最左边个人中心框的大小&ndash;%&gt;--%>
+            <%--<div size="200" maxSize="250" minSize="100"--%>
+                 <%--showCollapseButton="true" style="border:0;margin-left: 7px;background-color: #eff8ff">--%>
+                <%----%>
+            <%--</div>--%>
+            <%--&lt;%&ndash;主框架&ndash;%&gt;--%>
+            <%--<div title="center" region="center" bodyStyle="overflow:hidden;"--%>
+                 <%--style="margin-left: 7px;padding: 0;background-color: white;">--%>
+                <%----%>
+            <%--</div>--%>
+        <%--</div>--%>
+
+        <div id="layout" class="layout">
+
+            <div class="layout-left">
                 <!--Outlookmenu-->
                 <div id="leftTree" class="mini-outlookmenu"
-
                      url="../../../data/outlookmenu.txt"
                      onitemselect="onItemSelect"
                      textField="text" idField="id" parentField="pid">
                 </div>
+
             </div>
-            <%--主框架--%>
-            <div title="center" region="center" bodyStyle="overflow:hidden;">
-                <iframe id="mainframe" frameborder="0" name="main" style="width:100%;height:100%;" border="0"></iframe>
+
+            <div class="layout-splitter">
+
+                <img class="layout-handler" src="../../../img/home/button.gif" alt="" onclick="toggleLayout()">
+
             </div>
+
+            <div class="layout-center">
+
+                <div id="center" class="layout2-center">
+
+                    <iframe id="mainframe" frameborder="0" name="main" style="width:100%;height:100%;" border="0"></iframe>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div title="south" region="south" showSplit="false" showHeader="false" height="10">
+        <div style="line-height:28px;text-align:center;cursor:default">
+
         </div>
     </div>
 </div>
@@ -118,6 +216,18 @@
             }
         }
     }
+
+//    折叠
+    function toggleLayout() {
+        var el = document.getElementById("layout");
+        if (el.className.indexOf("layout-collapse") == -1) {
+            el.className = 'layout layout-collapse';
+        } else {
+            el.className = 'layout';
+        }
+    }
+
+    autoheight("center");
 
 </script>
 </body>

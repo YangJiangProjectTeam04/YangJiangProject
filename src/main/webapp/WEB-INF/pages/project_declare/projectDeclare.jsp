@@ -16,14 +16,17 @@
     <script src="/js/ajaxfileupload.js" type="text/javascript"></script>
     <style type="text/css">
 
-        body{
-            margin:0;padding:0;border:0;width:100%;height:100%;
+        body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
         }
+
         #query_location {
             height: 30px;
             background-image: url("../../../img/project_declare/location_color.jpg");
             width: 100%;
-            border-bottom: 1px solid #A4DCF6;
         }
     </style>
 </head>
@@ -35,7 +38,7 @@
 
 <div id="tabs2" class="mini-tabs"
      activeIndex="0"
-     style="width:100%;height:100%;"
+     style="width:100%;height:100%;padding: 0;margin: 0;"
      url="../../../data/tabs2.txt"
      onactivechanged="onActiveChanged">
 </div>

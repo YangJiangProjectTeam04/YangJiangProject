@@ -16,6 +16,17 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <link href="../../../css/demo.css" rel="stylesheet" type="text/css" />
     <script src="../../../scripts/boot.js" type="text/javascript"></script>
+    <style type="text/css">
+
+        body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
 

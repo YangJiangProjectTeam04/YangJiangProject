@@ -31,6 +31,7 @@
 
         .tabl {
             border: 1px solid #A4DCF6;
+            border-collapse: collapse;
         }
 
         .td1 {

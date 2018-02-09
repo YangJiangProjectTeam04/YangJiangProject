@@ -28,4 +28,4 @@ public class ProjectDeclareController {
     public String project_otherMsg() {
         return "project_declare/project_otherMsg";
     }
-
+}

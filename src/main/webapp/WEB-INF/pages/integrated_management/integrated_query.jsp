@@ -14,11 +14,15 @@
     <script src="../../../scripts/boot.js" type="text/javascript"></script>
     <link href="../../../scripts/miniui/themes/blue/skin.css" rel="stylesheet" type="text/css"/>
     <style>
-        #query_body {
-            border: 1px solid #A4DCF6;
+        body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
         }
 
-        #query_head {
+        #location {
             height: 30px;
             background-image: url("../../../img/query/head_color.jpg");
             width: 100%;
@@ -66,79 +70,78 @@
     </style>
 </head>
 <body>
-<div id="query_body">
 
-    <div id="query_head">
-        <img src="../../../img/query/head.png">
-    </div>
+<div id="location">
+    <img src="../../../img/query/head.png">
+</div>
 
-    <div id="query_condition" class="mini-panel" title="综合查询" style="width:100%;height:auto;"
-         showCollapseButton="true" collapseOnTitleClick="true"
-         expanded="true"
-    >
-        <table id="query_condition_table" border="0" cellpadding="1" cellspacing="2"
-               style="font-size: 13px;width: 100%;height: 60px;text-align: center">
-            <tr>
-                <td class="td1">申请时间</td>
-                <td class="td2">
-                    <input name="" class="mini-datepicker" width="200px" allowInput="false" required="true"/>
-                </td>
-                <td class="td1">申请人</td>
-                <td class="td2">
-                    <input id="btnEdit1" name="" allowInput="false"
-                           class="mini-buttonedit user_add" onbuttonclick="onButtonEdit1" width="200px"/>
-                </td>
-                <td class="td1">关键字</td>
-                <td class="td2">
-                    <input name="" class="mini-textbox" width="200px" required="true"/>
-                </td>
-            </tr>
-            <tr>
-                <td class="td1">流程类型</td>
-                <td class="td2">
-                    <input id="combo1" class="mini-combobox" width="200px" textField="text" valueField="id"
-                           url="" ondrawcell="onDrawCell"/>
-                </td>
-                <td class="td1">所属部门</td>
-                <td class="td2">
-                    <input id="btnEdit2" name="" allowInput="false"
-                           class="mini-buttonedit group_add" onbuttonclick="onButtonEdit2" width="200px"/>
-                </td>
-                <td class="td1">是否可以打印</td>
-                <td class="td2">
-                    <input id="combo2" class="mini-combobox" width="200px" textField="text" valueField="id"
-                           url="" ondrawcell="onDrawCell"/>
-                </td>
-            </tr>
-        </table>
-    </div>
+<div id="query_condition" class="mini-panel" title="综合查询" style="width:100%;height:auto;"
+     showCollapseButton="true" collapseOnTitleClick="true"
+     expanded="true"
+>
+    <table id="query_condition_table" border="0" cellpadding="1" cellspacing="2"
+           style="font-size: 13px;width: 100%;height: 60px;text-align: center">
+        <tr>
+            <td class="td1">申请时间</td>
+            <td class="td2">
+                <input name="" class="mini-datepicker" width="200px" allowInput="false" required="true"/>
+            </td>
+            <td class="td1">申请人</td>
+            <td class="td2">
+                <input id="btnEdit1" name="" allowInput="false"
+                       class="mini-buttonedit user_add" onbuttonclick="onButtonEdit1" width="200px"/>
+            </td>
+            <td class="td1">关键字</td>
+            <td class="td2">
+                <input name="" class="mini-textbox" width="200px" required="true"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="td1">流程类型</td>
+            <td class="td2">
+                <input id="combo1" class="mini-combobox" width="200px" textField="text" valueField="id"
+                       url="" ondrawcell="onDrawCell"/>
+            </td>
+            <td class="td1">所属部门</td>
+            <td class="td2">
+                <input id="btnEdit2" name="" allowInput="false"
+                       class="mini-buttonedit group_add" onbuttonclick="onButtonEdit2" width="200px"/>
+            </td>
+            <td class="td1">是否可以打印</td>
+            <td class="td2">
+                <input id="combo2" class="mini-combobox" width="200px" textField="text" valueField="id"
+                       url="" ondrawcell="onDrawCell"/>
+            </td>
+        </tr>
+    </table>
+</div>
 
-    <div id="query_button">
-        <a class="mini-button" img="../../../scripts/miniui/res/images/system_search.gif">查询</a>
-    </div>
+<div id="query_button">
+    <a class="mini-button" img="../../../scripts/miniui/res/images/system_search.gif">查询</a>
+</div>
 
 
-    <div id="datagrid1" class="mini-datagrid" style="width:100%;height:280px;"
-         url="" idField="id" multiSelect="true"
-    >
-        <div property="columns">
-            <div type="checkcolumn"></div>
-            <div field="" width="120" headerAlign="center" allowSort="true">流程编号</div>
-            <div field="" width="120" headerAlign="center" allowSort="true">流程名称</div>
-            <div field="" width="120" headerAlign="center" allowSort="true">所属部门</div>
-            <div field="" width="120" headerAlign="center" allowSort="true">当前环节</div>
-            <div field="" width="120" headerAlign="center" allowSort="true">提报人</div>
-            <div field="" width="100" headerAlign="center" renderer="onMarriedRenderer">是否可以打印</div>
-            <div field="" width="120" headerAlign="center" allowSort="true">操作</div>
-        </div>
+<div id="datagrid1" class="mini-datagrid" style="width:100%;height:280px;"
+     url="" idField="id" multiSelect="true"
+>
+    <div property="columns">
+        <div type="checkcolumn"></div>
+        <div field="" width="120" headerAlign="center" allowSort="true">流程编号</div>
+        <div field="" width="120" headerAlign="center" allowSort="true">流程名称</div>
+        <div field="" width="120" headerAlign="center" allowSort="true">所属部门</div>
+        <div field="" width="120" headerAlign="center" allowSort="true">当前环节</div>
+        <div field="" width="120" headerAlign="center" allowSort="true">提报人</div>
+        <div field="" width="100" headerAlign="center" renderer="onMarriedRenderer">是否可以打印</div>
+        <div field="" width="120" headerAlign="center" allowSort="true">操作</div>
     </div>
 </div>
+
 
 <script type="text/javascript">
     mini.parse();
     var grid = mini.get('datagrid1');
 
-//    grid.setUrl("searchClazz.action");
+    //    grid.setUrl("searchClazz.action");
 
     // grid.load();
 

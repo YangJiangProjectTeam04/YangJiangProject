@@ -15,7 +15,6 @@
             padding: 0;
             border: 0;
             width: 100%;
-            height: 100%;
         }
 
         #body {
@@ -24,6 +23,7 @@
 
         .tabl {
             border: 1px solid #A4DCF6;
+            border-collapse: collapse;
         }
 
         .td1 {

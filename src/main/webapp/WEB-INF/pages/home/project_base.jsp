@@ -18,7 +18,11 @@
     <script src="../../../js/ajaxfileupload.js" type="text/javascript"></script>
     <style type="text/css">
         body {
-
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
         }
 
         table{
@@ -33,13 +37,6 @@
             height: 20px;
         }
 
-
-        .text {
-            background-image: url("../../../img/home/currentPosition.jpg");
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-        }
-
         .trBorder > td {
             border-style: none;
             background-color: #dee8eb;
@@ -51,16 +48,20 @@
             height: 20px;
             text-align: center;
         }
+        #location {
+            height: 30px;
+            background-image: url("../../../img/researchProject/locationColor.jpg");
+            width: 100%;
+            border-bottom: 1px solid #A4DCF6;
+        }
 
     </style>
 </head>
 <body>
 
-<div id="currentPosition" style="margin: 0px">
-    <div id="current" class="text">
-        <p><span style="font-family:'宋体';font-weight:400;;margin-left: 40px">当前位置：</span><span
-                style="font-family:'宋体 Bold', '宋体 Regular', '宋体';font-weight:700;">个人工作台 &gt;&gt; 待办任务</span></p>
-    </div>
+<%-- 当前位置 --%>
+<div id="location">
+    <img src="../../../img/researchProject/waitLocation.png">
 </div>
 
 <%--查询条件--%>

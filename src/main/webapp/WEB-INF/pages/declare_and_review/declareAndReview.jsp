@@ -16,6 +16,13 @@
     <script src="../../../scripts/thirdparty/swfupload/swfupload.js" type="text/javascript"></script>
     <script src="../../../js/ajaxfileupload.js" type="text/javascript"></script>
     <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+        }
         table {
             width: 100%;
             height: 8%;

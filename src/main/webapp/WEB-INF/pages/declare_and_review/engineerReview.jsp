@@ -15,6 +15,13 @@
     <script src="../../../scripts/boot.js" type="text/javascript"></script>
     <link href="../../../scripts/miniui/themes/blue/skin.css" rel="stylesheet" type="text/css"/>
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+        }
 
         table {
             width: 100%;

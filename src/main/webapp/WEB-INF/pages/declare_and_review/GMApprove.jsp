@@ -19,13 +19,13 @@
             border: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
         }
 
         .tabl {
             border: 1px solid #A4DCF6;
             padding: 0;
             margin: 0;
+            border-collapse: collapse;
         }
 
         .td1 {
@@ -53,6 +53,7 @@
     </style>
 </head>
 <body>
+
 
 <div id="base_info" class="mini-panel" title="项目基本信息" style="width:100%;height: auto;"
      showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
