@@ -38,22 +38,31 @@
         .td2 {
             width: 40%;
             border: 1px solid #A4DCF6;
-            background-color: #ECF6F9;
+            text-align: center;
         }
 
         .td3 {
             width: 90%;
             border: 1px solid #A4DCF6;
-            background-color: #ECF6F9;
         }
 
         html body .group_add .mini-buttonedit-icon {
             background: url(../../../scripts/miniui/res/images/group_add.png) no-repeat 50% 50%;
         }
+        #location_GM {
+             height: 30px;
+             background-image: url("../../../img/project_declare/location_color.jpg");
+             width: 100%;
+             border-bottom: 1px solid #A4DCF6;
+         }
+
     </style>
 </head>
 <body>
 
+<div id="location_GM">
+    <img src="../../../img/declare_and_review/location_GM.png">
+</div>
 
 <div id="base_info" class="mini-panel" title="项目基本信息" style="width:100%;height: auto;"
      showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
@@ -223,7 +232,6 @@
     <span style="float: right">&nbsp;&nbsp;</span>
     <a class="mini-button" img="../../scripts/miniui/res/images/cancel.png" style="float: right;">不通过</a>
 </div>
-
 
 <script type="text/javascript">
     mini.parse();

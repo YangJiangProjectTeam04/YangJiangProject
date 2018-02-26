@@ -9,12 +9,12 @@
 <%--桥梁:点击左边个人中心之后,在右边出现tab1,tab2,
 这里用的是data中的tabsManager.txt描述写左边的tab1,和tab2标题的名字--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page isELIgnored="false"%>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <title>桥梁,点击出现分枝表,部门经理的桥梁表</title>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <link href="../../../css/demo.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <link href="../../../css/demo.css" rel="stylesheet" type="text/css"/>
     <script src="../../../scripts/boot.js" type="text/javascript"></script>
     <style type="text/css">
 
@@ -27,19 +27,10 @@
             overflow: hidden;
         }
 
-        #location {
-            height: 30px;
-            background-image: url("../../../img/project_declare/location_color.jpg");
-            width: 100%;
-            border-bottom: 1px solid #A4DCF6;
-        }
     </style>
 </head>
 <body>
 
-<div id="location">
-    <img src="../../../img/declare_and_review/declare.png">
-</div>
 
 <div id="tabs1" class="mini-tabs" activeIndex="0" top="0px" border="solid 1px #CBD4D6" style="width:100%;height:100%;"
      url="../../../data/tabsManager.txt"

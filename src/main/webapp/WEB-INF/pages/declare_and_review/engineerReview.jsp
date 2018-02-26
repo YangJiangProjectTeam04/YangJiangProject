@@ -23,109 +23,128 @@
             height: 100%;
         }
 
-        table {
-            width: 100%;
-            height: 8%;
+        .tabl {
+            border: 1px solid #A4DCF6;
+            padding: 0;
+            margin: 0;
             border-collapse: collapse;
-            border: 1px solid #cbe7f9;
         }
 
-        .tdClass {
-            width: 100px;
-            height: 20px;
+        .td1 {
+            width: 10%;
+            border: 1px solid #A4DCF6;
+            background-color: #DBEEF8;
+            text-align: right;
+        }
+
+        .td2 {
+            width: 40%;
+            border: 1px solid #A4DCF6;
             text-align: center;
-            background-color: white;
         }
 
-        .trBorder > td {
-            border-style: none;
-            background-color: #dee8eb;
-
+        .td3 {
+            width: 90%;
+            border: 1px solid #A4DCF6;
         }
 
-        .inleft {
-            width: 120px;
-            height: 20px;
-            text-align: center;
-            background-color: #e8f6ff;
+        #location {
+            height: 30px;
+            background-image: url("../../../img/project_declare/location_color.jpg");
+            width: 100%;
+            border-bottom: 1px solid #A4DCF6;
         }
 
+        html body .user_add .mini-buttonedit-icon {
+            background: url(../../../scripts/miniui/res/images/user_add.png) no-repeat 50% 50%;
+        }
     </style>
 </head>
 
 
 <body>
-<div style="width: 100%">
-<div id="baseInformation" class="mini-panel" margin-top="0px" title="项目基本信息" iconCls="icon-add"
-     style="width:100%;height: 100px"
-     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
 
-    <table border="1" style="font-size: 12px">
 
-        <tr>
-            <td class="inleft">项目名称</td>
-            <td colspan="6" style="text-align: center"><a href="#">业务流程管理平台</a></td>
-        </tr>
-
-        <tr>
-            <td class="inleft">项目申报单位</td>
-            <td colspan="2" class="tdClass">阳江公司</td>
-            <td class="inleft">联合申报单位</td>
-            <td colspan="3" class="tdClass">XXX</td>
-        </tr>
-
-        <tr>
-            <td class="inleft">目的</td>
-            <td colspan="2" class="tdClass">建设科管理系统</td>
-            <td class="inleft"></td>
-            <td  colspan="3" class="tdClass"></td>
-        </tr>
-
-    </table>
-
+<div id="location">
+    <img src="../../../img/declare_and_review/engineer.png">
 </div>
+<div id="base_info" class="mini-panel" title="项目基本信息" style="width:100%;height: auto;"
+     showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
+>
 
-<div id="economicAdaptability" class="mini-panel" margin-top="0px" title="与核电生产运营安全性,可靠性,经济性的适应分析" iconCls="icon-add"
-     style="width:100%;height: 120px"
-     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
-
-    <table border="1" style="font-size: 12px">
-
+    <table class="tabl" cellpadding="1" cellspacing="2"
+           style="font-size: 13px;width: 100%;height: 50px;">
         <tr>
-            <td class="inleft">安全性</td>
-            <td colspan="2" class="tdClass">系统安全</td>
-            <td class="inleft">可靠性</td>
-            <td colspan="3" class="tdClass">三重保证</td>
-        </tr>
-
-        <tr>
-            <td class="inleft">经济性</td>
-            <td colspan="2" class="tdClass">提高办公效率</td>
-            <td class="inleft">其他</td>
-            <td colspan="3" class="tdClass">2016建设需要</td>
-        </tr>
-
-    </table>
-
-</div>
-
-<div id="exOpinion" class="mini-panel" margin-top="0px" title="评审信息" iconCls="icon-add"
-     style="width:100%;height:150px;"
-     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
-
-    <table border="1" style="font-size: 12px">
-
-        <tr>
-            <td class="inleft">审批结果</td>
-            <td>
-                <textarea class="mini-textarea"
-                          style="width: 95%;height: 95%"></textarea>
+            <td class="td1">项目名称&nbsp;</td>
+            <td colspan="3" style="text-align: center">
+                <a href="">业务流程管理平台</a>
             </td>
+        </tr>
+        <tr>
+            <td class="td1">项目申报单位&nbsp;</td>
+            <td class="td2">
+                <span>阳江公司</span>
+            </td>
+            <td class="td1">联合申报单位&nbsp;</td>
+            <td class="td2">
+                <span>XXX</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="td1">目的&nbsp;</td>
+            <td class="td2">
+                <span>建设科管理系统</span>
+            </td>
+            <td class="td1"></td>
+            <td class="td2"></td>
+        </tr>
+    </table>
 
+</div>
+
+<div id="adaptability_analysis" class="mini-panel" title="与核电生产运营安全性、可靠性、经济的适应性分析" style="width:100%;height: auto;"
+     showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
+>
+    <table class="tabl" cellpadding="1" cellspacing="2"
+           style="font-size: 13px;width: 100%;height: 50px;">
+        <tr>
+            <td class="td1">安全性&nbsp;</td>
+            <td class="td2">
+                <span>系统安全</span>
+            </td>
+            <td class="td1">可靠性&nbsp;</td>
+            <td class="td2">
+                <span>三全保障</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="td1">经济性&nbsp;</td>
+            <td class="td2">
+                <span>提高办公效率</span>
+            </td>
+            <td class="td1">其他&nbsp;</td>
+            <td class="td2">
+                <span>2016建设需要</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="exOpinion" class="mini-panel" margin-top="0px" title="评审信息" style="width:100%;height: auto;"
+     showCollapseButton="false" collapseOnTitleClick="true" expanded="true">
+
+    <table class="tabl" cellpadding="1" cellspacing="2"
+           style="font-size: 13px;width: 100%;height: 50px;">
+        <tr>
+            <td class="td1">评审结果&nbsp;</td>
+            <td class="td3">
+                <input class="mini-textarea" width="100%" height="100%"
+                       value="评审通过，按照计划执行"/>
+            </td>
         </tr>
 
         <tr>
-            <td class="inleft">立项报告书<span style="color: red">&nbsp;*&nbsp;</span></td>
+            <td class="td1">立项报告书&nbsp;</td>
             <td>
                 <input id="fileupload1"
                        class="mini-fileupload"
@@ -144,12 +163,29 @@
     </table>
 
 </div>
-    <div style="background-color: #ededed;width: 100%;height: 26px">
-        <a class="mini-button" img="../../scripts/miniui/res/images/accept.png" style="float: right;margin-right: 10px">同意</a>
-        <span style="float: right">&nbsp;&nbsp;</span>
-        <a class="mini-button" img="../../scripts/miniui/res/images/cancel.png" style="float: right;">拒绝</a>
-    </div>
+
+<div id="proInformation" class="mini-panel" margin-top="0px" title="流程信息" style="width:100%;height: auto;"
+     showCollapseButton="false" collapseOnTitleClick="true" expanded="true">
+
+    <table class="tabl" cellpadding="1" cellspacing="2"
+           style="font-size: 13px;width: 100%;">
+        <tr>
+            <td class="td1">审批组长&nbsp;</td>
+            <td>
+                <input id="btnEdit1" name="" allowInput="false"
+                       class="mini-buttonedit user_add" onbuttonclick="onButtonEdit1" width="200px"/>
+            </td>
+        </tr>
+    </table>
 </div>
+
+<div style="background-color: #ededed;width: 100%;height: 26px">
+    <a class="mini-button" img="../../scripts/miniui/res/images/accept.png"
+       style="float: right;margin-right: 10px">同意</a>
+    <span style="float: right">&nbsp;&nbsp;</span>
+    <a class="mini-button" img="../../scripts/miniui/res/images/cancel.png" style="float: right;">拒绝</a>
+</div>
+
 </body>
 <script type="text/javascript">
     mini.parse();

@@ -26,19 +26,10 @@
             overflow: hidden;
         }
 
-        #location {
-            height: 30px;
-            background-image: url("../../../img/project_declare/location_color.jpg");
-            width: 100%;
-            border-bottom: 1px solid #A4DCF6;
-        }
     </style>
 </head>
 <body>
 
-<div id="location">
-    <img src="../../../img/declare_and_review/engineer.png">
-</div>
 
 <div id="tabs1" class="mini-tabs" activeIndex="0" top="0px" border="solid 1px #CBD4D6" style="width:100%;height:100%;"
      url="../../../data/tabsEngineer.txt"

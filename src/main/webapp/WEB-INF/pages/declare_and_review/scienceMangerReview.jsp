@@ -22,207 +22,188 @@
             width: 100%;
             height: 100%;
         }
-        table {
-            width: 100%;
-            height: 8%;
+
+        .tabl {
+            border: 1px solid #A4DCF6;
+            padding: 0;
+            margin: 0;
             border-collapse: collapse;
-            border: 1px solid #cbe7f9;
         }
 
-        .tdClass {
-            width: 100px;
-            height: 20px;
+        .td1 {
+            width: 10%;
+            border: 1px solid #A4DCF6;
+            background-color: #DBEEF8;
+            text-align: right;
+        }
+
+        .td2 {
+            width: 40%;
+            border: 1px solid #A4DCF6;
             text-align: center;
-            background-color: white;
         }
 
-        .trBorder > td {
-            border-style: none;
-            background-color: #dee8eb;
-
+        .td3 {
+            width: 90%;
+            border: 1px solid #A4DCF6;
         }
 
-        .inleft {
-            width: 120px;
-            height: 20px;
-            text-align: center;
-            background-color: #e8f6ff;
+        #location {
+            height: 30px;
+            background-image: url("../../../img/project_declare/location_color.jpg");
+            width: 100%;
+            border-bottom: 1px solid #A4DCF6;
         }
     </style>
 </head>
 <body>
-<%--1--%>
-<div id="QueryConditions1" class="mini-panel" margin-top="0px" title="项目基本信息" iconCls="icon-add"
-     style="width:100%;height:100px;"
-     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
-    <!--body-->
-    <table border="1" style="font-size: 12px">
-        <tr>
-            <td class="inleft"><span>项目名称</span></td>
-            <td colspan="6" style="text-align: center"><span style="color: #4452d2">业务流程管理平台</span></td>
-        </tr>
 
-        <tr>
-            <td class="inleft"><span>项目申报单位</span></td>
-            <td colspan="2" class="tdClass">阳江公司</td>
-            <td class="inleft"><span>联合申报单位</span></td>
-            <td colspan="3" class="tdClass">xxx</td>
-        </tr>
-
-        <tr>
-            <td class="inleft"><span>目的</span></td>
-            <td colspan="2" class="tdClass">建设科管理系统</td>
-            <td class="inleft"><span></span></td>
-            <td colspan="3" class="tdClass"></td>
-        </tr>
-
-        <tr class="trBorder">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
+<div id="location">
+    <img src="../../../img/declare_and_review/scienceManager.png">
 </div>
-<%--2--%>
-<div id="QueryConditions2" class="mini-panel" margin-top="0px"
-     title="与核电生产运营安全性,可靠性,经济的适应性分析" iconCls="icon-add"
-     style="width:100%;height:100px;"
-     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
-    <!--body-->
-    <table border="1" style="font-size: 12px">
-        <tr>
-            <td class="inleft"><span>安全性</span></td>
-            <td colspan="2" class="tdClass">系统安全</td>
-            <td class="inleft"><span>可靠性</span></td>
-            <td colspan="3" class="tdClass">三重保障</td>
-        </tr>
 
-        <tr>
-            <td class="inleft"><span>经济性</span></td>
-            <td colspan="2" class="tdClass">提高办公效率</td>
-            <td class="inleft"><span>其他</span></td>
-            <td colspan="3" class="tdClass">2018年建设需要</td>
-        </tr>
+<div id="base_info" class="mini-panel" title="项目基本信息" style="width:100%;height: auto;"
+     showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
+>
 
-        <tr class="trBorder">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
-</div>
-<%--3--%>
-<div id="QueryConditions3" class="mini-panel" margin-top="0px"
-     title="工程师评审意见" iconCls="icon-add"
-     style="width:100%;height:150px;"
-     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
-    <!--body-->
-    <table border="1" style="font-size: 12px">
+    <table class="tabl" cellpadding="1" cellspacing="2"
+           style="font-size: 13px;width: 100%;height: 50px;">
         <tr>
-            <td class="inleft" style="height: 60px"><span>审批结果</span></td>
-            <td>
-                <input class="mini-textarea" style="width:100%;height:60px;"/>
+            <td class="td1">项目名称&nbsp;&nbsp;</td>
+            <td colspan="3" style="text-align: center">
+                <a href="">业务流程管理平台</a>
             </td>
         </tr>
         <tr>
-            <td class="inleft" style="height: 60px"><span style="color: #6260cf">立项报告书</span></td>
-            <td>
-                <input class="mini-textarea" style="width:100%;height:60px;"/>
+            <td class="td1">项目申报单位&nbsp;&nbsp;</td>
+            <td class="td2">
+                <span>阳江公司</span>
+            </td>
+            <td class="td1">联合申报单位&nbsp;&nbsp;</td>
+            <td class="td2">
+                <span>XXX</span>
             </td>
         </tr>
-        <tr class="trBorder">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <tr>
+            <td class="td1">目的&nbsp;&nbsp;</td>
+            <td class="td2">
+                <span>建设科管理系统</span>
+            </td>
+            <td class="td1"></td>
+            <td class="td2"></td>
         </tr>
     </table>
 
 </div>
-<%--4--%>
-<div id="QueryConditions4" class="mini-panel" margin-top="0px"
-     title="技术可行性分析意见" iconCls="icon-add"
-     style="width:100%;height:150px;"
-     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
-    <!--body-->
-    <table border="1" style="font-size: 12px">
+
+<div id="adaptability_analysis" class="mini-panel" title="与核电生产运营安全性、可靠性、经济的适应性分析" style="width:100%;height: auto;"
+     showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
+>
+    <table class="tabl" cellpadding="1" cellspacing="2"
+           style="font-size: 13px;width: 100%;height: 50px;">
         <tr>
-            <td class="inleft" style="height: 60px"><span>对江阳公司科技发展规划的复合性审定</span></td>
-            <td>
-                <input class="mini-textarea" style="width:100%;height:60px;"/>
+            <td class="td1">安全性&nbsp;&nbsp;</td>
+            <td class="td2">
+                <span>系统安全</span>
+            </td>
+            <td class="td1">可靠性&nbsp;&nbsp;</td>
+            <td class="td2">
+                <span>三全保障</span>
             </td>
         </tr>
         <tr>
-            <td class="inleft" style="height: 60px"><span>对项目成果的应用领域</span></td>
-            <td>
-                <input class="mini-textarea" style="width:100%;height:60px;"/>
+            <td class="td1">经济性&nbsp;&nbsp;</td>
+            <td class="td2">
+                <span>提高办公效率</span>
             </td>
-        </tr>
-        <tr>
-            <td class="inleft" style="height: 60px"><span>总体评价</span></td>
-            <td>
-                <input class="mini-textarea" style="width:100%;height:60px;"/>
+            <td class="td1">其他&nbsp;&nbsp;</td>
+            <td class="td2">
+                <span>2016建设需要</span>
             </td>
-        </tr>
-        <tr class="trBorder">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
         </tr>
     </table>
-
 </div>
-<%--5--%>
-<div id="QueryConditions4" class="mini-panel" margin-top="0px"
-     title="技术可行性分析意见" iconCls="icon-add"
-     style="width:100%;height:150px;"
-     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
-    <!--body-->
-    <table border="1" style="font-size: 12px">
+
+<div id="engineer_opinion" class="mini-panel" title="工程师评审意见" style="width:100%;height: auto;"
+     showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
+>
+    <table class="tabl" cellpadding="1" cellspacing="2"
+           style="font-size: 13px;width: 100%;height: 50px;">
         <tr>
-            <td class="inleft" style="height: 60px"><span>要求</span></td>
-            <td>
-                <input class="mini-textarea" style="width:100%;height:60px;"/>
+            <td class="td1">评审结果&nbsp;&nbsp;</td>
+            <td class="td3">
+                <input class="mini-textarea" width="100%" height="100%"
+                       value="评审通过，按照计划执行"/>
             </td>
         </tr>
         <tr>
-            <td class="inleft" style="height: 60px"><span>建议</span></td>
-            <td>
-                <input class="mini-textarea" style="width:100%;height:60px;"/>
+            <td class="td1">立项报告书&nbsp;&nbsp;</td>
+            <td colspan="3">
+                <a href="">立项报告书</a>
             </td>
-        </tr>
-        <tr>
-            <td class="inleft" style="height: 60px"><span>总体评价</span></td>
-            <td>
-                <input class="mini-textarea" style="width:100%;height:60px;"/>
-            </td>
-        </tr>
-        <tr class="trBorder">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
         </tr>
     </table>
+</div>
 
+<div id="feasibility_approval_opinion" class="mini-panel" title="技术可行性分析意见" style="width:100%;height: auto;"
+     showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
+>
+    <table class="tabl" cellpadding="1" cellspacing="2"
+           style="font-size: 13px;width: 100%;height: 50px;">
+        <tr>
+            <td class="td1">
+                对阳江公司科&nbsp;&nbsp;<br>
+                技发展规划的&nbsp;&nbsp;<br>
+                符合性审定&nbsp;&nbsp;
+            </td>
+            <td class="3">
+                <input class="mini-textarea" width="100%" height="100%"
+                       value="有利于公司发展"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="td1">
+                对项目成果的&nbsp;&nbsp;<br>
+                应用领域和价值&nbsp;&nbsp;<br>
+            </td>
+            <td class="td3">
+                <input class="mini-textarea" width="100%" height="100%"
+                       value="对项目成果的应用领域和价值"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="td1">总体评价&nbsp;&nbsp;</td>
+            <td class="td3">
+                <input class="mini-textarea" width="100%" height="100%"
+                       value="很好"/>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="feasibility_approval_opinion" class="mini-panel" title="操作信息" style="width:100%;height: auto;"
+     showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
+>
+    <table class="tabl" cellpadding="1" cellspacing="2"
+           style="font-size: 13px;width: 100%;height: 50px;">
+        <tr>
+            <td class="td1">
+                要求&nbsp;&nbsp;
+            </td>
+            <td class="3">
+                <input class="mini-textarea" width="100%" height="100%"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="td1">
+                建议&nbsp;&nbsp;
+            </td>
+            <td class="td3">
+                <input class="mini-textarea" width="100%" height="100%"/>
+            </td>
+        </tr>
+
+    </table>
 </div>
 <%--拒绝删除按钮--%>
 <div style="background-color: #ededed;width: 100%;height: 26px">
