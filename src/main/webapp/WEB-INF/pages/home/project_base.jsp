@@ -10,13 +10,13 @@
 <%@ page isELIgnored="false" %>
 <html>
 <head>
-    <title>待办业务</title>
+    <title>待办任务</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="../../../css/demo.css">
-    <script src="../../../scripts/boot.js" type="text/javascript"></script>
-    <script src="../../../swfupload/swfupload.js" type="text/javascript"></script>
-    <script src="../../../js/ajaxfileupload.js" type="text/javascript"></script>
-    <style type="text/css">
+    <link href="/css/demo.css" rel="stylesheet" type="text/css"/>
+    <script src="/scripts/boot.js" type="text/javascript"></script>
+    <link href="/scripts/miniui/themes/blue/skin.css" rel="stylesheet" type="text/css"/>
+    <style>
+
         body {
             margin: 0;
             padding: 0;
@@ -25,29 +25,6 @@
             height: 100%;
         }
 
-        table{
-            width: 100%;
-            height: 8%;
-            background-color: #ebf5f8;
-            border-collapse: collapse;
-            border: 1px solid #cbe7f9;
-        }
-        .tdClass{
-            width: 120px;
-            height: 20px;
-        }
-
-        .trBorder > td {
-            border-style: none;
-            background-color: #dee8eb;
-
-        }
-
-        .inleft {
-            width: 120px;
-            height: 20px;
-            text-align: center;
-        }
         #location {
             height: 30px;
             background-image: url("../../../img/researchProject/locationColor.jpg");
@@ -55,81 +32,106 @@
             border-bottom: 1px solid #A4DCF6;
         }
 
+        #query_condition_table {
+            border: 1px solid white;
+            border-collapse: collapse;
+        }
+
+        #query_button {
+            background-image: url("../../../img/query/background.jpg");
+            height: 35px;
+            width: 100%;
+        }
+
+        #query_button > .mini-button {
+            float: right;
+            margin-right: 50px;
+            margin-top: 5px;
+            width: 63px;
+            height: 24px;
+        }
+
+        .td1 {
+            width: 10%;
+            border: 1px solid #A4DCF6;
+            background-color: #DBEEF8;
+        }
+
+        .td2 {
+            width: 40%;
+            border: 1px solid #A4DCF6;
+        }
+
+        html body .user_add .mini-buttonedit-icon {
+            background: url(../../../scripts/miniui/res/images/user_add.png) no-repeat 50% 50%;
+        }
+        html body .group_add .mini-buttonedit-icon {
+            background: url(../../../scripts/miniui/res/images/group_add.png) no-repeat 50% 50%;
+        }
     </style>
 </head>
 <body>
 
-<%-- 当前位置 --%>
+<%--当前位置行--%>
 <div id="location">
     <img src="../../../img/researchProject/waitLocation.png">
 </div>
 
 <%--查询条件--%>
-<div id="QueryConditions" class="mini-panel" margin-top="0px" title="查询条件"
-     iconCls="icon-add"
-     style="width:100%;height:100%;"
-     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
-    <!--body-->
-    <table border="1" style="font-size: 12px">
+<div id="queryondition" class="mini-panel" title="查询条件" style="width:100%;height: auto;"
+     showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
+>
+    <table id="query_condition_table" border="0" cellpadding="1" cellspacing="2"
+           style="font-size: 13px;width: 100%;height: 60px;">
         <tr>
-            <td class="inleft"><span>申请时间：</span></td>
-            <td colspan="2" class="tdClass"><input class="mini-datepicker" width="80%" required="true"/></td>
-
-            <td class="inleft"><span>关键字：</span></td>
-            <td colspan="2" class="tdClass"><input class="mini-textbox" width="80%" required="true"/></td>
-        </tr>
-        <tr>
-
-            <td class="inleft">申请人</td>
-            <td class="tdClass" colspan="2">
-                <input id="btnEdit1" name="" allowInput="false"
-                       class="mini-buttonedit user_add" onbuttonclick="onButtonEdit1" width="80%" required="true"/>
+            <td class="td1" style="text-align: center">申请时间</td>
+            <td class="td2">
+                <input name="" class="mini-datepicker" width="200px" allowInput="false" required="true"/>
             </td>
-
-
-            <td class="inleft"><span>所属部门：</span></td>
-            <td colspan="2" class="tdClass"><input id="btnEdit2" name="" allowInput="false"
-                                                   class="mini-buttonedit user_add" onbuttonclick="onButtonEdit1" width="80%" required="true"/>
+            <td class="td1" style="text-align: center">关键字</td>
+            <td class="td2">
+                <input name="" class="mini-textbox" width="200px"/>
+            </td>
         </tr>
-        <tr class="trBorder">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+
+        <tr>
+            <td class="td1" style="text-align: center">申请人</td>
+            <td class="td2">
+                <input id="btnEdit1" name="" allowInput="false"
+                       class="mini-buttonedit user_add" onbuttonclick="onButtonEdit1" width="200px"/>
+            </td>
+            <td class="td1" style="text-align: center">所属部门</td>
+            <td class="td2">
+                <input id="btnEdit2" name="" allowInput="false"
+                       class="mini-buttonedit group_add" onbuttonclick="onButtonEdit2" width="200px"/>
+            </td>
         </tr>
+
     </table>
-    <%--表格选框--%>
-    <div id="datagrid1"
-         width="100%"
-         hight="90%"
-         class="mini-datagrid"
-         allowResize="true"
-         url=""
-         idField="id"
-         sizeList="[2,5,10]"
-         pageSize="5"
-         multiSelect="true">
-
-        <div property="columns">
-
-            <div field="sid" width="120" headerAlign="center" allowSort="true">
-                <div  class="mini-checkbox" onclick="setValue()"></div>流程编号</div>
-            <div field="sname" width="120" headerAlign="center" allowSort="true">流程名称</div>
-            <div field="clazz.cname" width="100" headerAlign="center"  allowSort="true">所属部门</div>
-            <div field="sname" width="120" headerAlign="center" allowSort="true">当前环节</div>
-            <div field="sname" width="120" headerAlign="center" allowSort="true">提报人</div>
-            <div field="sname" width="120" headerAlign="center" allowSort="true">提报时间</div>
-            <div field="sname" width="120" headerAlign="center" allowSort="true">操作</div>
-
-        </div>
-    </div>
-
-
-
-
 </div>
+
+<%--按钮--%>
+<div id="query_button">
+    <a class="mini-button" img="../../../scripts/miniui/res/images/system_search.gif">查询</a>
+</div>
+
+<%--查询--%>
+<div id="datagrid1" class="mini-datagrid" style="width:100%;height:280px;"
+     url="" idField="id" multiSelect="true"
+>
+    <div property="columns">
+        <div type="checkcolumn"></div>
+        <div field="" width="120" headerAlign="center" allowSort="true">
+            <div  class="mini-checkbox" onclick="setValue()"></div>流程编号</div>
+        <div field="" width="120" headerAlign="center" allowSort="true">流程名称</div>
+        <div field="" width="120" headerAlign="center" allowSort="true">申请部门</div>
+        <div field="" width="120" headerAlign="center" allowSort="true">当前环节</div>
+        <div field="" width="120" headerAlign="center" allowSort="true">提报人</div>
+        <div field="" width="120" headerAlign="center" allowSort="true">提报时间</div>
+        <div field="" width="120" headerAlign="center" allowSort="true">操作</div>
+    </div>
+</div>
+
 
 <script type="text/javascript">
     mini.parse();
@@ -151,12 +153,7 @@
         t.setChecked(!t.getChecked());
     }
 
-
-
-
-
 </script>
-
 
 </body>
 
