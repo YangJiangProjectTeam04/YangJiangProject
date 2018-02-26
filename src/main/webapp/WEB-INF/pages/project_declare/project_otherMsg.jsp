@@ -58,7 +58,7 @@
 </head>
 <body>
 <div id="body">
-    <div id="first_leader" class="mini-panel" title="技术第一负责人信息" style="width:100%;height:auto;"
+    <div id="first_leader" class="mini-panel" title="技术第一负责人信息" iconCls="icon-pull" style="width:100%;height:auto;"
          showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
     >
         <table class="tabl" cellpadding="1" cellspacing="2"
@@ -76,7 +76,7 @@
         </table>
     </div>
 
-    <div id="product" class="mini-panel" title="产品信息" style="width:100%;height:auto;"
+    <div id="product" class="mini-panel" title="产品信息" iconCls="icon-pull" style="width:100%;height:auto;"
          showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
     >
         <table class="tabl" cellpadding="1" cellspacing="2"
@@ -131,7 +131,7 @@
         </table>
     </div>
 
-    <div id="appendix" class="mini-panel" title="附件信息" style="width:100%;height:auto;"
+    <div id="appendix" class="mini-panel" title="附件信息" iconCls="icon-pull" style="width:100%;height:auto;"
          showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
     >
         <table class="tabl" cellpadding="1" cellspacing="2"
@@ -155,7 +155,7 @@
         </table>
     </div>
 
-    <div id="procedure" class="mini-panel" title="流程信息" style="width:100%;height:auto;"
+    <div id="procedure" class="mini-panel" title="流程信息" iconCls="icon-pull" style="width:100%;height:auto;"
          showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
     >
         <table class="tabl" cellpadding="1" cellspacing="2"

@@ -50,6 +50,7 @@
             margin-top: 73px;
             color: #0A539F;
             font-size: 30px;
+            font-weight: bold;
         }
 
         .center {

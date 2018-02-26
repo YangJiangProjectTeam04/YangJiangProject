@@ -69,7 +69,7 @@
     <img src="../../../img/query/rayManagement.png">
 </div>
 
-<div id="query_condition" class="mini-panel" title="查询条件" style="width:100%;height:auto;"
+<div id="query_condition" class="mini-panel" title="查询条件" iconCls="icon-pull" style="width:100%;height:auto;"
      showCollapseButton="true" collapseOnTitleClick="true"
      expanded="true"
 >

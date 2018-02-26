@@ -68,7 +68,7 @@
 <div id="location">
     <img src="../../../img/declare_and_review/engineer.png">
 </div>
-<div id="base_info" class="mini-panel" title="项目基本信息" style="width:100%;height: auto;"
+<div id="base_info" class="mini-panel" title="项目基本信息" iconCls="icon-pull" style="width:100%;height: auto;"
      showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
 >
 
@@ -102,7 +102,7 @@
 
 </div>
 
-<div id="adaptability_analysis" class="mini-panel" title="与核电生产运营安全性、可靠性、经济的适应性分析" style="width:100%;height: auto;"
+<div id="adaptability_analysis" class="mini-panel" title="与核电生产运营安全性、可靠性、经济的适应性分析" iconCls="icon-pull" style="width:100%;height: auto;"
      showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
 >
     <table class="tabl" cellpadding="1" cellspacing="2"
@@ -130,7 +130,7 @@
     </table>
 </div>
 
-<div id="exOpinion" class="mini-panel" margin-top="0px" title="评审信息" style="width:100%;height: auto;"
+<div id="exOpinion" class="mini-panel" margin-top="0px" title="评审信息" iconCls="icon-pull" style="width:100%;height: auto;"
      showCollapseButton="false" collapseOnTitleClick="true" expanded="true">
 
     <table class="tabl" cellpadding="1" cellspacing="2"
@@ -164,7 +164,7 @@
 
 </div>
 
-<div id="proInformation" class="mini-panel" margin-top="0px" title="流程信息" style="width:100%;height: auto;"
+<div id="proInformation" class="mini-panel" margin-top="0px" title="流程信息" iconCls="icon-pull" style="width:100%;height: auto;"
      showCollapseButton="false" collapseOnTitleClick="true" expanded="true">
 
     <table class="tabl" cellpadding="1" cellspacing="2"
@@ -180,10 +180,10 @@
 </div>
 
 <div style="background-color: #ededed;width: 100%;height: 26px">
-    <a class="mini-button" img="../../scripts/miniui/res/images/accept.png"
-       style="float: right;margin-right: 10px">同意</a>
+    <a class="mini-button" img="../../scripts/miniui/res/images/folder_go.png"
+       style="float: right;margin-right: 10px">提交</a>
     <span style="float: right">&nbsp;&nbsp;</span>
-    <a class="mini-button" img="../../scripts/miniui/res/images/cancel.png" style="float: right;">拒绝</a>
+    <a class="mini-button" img="../../scripts/miniui/res/images/delete.png" style="float: right;">驳回</a>
 </div>
 
 </body>

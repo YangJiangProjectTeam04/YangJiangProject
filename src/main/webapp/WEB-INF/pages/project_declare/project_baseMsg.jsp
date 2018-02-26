@@ -54,7 +54,7 @@
 <body>
 <div id="body">
 
-    <div id="base_msg" class="mini-panel" title="项目基本信息" style="width:100%;height: auto;"
+    <div id="base_msg" class="mini-panel" title="项目基本信息" iconCls="icon-pull" style="width:100%;height: auto;"
          showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
     >
         <table class="tabl" cellpadding="1" cellspacing="2"
@@ -86,7 +86,7 @@
         </table>
     </div>
 
-    <div id="analyze" class="mini-panel" title="与核电生产运营安全性、可靠性、经济性的适应分析" style="width:100%;height:auto;"
+    <div id="analyze" class="mini-panel" title="与核电生产运营安全性、可靠性、经济性的适应分析" iconCls="icon-pull" style="width:100%;height:auto;"
          showCollapseButton="false" collapseOnTitleClick="true"
          expanded="true"
     >
@@ -115,7 +115,7 @@
         </table>
     </div>
 
-    <div id="other_msg" class="mini-panel" title="项目其他信息" style="width:100%;height:auto;"
+    <div id="other_msg" class="mini-panel" title="项目其他信息" iconCls="icon-pull" style="width:100%;height:auto;"
          showCollapseButton="false" collapseOnTitleClick="true"
          expanded="true"
     >
@@ -158,7 +158,7 @@
         </table>
     </div>
 
-    <div id="budget" class="mini-panel" title="预算信息" style="width:100%;height:auto;"
+    <div id="budget" class="mini-panel" title="预算信息" iconCls="icon-pull" style="width:100%;height:auto;"
          showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
     >
         <table class="tabl" cellpadding="1" cellspacing="2"

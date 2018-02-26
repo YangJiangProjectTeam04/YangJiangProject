@@ -49,4 +49,14 @@ public class DeclareAndReviewController {
         return "declare_and_review/GMApprove";
     }
 
+    /*评审小组评审页面*/
+    @RequestMapping(value = "/bridgeReviewTeam")
+    public String bridgeReviewTeam() {
+        return "declare_and_review/bridgeReviewTeam";
+    }
+    @RequestMapping(value = "/reviewTeam")
+    public String reviewTeam() {
+        return "declare_and_review/reviewTeam";
+    }
+
 }

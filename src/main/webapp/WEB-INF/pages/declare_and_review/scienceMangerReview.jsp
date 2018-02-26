@@ -62,7 +62,7 @@
     <img src="../../../img/declare_and_review/scienceManager.png">
 </div>
 
-<div id="base_info" class="mini-panel" title="项目基本信息" style="width:100%;height: auto;"
+<div id="base_info" class="mini-panel" title="项目基本信息" iconCls="icon-pull" style="width:100%;height: auto;"
      showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
 >
 
@@ -96,7 +96,7 @@
 
 </div>
 
-<div id="adaptability_analysis" class="mini-panel" title="与核电生产运营安全性、可靠性、经济的适应性分析" style="width:100%;height: auto;"
+<div id="adaptability_analysis" class="mini-panel" title="与核电生产运营安全性、可靠性、经济的适应性分析" iconCls="icon-pull" style="width:100%;height: auto;"
      showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
 >
     <table class="tabl" cellpadding="1" cellspacing="2"
@@ -124,7 +124,7 @@
     </table>
 </div>
 
-<div id="engineer_opinion" class="mini-panel" title="工程师评审意见" style="width:100%;height: auto;"
+<div id="engineer_opinion" class="mini-panel" title="工程师评审意见" iconCls="icon-pull" style="width:100%;height: auto;"
      showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
 >
     <table class="tabl" cellpadding="1" cellspacing="2"
@@ -145,7 +145,7 @@
     </table>
 </div>
 
-<div id="feasibility_approval_opinion" class="mini-panel" title="技术可行性分析意见" style="width:100%;height: auto;"
+<div id="feasibility_approval_opinion" class="mini-panel" title="技术可行性分析意见" iconCls="icon-pull" style="width:100%;height: auto;"
      showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
 >
     <table class="tabl" cellpadding="1" cellspacing="2"
@@ -181,7 +181,7 @@
     </table>
 </div>
 
-<div id="feasibility_approval_opinion" class="mini-panel" title="操作信息" style="width:100%;height: auto;"
+<div id="feasibility_approval_opinion" class="mini-panel" title="操作信息" iconCls="icon-pull" style="width:100%;height: auto;"
      showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
 >
     <table class="tabl" cellpadding="1" cellspacing="2"
@@ -207,9 +207,9 @@
 </div>
 <%--拒绝删除按钮--%>
 <div style="background-color: #ededed;width: 100%;height: 26px">
-    <a class="mini-button" img="../../scripts/miniui/res/images/accept.png" style="float: right;margin-right: 10px">同意</a>
+    <a class="mini-button" img="../../scripts/miniui/res/images/folder_go.png" style="float: right;margin-right: 10px">推荐</a>
     <span style="float: right">&nbsp;&nbsp;</span>
-    <a class="mini-button" img="../../scripts/miniui/res/images/cancel.png" style="float: right;">拒绝</a>
+    <a class="mini-button" img="../../scripts/miniui/res/images/delete.png" style="float: right;">不推荐</a>
 </div>
 </body>
 </html>

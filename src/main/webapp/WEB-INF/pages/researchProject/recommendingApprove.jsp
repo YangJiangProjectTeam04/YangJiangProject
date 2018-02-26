@@ -66,7 +66,7 @@
 </div>
 
 <%--申请信息--%>
-<div id="queryCondition" class="mini-panel" title="申请信息" style="width:100%;height: auto;"
+<div id="queryCondition" class="mini-panel" title="申请信息" iconCls="icon-pull" style="width:100%;height: auto;"
      showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
 >
     <table class="tabl" border="0" cellpadding="1" cellspacing="2"
@@ -106,7 +106,7 @@
 </div>
 
 <%--合同经费信息--%>
-<div id="expenditureCondition" class="mini-panel" title="合同经费信息" style="width:100%;height: auto;"
+<div id="expenditureCondition" class="mini-panel" title="合同经费信息" iconCls="icon-pull" style="width:100%;height: auto;"
      showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
 >
     <table class="tabl" border="0" cellpadding="1" cellspacing="2"
@@ -145,7 +145,7 @@
 </div>
 
 <%--项目成果分配--%>
-<div id="achievement" class="mini-panel" title="项目成果分配" style="width:100%;height:auto;"
+<div id="achievement" class="mini-panel" title="项目成果分配" iconCls="icon-pull" style="width:100%;height:auto;"
      showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
 >
     <table class="tabl" cellpadding="1" cellspacing="2"
@@ -218,7 +218,7 @@
 </div>
 
 <%--审批意见--%>
-<div id="approval_opinion" class="mini-panel" title="审批意见" style="width:100%;height: auto;"
+<div id="approval_opinion" class="mini-panel" title="审批意见" iconCls="icon-pull" style="width:100%;height: auto;"
      showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
 >
     <table class="tabl" cellpadding="1" cellspacing="2"

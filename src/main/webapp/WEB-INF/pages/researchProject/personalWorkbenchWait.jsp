@@ -74,7 +74,7 @@
 </div>
 
 <%--查询条件--%>
-<div id="queryondition" class="mini-panel" title="查询条件" style="width:100%;height: auto;"
+<div id="queryondition" class="mini-panel" title="查询条件" iconCls="icon-pull" style="width:100%;height: auto;"
      showCollapseButton="false" collapseOnTitleClick="true" expanded="true"
 >
     <table id="query_condition_table" border="0" cellpadding="1" cellspacing="2"

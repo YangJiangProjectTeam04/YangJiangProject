@@ -8,6 +8,7 @@
         { id: "scienceMangerReview", pid: "manager", text: "科技办经理审批",url: "/bridgeManager" },
         { id: "engineerReview", pid: "manager", text: "工程师组织审核",url: "/bridgeEngineerReview" },
         { id: "GMApprove", pid: "manager", text: "总经理部审批",url: "/bridgeGM" },
+        { id: "reviewTeam", pid: "manager", text: "评审小组评审",url: "/bridgeReviewTeam" },
 
     { id: "project_declare", text: "综合管理"},
         { id: "inter", pid: "project_declare", text: "综合查询",  url: "/bridgeIntegrated"},
