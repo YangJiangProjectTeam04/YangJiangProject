@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTDMapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamRocket.mapper.home.DepartmentDao">
+
+    <sql id="DeptColumn">
+        DEP_ID,DEP_NAME
+    </sql>
+
+    <resultMap id="DeptMap"
+               type="com.teamRocket.domain.Department">
+
+        <result property="depId" column="DEP_ID"/>
+
+        <result property="depName" column="DEP_NAME"/>
+
+    </resultMap>
+
+    <!-- 查询department部门名 -->
+    <select id="findAll" resultMap="DeptMap"
+            parameterType="com.teamRocket.utils.page.PageBean">
+
+        SELECT
+        <include refid="DeptColumn"/>
+        FROM
+        department
+        LIMIT #{startIndex},#{pageSize}
+    </select>
+
+    <!-- 返回条数 -->
+    <select id="getTotal" resultType="java.lang.Integer" parameterType="com.teamRocket.domain.Department">
+
+        SELECT
+        count(DEP_NAME)
+        FROM
+        department
+    </select>
+
+</mapper>
