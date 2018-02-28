@@ -24,25 +24,39 @@
         <include refid="userColumn"/>
         FROM
         staff_info
-
     </select>
 
-
-    <!-- 根据用户名查询用户 -->
-    <select id="selNameAndPassword"
-            parameterType="com.teamRocket.domain.User"
-            resultMap="userMap">
+    <!-- 模糊查询 -->
+    <select id="selectUserName" resultMap="userMap" parameterType="com.teamRocket.utils.page.PageBean">
 
         SELECT
         <include refid="userColumn"/>
-        FROM staff_info
-        WHERE
-        LOGIN_NAME=#{loginName};
-
+        FROM
+        staff_info
+        <where>
+            1=1
+            <if test="parameter.username != null and parameter.username != ''">
+                AND staff_name LIKE '%${parameter.username}%'
+            </if>
+        </where>
+        LIMIT #{startIndex},#{pageSize}
     </select>
 
+    <!-- 返回条数 -->
+    <select id="getTotal" resultType="java.lang.Integer" parameterType="com.teamRocket.domain.User">
 
+        SELECT
+        count(staff_name)
+        FROM
+        staff_info
+        <where>
+            1=1
+            <if test="username != null and username != ''">
+                AND staff_name LIKE '%${username}%'
+            </if>
+        </where>
 
+    </select>
 
 
 

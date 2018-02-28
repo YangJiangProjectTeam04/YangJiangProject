@@ -74,7 +74,7 @@
     }
     function search() {
         var key = mini.get("key").getValue();
-        grid.load({cname: key});
+        grid.load({username: key});
     }
     function onKeyEnter(e) {
         search();
