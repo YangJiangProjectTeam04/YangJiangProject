@@ -64,16 +64,7 @@ public class HomeController {
         return "home/select_department_gridwindow";
     }
 
-    @Resource
-    private DepartmentService departmentService;
 
-    /* 设置所属部门 */
-    @RequestMapping(value = "/select_depart")
-    @ResponseBody
-    public MINIBaseResult<Department> select_depart(Department department, int pageIndex, int pageSize) {
-        MINIBaseResult<Department> baseResult = departmentService.findAll(department,pageIndex,pageSize);
-        return baseResult;
-    }
 
 
 }
