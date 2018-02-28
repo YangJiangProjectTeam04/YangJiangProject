@@ -47,24 +47,22 @@ public class HomeController {
         return "home/select_user_gridwindow";
     }
 
-    @Resource
-    private HomeService homeService;
-
-    /* 申请人 */
-    @RequestMapping(value = "/select_username")
-    @ResponseBody
-    public MINIBaseResult<User> select_username(User user, int pageIndex, int pageSize) {
-        MINIBaseResult<User> baseResult = homeService.selectUserName(user, pageIndex, pageSize);
-        return baseResult;
-    }
-
     /* 部门选择窗口 */
     @RequestMapping(value = "/select_department_gridwindow")
     public String select_department_gridwindow() {
         return "home/select_department_gridwindow";
     }
 
+    @Resource
+    private DepartmentService departmentService;
 
+    /* 设置所属部门 */
+    @RequestMapping(value = "/select_depart")
+    @ResponseBody
+    public MINIBaseResult<Department> select_depart(Department department, int pageIndex, int pageSize) {
+        MINIBaseResult<Department> baseResult = departmentService.findAll(department,pageIndex,pageSize);
+        return baseResult;
+    }
 
 
 }

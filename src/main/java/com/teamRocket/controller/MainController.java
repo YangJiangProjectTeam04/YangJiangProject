@@ -1,7 +1,9 @@
 package com.teamRocket.controller;
 
 import com.teamRocket.domain.Department;
+import com.teamRocket.domain.User;
 import com.teamRocket.service.DepartmentService;
+import com.teamRocket.service.HomeService;
 import com.teamRocket.utils.page.MINIBaseResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,14 +26,15 @@ public class MainController {
         return "home/home";
     }
 
-    @Resource
-    private DepartmentService departmentService;
 
-    /* 设置所属部门 */
-    @RequestMapping(value = "/select_depart")
+    @Resource
+    private HomeService homeService;
+
+    /* 申请人 */
+    @RequestMapping(value = "/select_username")
     @ResponseBody
-    public MINIBaseResult<Department> select_depart(Department department, int pageIndex, int pageSize) {
-        MINIBaseResult<Department> baseResult = departmentService.findAll(department,pageIndex,pageSize);
+    public MINIBaseResult<User> select_username(User user, int pageIndex, int pageSize) {
+        MINIBaseResult<User> baseResult = homeService.selectUserName(user, pageIndex, pageSize);
         return baseResult;
     }
 

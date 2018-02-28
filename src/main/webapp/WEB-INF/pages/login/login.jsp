@@ -35,6 +35,7 @@
         }
 
         .top {
+            margin-top: 100px;
             height: 130px;
         }
 
