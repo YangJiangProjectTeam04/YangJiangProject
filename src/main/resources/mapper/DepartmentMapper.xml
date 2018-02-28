@@ -18,13 +18,23 @@
     </resultMap>
 
     <!-- 查询department部门名 -->
-    <select id="findAll" resultMap="DeptMap">
+    <select id="findAll" resultMap="DeptMap"
+            parameterType="com.teamRocket.utils.page.PageBean">
 
         SELECT
         <include refid="DeptColumn"/>
         FROM
         department
+        LIMIT #{startIndex},#{pageSize}
+    </select>
 
+    <!-- 返回条数 -->
+    <select id="getTotal" resultType="java.lang.Integer" parameterType="com.teamRocket.domain.Department">
+
+        SELECT
+        count(DEP_NAME)
+        FROM
+        department
     </select>
 
 </mapper>

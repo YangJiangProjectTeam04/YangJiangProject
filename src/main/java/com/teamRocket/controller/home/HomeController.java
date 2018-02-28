@@ -70,8 +70,9 @@ public class HomeController {
     /* 设置所属部门 */
     @RequestMapping(value = "/select_depart")
     @ResponseBody
-    public List<Department> departmentList() {
-        return departmentService.findAll();
+    public MINIBaseResult<Department> select_depart(Department department, int pageIndex, int pageSize) {
+        MINIBaseResult<Department> baseResult = departmentService.findAll(department,pageIndex,pageSize);
+        return baseResult;
     }
 
 
