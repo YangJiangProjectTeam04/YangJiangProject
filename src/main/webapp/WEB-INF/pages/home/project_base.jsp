@@ -182,7 +182,7 @@
     function onButtonEdit2(e) {
         var btnEdit = this;
         mini.open({
-            url: "/select_staff_role_gridwindow",
+            url: "/select_department_gridwindow",
             title: "部门选择表",
             width: '60%',
             height: '60%',

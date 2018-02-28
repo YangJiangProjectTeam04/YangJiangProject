@@ -10,5 +10,5 @@ import java.util.List;
  */
 //所属部门
 public interface DepartmentDao extends BaseDao<Department> {
-    List<Department> findDepartmentName();
+    List<Department> findAll();
 }

@@ -1,5 +1,7 @@
 package com.teamRocket.controller.home;
+import com.teamRocket.domain.Department;
 import com.teamRocket.domain.User;
+import com.teamRocket.service.DepartmentService;
 import com.teamRocket.service.HomeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +40,6 @@ public class HomeController {
         return "home/select_user_gridwindow";
     }
 
-
     @Resource
     private HomeService homeService;
     /* 申请人 */
@@ -47,4 +48,20 @@ public class HomeController {
     public List<User> listUser(){
         return homeService.userName();
     }
+    /* 部门选择窗口 */
+    @RequestMapping(value = "/select_department_gridwindow")
+    public String select_department_gridwindow(){
+        return "home/select_department_gridwindow";
+    }
+
+    @Resource
+    private DepartmentService departmentService;
+    /* 设置所属部门 */
+    @RequestMapping(value = "/select_depart")
+    @ResponseBody
+    public List<Department> departmentList(){
+        return departmentService.findAll();
+    }
+
+
 }
