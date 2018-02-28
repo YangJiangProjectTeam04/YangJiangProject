@@ -12,5 +12,5 @@ public interface SatelliteLibService {
     MINIBaseResult<SatelliteLib> select(SatelliteLib satelliteLib, int pageIndex, int pageSize);
 
     /* 插入 */
-    boolean insert(SatelliteLib satelliteLib);
+    int insert(SatelliteLib satelliteLib);
 }

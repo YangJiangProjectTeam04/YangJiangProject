@@ -23,7 +23,6 @@ public class HomeServiceImpl implements HomeService {
     public MINIBaseResult<User> selectUserName(User user, int pageIndex, int pageSize) {
         MINIBaseResult<User> result = new MINIBaseResult<User>();
         int total = homeDao.getTotal(user);
-        System.out.println(total);
         PageBean<User> pageBean = new PageBean<User>(pageIndex+1,pageSize,total);
         pageBean.setParameter(user);
         List<User> userList = homeDao.selectUserName(pageBean);

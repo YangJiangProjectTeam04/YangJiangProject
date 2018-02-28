@@ -100,16 +100,22 @@ public class IntegratedManagementController {
 
     @RequestMapping(value = "/insert")
     @ResponseBody
-    public BaseResult insert(String data) {
+    public BaseResult insert(String data, String date) {
         JSONObject object = JSONObject.fromObject(data);
         SatelliteLib satelliteLib = (SatelliteLib) JSONObject.toBean(object, SatelliteLib.class);
-        boolean flag = satelliteLibService.insert(satelliteLib);
-        if (flag) {
-            return new BaseResult(0,"保存成功");
-        } else {
-            return new BaseResult(1,"保存失败");
-        }
 
+        // 重新设置日期
+        satelliteLib.setCreateDate(date);
+
+        int flag = satelliteLibService.insert(satelliteLib);
+
+        if (flag == 0) {
+            return new BaseResult(0, "保存成功");
+        } else if (flag == 1) {
+            return new BaseResult(1, "卫星库已存在");
+        } else {
+            return new BaseResult(2, "保存失败");
+        }
     }
 
 }

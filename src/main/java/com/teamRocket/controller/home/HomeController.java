@@ -41,12 +41,6 @@ public class HomeController {
         return "home/project_other";
     }
 
-    /* 个人工作平台页面,点击申请人进入用户查询界面*/
-    @RequestMapping(value = "/select_user_gridwindow")
-    public String select_user_gridwindow() {
-        return "home/select_user_gridwindow";
-    }
-
     /* 部门选择窗口 */
     @RequestMapping(value = "/select_department_gridwindow")
     public String select_department_gridwindow() {

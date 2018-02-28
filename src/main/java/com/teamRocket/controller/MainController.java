@@ -31,6 +31,11 @@ public class MainController {
     private HomeService homeService;
 
     /* 申请人 */
+    @RequestMapping(value = "/select_user_gridwindow")
+    public String select_user_gridwindow() {
+        return "home/select_user_gridwindow";
+    }
+
     @RequestMapping(value = "/select_username")
     @ResponseBody
     public MINIBaseResult<User> select_username(User user, int pageIndex, int pageSize) {

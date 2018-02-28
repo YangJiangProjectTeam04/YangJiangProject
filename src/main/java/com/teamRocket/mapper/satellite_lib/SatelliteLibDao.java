@@ -15,4 +15,6 @@ public interface SatelliteLibDao extends BaseDao<SatelliteLib> {
 
     List<SatelliteLib> select(PageBean<SatelliteLib> pageBean);
 
+    /* 根据卫星库名查询卫星库*/
+    Integer getSatelliteLib(SatelliteLib satelliteLib);
 }

@@ -110,7 +110,7 @@
             <div type="checkcolumn"></div>
             <div field="storeName" width="120" headerAlign="center" allowSort="true">卫星库</div>
             <div field="manageStaffName" width="120" headerAlign="center" allowSort="true">管理人员</div>
-            <div field="createDate" width="120" headerAlign="center" allowSort="true">创建日期</div>
+            <div field="createDate" width="120" headerAlign="center" allowSort="true" >创建日期</div>
             <div field="effectFlag" width="120" headerAlign="center" allowSort="true">是否有效</div>
         </div>
     </div>
@@ -127,7 +127,7 @@
     function onButtonEdit(e) {
         var manager = this;
         mini.open({
-            url: "selectManager",
+            url: "select_user_gridwindow",
             title: "管理人员",
             width: 300,
             height: 400,
@@ -137,8 +137,8 @@
                     var data = iframe.contentWindow.GetData();
                     data = mini.clone(data);    //必须
                     if (data) {
-                        manager.setValue(data.manageStaffNo);
-                        manager.setText(data.manageStaffName);
+                        manager.setValue(data.userId);
+                        manager.setText(data.username);
                     }
                 }else {
                     manager.setText(null);

@@ -48,14 +48,15 @@
         <tr>
             <td>管理人员编号</td>
             <td>
-                <input name="manageStaffNo" class="mini-textbox" required="true"/>
+                <input id="manageStaffNo" name="manageStaffNo" class="mini-textbox" allowInput="false" required="true"/>
             </td>
             <td>管理人员名称</td>
             <td>
-                <input name="manageStaffName" class="mini-textbox" required="true"/>
+                <input id="manageStaffName" name="manageStaffName" class="mini-textbox" allowInput="false"
+                       required="true"/>
             </td>
             <td>
-                <button>管理人员</button>
+                <a class="mini-button" onclick="onButtonEdit1" style="width:80px;">管理人员</a>
             </td>
         </tr>
 
@@ -70,23 +71,24 @@
         </tr>
 
         <tr>
-            <td>创建人</td>
+            <td>创建人编号</td>
             <td>
-                <input name="createStaffNo" class="mini-textbox" required="true"/>
+                <input id="createStaffNo" name="createStaffNo" class="mini-textbox" allowInput="false" required="true"/>
             </td>
             <td>创建人姓名</td>
             <td>
-                <input name="createStaffName" class="mini-textbox" required="true"/>
+                <input id="createStaffName" name="createStaffName" class="mini-textbox" allowInput="false"
+                       required="true"/>
             </td>
             <td>
-                <button>创建人</button>
+                <a class="mini-button" onclick="onButtonEdit2" style="width:80px;">创建人员</a>
             </td>
         </tr>
 
         <tr>
             <td>创建时间：</td>
             <td>
-                <input name="createDate" class="mini-datepicker" required="true" emptyText="请选择日期"/>
+                <input id="createDate" name="createDate" class="mini-datepicker" required="true" emptyText="请选择日期"/>
             </td>
         </tr>
 
@@ -112,10 +114,17 @@
         if (form.isValid() == false) return;
 
         var json = mini.encode(o);
+
+        var time = mini.get("createDate").getValue();
+        var date = null;
+        if (time != null && time != '') {
+            date = formatDate(time);
+        }
+
         $.ajax({
             url: "insert",
             type: 'post',
-            data: {data: json},
+            data: {data: json, date: date},
 
             success: function (text) {
                 if (text.resultCode == 0) {
@@ -150,6 +159,71 @@
         CloseWindow("cancel");
     }
 
+    function onButtonEdit1(e) {
+        var manageStaffNo = mini.get("manageStaffNo");
+        var manageStaffName = mini.get("manageStaffName");
+        mini.open({
+            url: "select_user_gridwindow",
+            title: "人员信息",
+            width: 300,
+            height: 400,
+            ondestroy: function (action) {
+                if (action == "ok") {
+                    var iframe = this.getIFrameEl();
+                    var data = iframe.contentWindow.GetData();
+                    data = mini.clone(data);    //必须
+                    if (data) {
+                        manageStaffNo.setValue(data.userId);
+                        manageStaffName.setValue(data.username);
+                    }
+                } else {
+                    manageStaffNo.setValue("");
+                    manageStaffName.setValue("");
+                }
+            }
+        });
+
+    }
+
+    function onButtonEdit2(e) {
+        var createStaffNo = mini.get("createStaffNo");
+        var createStaffName = mini.get("createStaffName");
+        mini.open({
+            url: "select_user_gridwindow",
+            title: "人员信息",
+            width: 300,
+            height: 400,
+            ondestroy: function (action) {
+                if (action == "ok") {
+                    var iframe = this.getIFrameEl();
+                    var data = iframe.contentWindow.GetData();
+                    data = mini.clone(data);    //必须
+                    if (data) {
+                        createStaffNo.setValue(data.userId);
+                        createStaffName.setValue(data.username);
+                    }
+                } else {
+                    createStaffNo.setValue("");
+                    createStaffName.setValue("");
+                }
+            }
+        });
+
+    }
+
+    /*将中国标准时间更改为年-月-日*/
+    function formatTen(num) {
+        return num > 9 ? (num + "") : ("0" + num);
+    }
+    function formatDate(date) {
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        var second = date.getSeconds();
+        return year + "-" + formatTen(month) + "-" + formatTen(day);
+    }
 
 </script>
 </body>

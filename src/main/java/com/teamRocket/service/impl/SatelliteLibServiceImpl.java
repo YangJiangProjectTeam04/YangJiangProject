@@ -21,11 +21,11 @@ public class SatelliteLibServiceImpl implements SatelliteLibService {
 
     /* 分页查询 */
     @Override
-    public MINIBaseResult<SatelliteLib> select(SatelliteLib satelliteLib,int pageIndex, int pageSize) {
+    public MINIBaseResult<SatelliteLib> select(SatelliteLib satelliteLib, int pageIndex, int pageSize) {
         MINIBaseResult<SatelliteLib> result = new MINIBaseResult<SatelliteLib>();
         int total = satelliteLibDao.getTotal(satelliteLib);
 
-        PageBean<SatelliteLib> pageBean = new PageBean<SatelliteLib>(pageIndex+1,pageSize,total);
+        PageBean<SatelliteLib> pageBean = new PageBean<SatelliteLib>(pageIndex + 1, pageSize, total);
         pageBean.setParameter(satelliteLib);
         List<SatelliteLib> satelliteLibs = satelliteLibDao.select(pageBean);
 
@@ -37,14 +37,30 @@ public class SatelliteLibServiceImpl implements SatelliteLibService {
 
     /* 插入 */
     @Override
-    public boolean insert(SatelliteLib satelliteLib) {
+    public int insert(SatelliteLib satelliteLib) {
 
-        satelliteLib.setBIMSStoreId(TRStringUtils.getUUID());
-        int flag = satelliteLibDao.insert(satelliteLib);
-        if (flag > 0) {
-            return true;
+        // 判断卫星库是否存在
+        int satelliteLibTotal = satelliteLibDao.getSatelliteLib(satelliteLib);
+
+        if (satelliteLibTotal == 0) {
+            // 重新设置 是否有效
+            if (satelliteLib.getEffectFlag().equals("1")) {
+                satelliteLib.setEffectFlag("Y");
+            } else {
+                satelliteLib.setEffectFlag("N");
+            }
+
+            // 设置UUID
+            satelliteLib.setBIMSStoreId(TRStringUtils.getUUID());
+
+            // 判断是否成功插入
+            int flag = satelliteLibDao.insert(satelliteLib);
+            if (flag > 0) {
+                return 0;
+            }
+            return -1;
         }
-        return false;
+        return 1;
     }
 
 

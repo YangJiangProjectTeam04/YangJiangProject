@@ -14,7 +14,7 @@ public class SatelliteLib {
     private String effectFlag;
     private String createStaffNo;
     private String createStaffName;
-    private Date createDate;
+    private String createDate;
 
     @Override
     public String toString() {
@@ -36,7 +36,7 @@ public class SatelliteLib {
     public SatelliteLib(String storeName, String manageStaffNo,
                         String manageStaffName, String effectFlag,
                         String createStaffNo, String createStaffName,
-                        Date createDate) {
+                        String createDate) {
 
         this.storeName = storeName;
         this.manageStaffNo = manageStaffNo;
@@ -104,11 +104,11 @@ public class SatelliteLib {
         this.createStaffName = createStaffName;
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
 }
