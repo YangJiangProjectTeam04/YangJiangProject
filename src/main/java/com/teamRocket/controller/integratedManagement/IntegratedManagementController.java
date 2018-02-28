@@ -1,8 +1,11 @@
-package com.teamRocket.controller.integrated_query;
+package com.teamRocket.controller.integratedManagement;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import com.teamRocket.domain.BaseResult;
 import com.teamRocket.utils.page.MINIBaseResult;
 import com.teamRocket.domain.SatelliteLib;
 import com.teamRocket.service.SatelliteLibService;
+import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -73,7 +76,7 @@ public class IntegratedManagementController {
     }
 
     @RequestMapping(value = "/selectManager")
-    public String selectManager(){
+    public String selectManager() {
         return "integrated_management/select_bims_manager_gridwindow";
     }
 
@@ -90,9 +93,23 @@ public class IntegratedManagementController {
 
     /* 增加 */
     @RequestMapping(value = "/satelliteInformation")
-    public String satelliteInformation(){
+    public String satelliteInformation() {
         return "integrated_management/satelliteInformation";
     }
 
+
+    @RequestMapping(value = "/insert")
+    @ResponseBody
+    public BaseResult insert(String data) {
+        JSONObject object = JSONObject.fromObject(data);
+        SatelliteLib satelliteLib = (SatelliteLib) JSONObject.toBean(object, SatelliteLib.class);
+        boolean flag = satelliteLibService.insert(satelliteLib);
+        if (flag) {
+            return new BaseResult(0,"保存成功");
+        } else {
+            return new BaseResult(1,"保存失败");
+        }
+
+    }
 
 }

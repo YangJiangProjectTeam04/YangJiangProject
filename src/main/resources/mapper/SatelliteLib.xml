@@ -6,6 +6,11 @@
     <sql id="satelliteLibColumn">
          BIMS_STORE_ID,BIMS_STORE_NAME,MANAGE_STAFF_NO,MANAGE_STAFF_NAME,EFFECT_FLAG,CREATE_STAFF_NO,CREATE_STAFF_NAME,CREATE_DATE
     </sql>
+
+    <sql id="staff">
+
+    </sql>
+
     <resultMap id="satelliteLib" type="com.teamRocket.domain.SatelliteLib">
         <result property="BIMSStoreId" column="BIMS_STORE_ID"/>
         <result property="storeName" column="BIMS_STORE_NAME"/>

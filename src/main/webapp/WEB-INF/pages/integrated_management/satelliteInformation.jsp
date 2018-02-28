@@ -41,7 +41,7 @@
         <tr>
             <td>卫星库名称</td>
             <td>
-                <input name="satelliteName" class="mini-textbox" required="true"/>
+                <input name="storeName" class="mini-textbox" required="true"/>
             </td>
         </tr>
 
@@ -111,48 +111,27 @@
         form.validate();
         if (form.isValid() == false) return;
 
-        var json = mini.encode([o]);
+        var json = mini.encode(o);
         $.ajax({
-            url: "",
+            url: "insert",
             type: 'post',
             data: {data: json},
-            cache: false,
+
             success: function (text) {
-                CloseWindow("save");
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                alert(jqXHR.responseText);
-                CloseWindow();
-            }
-        });
-    }
+                if (text.resultCode == 0) {
+                    alert(text.resultMsg);
+                    CloseWindow();
 
-    ////////////////////
-    //标准方法接口定义
-    function SetData(data) {
-        if (data.action == "edit") {
-            //跨页面传递的数据对象，克隆后才可以安全使用
-            data = mini.clone(data);
-
-            $.ajax({
-                //                url: "../data/AjaxService.jsp?method=GetEmployee&id=" + data.id,
-                cache: false,
-                success: function (text) {
-                    var o = mini.decode(text);
-                    form.setData(o);
-                    form.setChanged(false);
-
-                    onDeptChanged();
-                    mini.getbyName("position").setValue(o.position);
+                } else {
+                    alert(text.resultMsg);
                 }
-            });
-        }
+
+            }
+
+        });
+
     }
 
-    function GetData() {
-        var o = form.getData();
-        return o;
-    }
     function CloseWindow(action) {
         if (action == "close" && form.isChanged()) {
             if (confirm("数据被修改了，是否先保存？")) {
@@ -162,20 +141,13 @@
         if (window.CloseOwnerWindow) return window.CloseOwnerWindow(action);
         else window.close();
     }
+
     function onOk(e) {
         SaveData();
     }
+
     function onCancel(e) {
         CloseWindow("cancel");
-    }
-    //////////////////////////////////
-    function onDeptChanged(e) {
-        var deptCombo = mini.getbyName("dept_id");
-        var positionCombo = mini.getbyName("position");
-        var dept_id = deptCombo.getValue();
-
-        positionCombo.load("../data/AjaxService.jsp?method=GetPositionsByDepartmenId&id=" + dept_id);
-        positionCombo.setValue("");
     }
 
 

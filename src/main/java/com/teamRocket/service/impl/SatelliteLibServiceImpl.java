@@ -1,5 +1,6 @@
 package com.teamRocket.service.impl;
 
+import com.teamRocket.utils.TRStringUtils;
 import com.teamRocket.utils.page.MINIBaseResult;
 import com.teamRocket.domain.SatelliteLib;
 import com.teamRocket.mapper.satellite_lib.SatelliteLibDao;
@@ -18,6 +19,7 @@ public class SatelliteLibServiceImpl implements SatelliteLibService {
     @Resource
     private SatelliteLibDao satelliteLibDao;
 
+    /* 分页查询 */
     @Override
     public MINIBaseResult<SatelliteLib> select(SatelliteLib satelliteLib,int pageIndex, int pageSize) {
         MINIBaseResult<SatelliteLib> result = new MINIBaseResult<SatelliteLib>();
@@ -30,8 +32,19 @@ public class SatelliteLibServiceImpl implements SatelliteLibService {
         result.setTotal(total);
         result.setData(satelliteLibs);
 
-        System.out.println(result.getData());
         return result;
+    }
+
+    /* 插入 */
+    @Override
+    public boolean insert(SatelliteLib satelliteLib) {
+
+        satelliteLib.setBIMSStoreId(TRStringUtils.getUUID());
+        int flag = satelliteLibDao.insert(satelliteLib);
+        if (flag > 0) {
+            return true;
+        }
+        return false;
     }
 
 
