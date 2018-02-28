@@ -8,7 +8,7 @@ import java.util.Date;
 /*卫星库*/
 public class SatelliteLib {
     private String BIMSStoreId;
-    private String BIMSStoreName;
+    private String storeName;
     private String manageStaffNo;
     private String manageStaffName;
     private String effectFlag;
@@ -20,7 +20,7 @@ public class SatelliteLib {
     public String toString() {
         return "SatelliteLib{" +
                 "BIMSStoreId='" + BIMSStoreId + '\'' +
-                ", BIMSStoreName='" + BIMSStoreName + '\'' +
+                ", storeName='" + storeName + '\'' +
                 ", manageStaffNo='" + manageStaffNo + '\'' +
                 ", manageStaffName='" + manageStaffName + '\'' +
                 ", effectFlag='" + effectFlag + '\'' +
@@ -33,12 +33,12 @@ public class SatelliteLib {
     public SatelliteLib() {
     }
 
-    public SatelliteLib(String BIMSStoreName, String manageStaffNo,
+    public SatelliteLib(String storeName, String manageStaffNo,
                         String manageStaffName, String effectFlag,
                         String createStaffNo, String createStaffName,
                         Date createDate) {
 
-        this.BIMSStoreName = BIMSStoreName;
+        this.storeName = storeName;
         this.manageStaffNo = manageStaffNo;
         this.manageStaffName = manageStaffName;
         this.effectFlag = effectFlag;
@@ -56,12 +56,12 @@ public class SatelliteLib {
         this.BIMSStoreId = BIMSStoreId;
     }
 
-    public String getBIMSStoreName() {
-        return BIMSStoreName;
+    public String getStoreName() {
+        return storeName;
     }
 
-    public void setBIMSStoreName(String BIMSStoreName) {
-        this.BIMSStoreName = BIMSStoreName;
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
     }
 
     public String getManageStaffNo() {

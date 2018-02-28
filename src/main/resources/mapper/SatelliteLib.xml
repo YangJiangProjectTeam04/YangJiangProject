@@ -8,7 +8,7 @@
     </sql>
     <resultMap id="satelliteLib" type="com.teamRocket.domain.SatelliteLib">
         <result property="BIMSStoreId" column="BIMS_STORE_ID"/>
-        <result property="BIMSStoreName" column="BIMS_STORE_NAME"/>
+        <result property="storeName" column="BIMS_STORE_NAME"/>
         <result property="manageStaffNo" column="MANAGE_STAFF_NO"/>
         <result property="manageStaffName" column="MANAGE_STAFF_NAME"/>
         <result property="effectFlag" column="EFFECT_FLAG"/>
@@ -18,12 +18,37 @@
     </resultMap>
 
     <!-- 查询卫星库 -->
-    <select id="findAll" resultMap="satelliteLib">
+    <select id="select" resultMap="satelliteLib" parameterType="com.teamRocket.utils.page.PageBean">
 
         SELECT
         <include refid="satelliteLibColumn"/>
         FROM
         pms_bims_store
+        <where>
+            1=1
+            <if test="parameter.storeName != null and parameter.storeName != ''">
+                AND BIMS_STORE_NAME LIKE '%${parameter.storeName}%'
+            </if>
+            <if test="parameter.manageStaffName != null and parameter.manageStaffName != ''">
+                AND MANAGE_STAFF_NAME = '${parameter.manageStaffName}'
+            </if>
+        </where>
+        LIMIT #{startIndex},#{pageSize}
+    </select>
+
+    <!-- 返回条数 -->
+    <select id="getTotal" resultType="java.lang.Integer" parameterType="com.teamRocket.domain.SatelliteLib">
+
+        SELECT count(BIMS_STORE_ID) FROM pms_bims_store
+        <where>
+            1=1
+            <if test="storeName != null and storeName != ''">
+                AND BIMS_STORE_NAME LIKE '%${storeName}%'
+            </if>
+            <if test="manageStaffName != null and manageStaffName != ''">
+                AND MANAGE_STAFF_NAME = '${manageStaffName}'
+            </if>
+        </where>
 
     </select>
 

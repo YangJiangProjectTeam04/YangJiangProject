@@ -108,12 +108,12 @@ public class MainTest {
     /**
      * 卫星库查询测试
      * */
-    @Test
-    public void testSatelliteLib() {
-        SatelliteLibService satelliteLibService = context.getBean(SatelliteLibService.class);
-        List<SatelliteLib> satelliteLibs = satelliteLibService.selAll();
-        for (SatelliteLib satelliteLib : satelliteLibs) {
-            System.out.println(satelliteLib);
-        }
-    }
+//    @Test
+//    public void testSatelliteLib() {
+//        SatelliteLibService satelliteLibService = context.getBean(SatelliteLibService.class);
+//        List<SatelliteLib> satelliteLibs = satelliteLibService.select()
+//        for (SatelliteLib satelliteLib : satelliteLibs) {
+//            System.out.println(satelliteLib);
+//        }
+//    }
 }
