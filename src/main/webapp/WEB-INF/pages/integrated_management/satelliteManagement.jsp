@@ -163,8 +163,8 @@
     function add() {
         mini.open({
             targetWindow: window,
-            url: "",
-            title: "新增卫星库", width: 300, height: 400,
+            url: "satelliteInformation",
+            title: "新增卫星库", width: 575, height: 230,
             onload: function () {
                 var iframe = this.getIFrameEl();
                 var data = { action: "new" };

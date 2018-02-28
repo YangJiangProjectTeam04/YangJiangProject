@@ -52,4 +52,15 @@
 
     </select>
 
+    <!-- 插入数据 -->
+    <insert id="insert" parameterType="com.teamRocket.domain.SatelliteLib" keyProperty="BIMSStoreId">
+        INSERT INTO pms_bims_store (<include refid="satelliteLibColumn"/>)
+        VALUES (#{BIMSStoreId},#{storeName},#{manageStaffNo},#{manageStaffName},#{effectFlag},#{createStaffNo},#{createStaffName},#{createDate})
+    </insert>
+
+    <!-- 删除数据 -->
+    <delete id="delete" parameterType="java.lang.String">
+        DELETE FROM pms_bims_store WHERE BIMS_STORE_ID = #{BIMSStoreId};
+    </delete>
+
 </mapper>

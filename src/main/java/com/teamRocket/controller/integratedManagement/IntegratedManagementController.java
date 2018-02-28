@@ -88,4 +88,11 @@ public class IntegratedManagementController {
         return baseResult;
     }
 
+    /* 增加 */
+    @RequestMapping(value = "/satelliteInformation")
+    public String satelliteInformation(){
+        return "integrated_management/satelliteInformation";
+    }
+
+
 }

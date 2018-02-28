@@ -14,4 +14,5 @@ public interface SatelliteLibDao extends BaseDao<SatelliteLib> {
     Integer getTotal(SatelliteLib satelliteLib);
 
     List<SatelliteLib> select(PageBean<SatelliteLib> pageBean);
+
 }
