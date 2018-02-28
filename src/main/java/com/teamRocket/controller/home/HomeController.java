@@ -1,9 +1,12 @@
 package com.teamRocket.controller.home;
-
-import com.teamRocket.domain.BaseResult;
+import com.teamRocket.domain.User;
+import com.teamRocket.service.HomeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by dllo on 18/2/3.
@@ -29,4 +32,19 @@ public class HomeController {
         return "home/project_other";
     }
 
+    /* 个人工作平台页面,点击申请人进入用户查询界面*/
+    @RequestMapping(value = "/select_user_gridwindow")
+    public String select_user_gridwindow(){
+        return "home/select_user_gridwindow";
+    }
+
+
+    @Resource
+    private HomeService homeService;
+    /* 申请人 */
+    @RequestMapping(value = "/select_username")
+    @ResponseBody
+    public List<User> listUser(){
+        return homeService.userName();
+    }
 }

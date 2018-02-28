@@ -153,6 +153,56 @@
         t.setChecked(!t.getChecked());
     }
 
+    /* 点击申请人跳出界面 */
+    function onButtonEdit1(e) {
+        var btnEdit = this;
+        mini.open({
+            url: "/select_user_gridwindow",
+            title: "选择用户列表",
+            width: '60%',
+            height: '60%',
+            showMaxButton: true,
+            ondestroy: function (action) {
+                if (action == "ok") {
+                    var iframe = this.getIFrameEl();
+                    var data = iframe.contentWindow.GetData();
+                    data = mini.clone(data);    //必须
+                    if (data) {
+                        console.log(data.userId + "--" + data.username);
+                        btnEdit.setValue(data.userId);
+                        btnEdit.setText(data.username);
+                    }
+                }
+            }
+        });
+
+    }
+
+    /* 点击所属部门跳出界面 */
+    function onButtonEdit2(e) {
+        var btnEdit = this;
+        mini.open({
+            url: "/select_staff_role_gridwindow",
+            title: "部门选择表",
+            width: '60%',
+            height: '60%',
+            showMaxButton: true,
+            ondestroy: function (action) {
+                if (action == "ok") {
+                    var iframe = this.getIFrameEl();
+                    var data = iframe.contentWindow.GetData();
+                    data = mini.clone(data);    //必须
+                    if (data) {
+                        console.log(data.depId + "--" + data.depName);
+                        btnEdit.setValue(data.depId);
+                        btnEdit.setText(data.depName);
+                    }
+                }
+            }
+        });
+
+    }
+
 </script>
 
 </body>
