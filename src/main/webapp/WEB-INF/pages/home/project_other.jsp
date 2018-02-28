@@ -2,10 +2,10 @@
   Created by IntelliJ IDEA.
   User: dllo
   Date: 18/2/5
-  Time: 上午8:57
+  Time: 上午8:47
   To change this template use File | Settings | File Templates.
 --%>
-<%--个人中心的已办任务--%>
+<%--个人中心的已办业务--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
 <html>
@@ -74,7 +74,7 @@
 
 <%--当前位置行--%>
 <div id="location">
-    <img src="../../../img/researchProject/waitLocation.png">
+    <img src="../../../img/researchProject/yibanyewu.png">
 </div>
 
 <%--查询条件--%>
@@ -132,6 +132,7 @@
     </div>
 </div>
 
+
 <script type="text/javascript">
     mini.parse();
 
@@ -152,12 +153,57 @@
         t.setChecked(!t.getChecked());
     }
 
+    /* 点击申请人跳出界面 */
+    function onButtonEdit1(e) {
+        var btnEdit = this;
+        mini.open({
+            url: "/select_user_gridwindow",
+            title: "选择用户列表",
+            width: '60%',
+            height: '60%',
+            showMaxButton: true,
+            ondestroy: function (action) {
+                if (action == "ok") {
+                    var iframe = this.getIFrameEl();
+                    var data = iframe.contentWindow.GetData();
+                    data = mini.clone(data);    //必须
+                    if (data) {
+                        console.log(data.userId + "--" + data.username);
+                        btnEdit.setValue(data.userId);
+                        btnEdit.setText(data.username);
+                    }
+                }
+            }
+        });
 
+    }
 
+    /* 点击所属部门跳出界面 */
+    function onButtonEdit2(e) {
+        var btnEdit = this;
+        mini.open({
+            url: "/select_department_gridwindow",
+            title: "部门选择表",
+            width: '60%',
+            height: '60%',
+            showMaxButton: true,
+            ondestroy: function (action) {
+                if (action == "ok") {
+                    var iframe = this.getIFrameEl();
+                    var data = iframe.contentWindow.GetData();
+                    data = mini.clone(data);    //必须
+                    if (data) {
+                        console.log(data.depId + "--" + data.depName);
+                        btnEdit.setValue(data.depId);
+                        btnEdit.setText(data.depName);
+                    }
+                }
+            }
+        });
 
+    }
 
 </script>
-
 
 </body>
 
