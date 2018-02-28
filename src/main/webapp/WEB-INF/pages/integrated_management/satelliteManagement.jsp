@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <title>卫星库管理人管理</title>
@@ -56,6 +57,7 @@
         html body .group_add .mini-buttonedit-icon {
             background: url(../../../scripts/miniui/res/images/group_add.png) no-repeat 50% 50%;
         }
+
         #location {
             height: 30px;
             background-image: url("../../../img/query/head_color.jpg");
@@ -64,103 +66,114 @@
         }
     </style>
 </head>
+<body>
 
 <div id="location">
     <img src="../../../img/query/satelliteLibs.png">
 </div>
 
 <div id="query_condition" class="mini-panel" title="综合查询" iconCls="icon-pull" style="width:100%;height:auto;"
-     showCollapseButton="true" collapseOnTitleClick="true"
-     expanded="true"
+     collapseOnTitleClick="true" expanded="true"
 >
     <table id="query_condition_table" border="0" cellpadding="1" cellspacing="2"
            style="font-size: 13px;width: 100%;height: 30px;text-align: center">
         <tr>
-            <td class="td1">申请时间</td>
+            <td class="td1">卫星库名称</td>
             <td class="td2">
-                <input name="" class="mini-datepicker" width="200px" allowInput="false" required="true"/>
+                <input id="storeName" name="storeName" class="mini-textbox" width="200px"/>
             </td>
-            <td class="td1">申请人</td>
+            <td class="td1">管理人员</td>
             <td class="td2">
-                <input id="btnEdit1" name="" allowInput="false"
-                       class="mini-buttonedit user_add" onbuttonclick="onButtonEdit1" width="200px"/>
+                <input id="manager" name="manager" allowInput="false"
+                       class="mini-buttonedit user_add" onbuttonclick="onButtonEdit" width="200px"/>
             </td>
         </tr>
     </table>
     <%--拒绝删除按钮--%>
     <div style="background-color: #ededed;width: 100%;height: 26px">
-        <a class="mini-button" img="../../scripts/miniui/res/images/accept.png" style="float: right;margin-right: 10px">同意</a>
+        <a class="mini-button" img="../../scripts/miniui/res/images/add.png"
+           style="float: right;margin-right: 10px" onclick="add()">新增</a>
         <span style="float: right">&nbsp;&nbsp;</span>
-        <a class="mini-button" img="../../scripts/miniui/res/images/cancel.png" style="float: right;">拒绝</a>
+        <a class="mini-button" img="../../scripts/miniui/res/images/delete.png" style="float: right;">删除</a>
         <span style="float: right">&nbsp;&nbsp;</span>
-        <a class="mini-button" img="../../../scripts/miniui/res/images/system_search.gif" style="float:right;">查询</a>
+        <a class="mini-button" img="../../../scripts/miniui/res/images/system_search.gif" style="float:right;"
+           onclick="search()">查询</a>
     </div>
 
     <%----%>
     <div id="datagrid1" class="mini-datagrid" style="width:100%;height:280px;"
-         url="" idField="id" multiSelect="true"
+         url="selectSatelliteLibs" idField="id" multiSelect="true" allowResize="true"
+         sizeList="[2,5,10]"
+         pageSize="5"
     >
         <div property="columns">
             <div type="checkcolumn"></div>
-            <div field="" width="120" headerAlign="center" allowSort="true">机组名称</div>
-            <div field="" width="120" headerAlign="center" allowSort="true">机组管理人</div>
-            <div field="" width="120" headerAlign="center" allowSort="true">创建日期</div>
+            <div field="storeName" width="120" headerAlign="center" allowSort="true">卫星库</div>
+            <div field="manageStaffName" width="120" headerAlign="center" allowSort="true">管理人员</div>
+            <div field="createDate" width="120" headerAlign="center" allowSort="true">创建日期</div>
+            <div field="effectFlag" width="120" headerAlign="center" allowSort="true">是否有效</div>
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
+
     mini.parse();
     var grid = mini.get('datagrid1');
 
-    //    grid.setUrl("searchClazz.action");
+    grid.load();
 
-    // grid.load();
-
-    function onButtonEdit1(e) {
-        var btnEdit = this;
+    /* 管理人员查询 */
+    function onButtonEdit(e) {
+        var manager = this;
         mini.open({
-            // url: "select_1_gridwindow",
-            title: "选择申请人列表",
-            width: '80%',
-            height: '80%',
-            showMaxButton: true,
+            url: "selectManager",
+            title: "管理人员",
+            width: 300,
+            height: 400,
             ondestroy: function (action) {
                 if (action == "ok") {
                     var iframe = this.getIFrameEl();
                     var data = iframe.contentWindow.GetData();
                     data = mini.clone(data);    //必须
                     if (data) {
-                        console.log(data.cid + "--" + data.cname);
-                        btnEdit.setValue(data.cid);
-                        btnEdit.setText(data.cname);
+                        manager.setValue(data.manageStaffNo);
+                        manager.setText(data.manageStaffName);
                     }
+                }else {
+                    manager.setText(null);
                 }
             }
         });
 
     }
-    function onButtonEdit2(e) {
-        var btnEdit = this;
+
+    function onKeyEnter(e) {
+        search();
+    }
+
+    /* 查询方法 */
+    function search() {
+        var storeName = mini.get("storeName").getValue();
+        var manager = mini.get("manager").getText();
+        grid.load({storeName: storeName, manageStaffName: manager});
+    }
+
+    /* 增加 */
+    function add() {
         mini.open({
-            // url: "select_2_gridwindow",
-            title: "选择所属部门列表",
-            width: '80%',
-            height: '80%',
-            showMaxButton: true,
+            targetWindow: window,
+            url: "",
+            title: "新增卫星库", width: 300, height: 400,
+            onload: function () {
+                var iframe = this.getIFrameEl();
+                var data = { action: "new" };
+                iframe.contentWindow.SetData(data);
+            },
             ondestroy: function (action) {
-                if (action == "ok") {
-                    var iframe = this.getIFrameEl();
-                    var data = iframe.contentWindow.GetData();
-                    data = mini.clone(data);    //必须
-                    if (data) {
-                        btnEdit.setValue(data.sid);
-                        btnEdit.setText(data.sname);
-                    }
-                }
+                grid.reload();
             }
         });
-
     }
 
 </script>

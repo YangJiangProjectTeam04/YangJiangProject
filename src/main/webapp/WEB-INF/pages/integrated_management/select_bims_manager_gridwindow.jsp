@@ -27,11 +27,7 @@
     </style>
 </head>
 <body>
-<div class="mini-toolbar" style="text-align:center;line-height:30px;" borderStyle="border:0;">
-    <label>班级名称：</label>
-    <input id="key" class="mini-textbox" style="width:150px;" onenter="onKeyEnter"/>
-    <a class="mini-button" style="width:60px;" onclick="search()">查询</a>
-</div>
+
 <div class="mini-fit">
 
     <div id="grid1" class="mini-datagrid"
@@ -42,10 +38,8 @@
          onrowdblclick="onRowDblClick">
 
         <div property="columns">
-            <div field="cid" width="120"
-                 headerAlign="center" allowSort="true">班级编号</div>
-            <div field="cname" width="100" headerAlign="center" allowSort="true">班级名称</div>
-            <div field="cinfor" width="100%" headerAlign="center" allowSort="true">班级信息</div>
+            <div field="manageStaffNo" width="120" headerAlign="center" allowSort="true">管理人员编号</div>
+            <div field="manageStaffName" width="120" headerAlign="center" allowSort="true">管理人员名称</div>
         </div>
     </div>
 
@@ -60,20 +54,18 @@
     var grid = mini.get("grid1");
 
     //动态设置URL
-    grid.setUrl("");
+    grid.setUrl("selectSatelliteLibs");
     grid.load();
 
     function GetData() {
         var row = grid.getSelected();
         return row;
     }
-    function search() {
-        var key = mini.get("key").getValue();
-        grid.load({x: key});
-    }
+
     function onKeyEnter(e) {
         search();
     }
+
     function onRowDblClick(e) {
         onOk();
     }
