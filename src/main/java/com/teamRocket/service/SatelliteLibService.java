@@ -13,4 +13,7 @@ public interface SatelliteLibService {
 
     /* 插入 */
     int insert(SatelliteLib satelliteLib);
+
+    /* 删除 */
+    boolean delete(String storeName);
 }

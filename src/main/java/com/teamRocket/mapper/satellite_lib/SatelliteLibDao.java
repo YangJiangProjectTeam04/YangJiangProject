@@ -17,4 +17,7 @@ public interface SatelliteLibDao extends BaseDao<SatelliteLib> {
 
     /* 根据卫星库名查询卫星库*/
     Integer getSatelliteLib(SatelliteLib satelliteLib);
+
+    /* 删除卫星库 */
+    Integer delete(String storeName);
 }

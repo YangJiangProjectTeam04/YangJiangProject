@@ -63,5 +63,17 @@ public class SatelliteLibServiceImpl implements SatelliteLibService {
         return 1;
     }
 
+    @Override
+    public boolean delete(String storeName) {
+        // 判断是否成功删除
+        int flag = satelliteLibDao.delete(storeName);
+
+        if (flag != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 }

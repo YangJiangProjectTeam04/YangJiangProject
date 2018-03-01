@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by bobbi on 18/2/7.
@@ -116,6 +119,49 @@ public class IntegratedManagementController {
         } else {
             return new BaseResult(2, "保存失败");
         }
+    }
+
+    /* 删除 */
+    @RequestMapping(value = "/delete")
+    @ResponseBody
+    public BaseResult delete(String data) {
+
+        System.out.println("删除？");
+        System.out.println(data);
+
+
+//        List<String> strs = stringToList(data);
+//        for (String str : strs) {
+//            System.out.println(str);
+//            System.out.println();
+//        }
+
+//        for (Object data : names) {
+//        JSONObject object = JSONObject.fromObject(data);
+//
+//        SatelliteLib satelliteLibs = (SatelliteLib) JSONObject.toBean(object, SatelliteLib.class);
+//        System.out.println(satelliteLibs);
+
+//        for (SatelliteLib satelliteLib : satelliteLibs) {
+//            System.out.println(satelliteLib);
+//            System.out.println("-----------------");
+//        }
+//
+//            System.out.println("data " + data);
+//            System.out.println("sate " + satelliteLib);
+//        }
+
+        boolean flag = satelliteLibService.delete(data);
+        if (flag) {
+            return new BaseResult(1, "已删除");
+        }
+        return new BaseResult(2, "发送错误");
+    }
+
+    /* String转List */
+    public List<String> stringToList(String strs) {
+        String str[] = strs.split(",");
+        return Arrays.asList(str);
     }
 
 }

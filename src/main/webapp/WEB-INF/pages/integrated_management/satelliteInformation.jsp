@@ -56,7 +56,8 @@
                        required="true"/>
             </td>
             <td>
-                <a class="mini-button" onclick="onButtonEdit1" style="width:80px;">管理人员</a>
+                <a class="mini-button" onclick="onButtonEdit1" plain="true"
+                   img="../../../scripts/miniui/res/images/user_red.png"></a>
             </td>
         </tr>
 
@@ -81,7 +82,8 @@
                        required="true"/>
             </td>
             <td>
-                <a class="mini-button" onclick="onButtonEdit2" style="width:80px;">创建人员</a>
+                <a class="mini-button" onclick="onButtonEdit2"  plain="true"
+                   img="../../../scripts/miniui/res/images/user_b.png"></a>
             </td>
         </tr>
 

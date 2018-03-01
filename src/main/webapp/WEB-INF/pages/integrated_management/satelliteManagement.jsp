@@ -89,18 +89,23 @@
             </td>
         </tr>
     </table>
-    <%--拒绝删除按钮--%>
+    <%--增加删除按钮--%>
     <div style="background-color: #ededed;width: 100%;height: 26px">
         <a class="mini-button" img="../../scripts/miniui/res/images/add.png"
            style="float: right;margin-right: 10px" onclick="add()">新增</a>
+
         <span style="float: right">&nbsp;&nbsp;</span>
-        <a class="mini-button" img="../../scripts/miniui/res/images/delete.png" style="float: right;">删除</a>
+
+        <a class="mini-button" img="../../scripts/miniui/res/images/delete.png"
+           style="float: right;" onclick="remove()">删除</a>
+
         <span style="float: right">&nbsp;&nbsp;</span>
+
         <a class="mini-button" img="../../../scripts/miniui/res/images/system_search.gif" style="float:right;"
            onclick="search()">查询</a>
     </div>
 
-    <%----%>
+    <%--表格--%>
     <div id="datagrid1" class="mini-datagrid" style="width:100%;height:280px;"
          url="selectSatelliteLibs" idField="id" multiSelect="true" allowResize="true"
          sizeList="[2,5,10]"
@@ -108,10 +113,10 @@
     >
         <div property="columns">
             <div type="checkcolumn"></div>
-            <div field="storeName" width="120" headerAlign="center" allowSort="true">卫星库</div>
-            <div field="manageStaffName" width="120" headerAlign="center" allowSort="true">管理人员</div>
-            <div field="createDate" width="120" headerAlign="center" allowSort="true" >创建日期</div>
-            <div field="effectFlag" width="120" headerAlign="center" allowSort="true">是否有效</div>
+            <div field="storeName" width="120" headerAlign="center" allowSort="true" value="">卫星库</div>
+            <div field="manageStaffName" width="120" headerAlign="center" allowSort="true" value="">管理人员</div>
+            <div field="createDate" width="120" headerAlign="center" allowSort="true" value="">创建日期</div>
+            <div field="effectFlag" width="120" headerAlign="center" allowSort="true" value="">是否有效</div>
         </div>
     </div>
 </div>
@@ -140,7 +145,7 @@
                         manager.setValue(data.userId);
                         manager.setText(data.username);
                     }
-                }else {
+                } else {
                     manager.setText(null);
                 }
             }
@@ -167,13 +172,47 @@
             title: "新增卫星库", width: 575, height: 230,
             onload: function () {
                 var iframe = this.getIFrameEl();
-                var data = { action: "new" };
+                var data = {action: "new"};
                 iframe.contentWindow.SetData(data);
             },
             ondestroy: function (action) {
                 grid.reload();
             }
         });
+    }
+
+    /* 删除 */
+    function remove() {
+
+        var rows = grid.getSelecteds();
+
+        if (rows.length > 0) {
+
+            if (confirm("确定删除选中记录？")) {
+
+                for (var i = 0, l = rows.length; i < l; i++) {
+
+                    $.ajax({
+                        url: "delete",
+                        type: "get",
+                        data: {data: rows[i].storeName},
+                        success: function (text) {
+                            if (text.resultCode == 1) {
+
+                                window.console.log(text.resultMsg);
+                                grid.reload();
+
+                            } else {
+                                alert(text.resultMsg);
+                            }
+                        }
+                    });
+
+                }
+            }
+        } else {
+            alert("请选中一条记录");
+        }
     }
 
 </script>
