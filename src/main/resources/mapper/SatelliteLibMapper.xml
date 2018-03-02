@@ -53,16 +53,20 @@
 
     </select>
 
-    <!-- 根据数据库名查询，返回条数 -->
-    <select id="getSatelliteLib" resultType="java.lang.Integer" parameterType="com.teamRocket.domain.SatelliteLib">
-        SELECT COUNT(BIMS_STORE_NAME) FROM pms_bims_store
+    <!-- 根据数据库名查询 -->
+    <select id="findOne" resultMap="satelliteLib"
+            parameterType="com.teamRocket.domain.SatelliteLib">
+        SELECT
+        <include refid="satelliteLibColumn"/>
+        FROM pms_bims_store
         WHERE BIMS_STORE_NAME = '${storeName}'
     </select>
 
     <!-- 插入数据 -->
     <insert id="insert" parameterType="com.teamRocket.domain.SatelliteLib" keyProperty="BIMSStoreId">
         INSERT INTO pms_bims_store (<include refid="satelliteLibColumn"/>)
-        VALUES (#{BIMSStoreId},#{storeName},#{manageStaffNo},#{manageStaffName},#{effectFlag},#{createStaffNo},#{createStaffName},#{createDate})
+        VALUES
+        (#{BIMSStoreId},#{storeName},#{manageStaffNo},#{manageStaffName},#{effectFlag},#{createStaffNo},#{createStaffName},#{createDate})
     </insert>
 
     <!-- 删除数据 -->

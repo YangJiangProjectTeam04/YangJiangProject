@@ -1,45 +1,39 @@
 package com.teamRocket.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
- * Created by bobbi on 18/2/8.
+ * Created by bobbi on 18/3/1.
  */
-/*卫星库*/
-public class SatelliteLib implements Serializable {
-    private String BIMSStoreId;
-    private String storeName;
-    private String manageStaffNo;
-    private String manageStaffName;
-    private String effectFlag;
-    private String createStaffNo;
-    private String createStaffName;
-    private String createDate;
+public class Mac implements Serializable {
+    private String id, no, name,
+            manageStaffNo, manageStaffName,
+            effectFlag,
+            createStaffNo, createStaffName, createDate;
 
     @Override
     public String toString() {
-        return "SatelliteLib{" +
-                "BIMSStoreId='" + BIMSStoreId + '\'' +
-                ", storeName='" + storeName + '\'' +
+        return "Mac{" +
+                "id='" + id + '\'' +
+                ", no='" + no + '\'' +
+                ", name='" + name + '\'' +
                 ", manageStaffNo='" + manageStaffNo + '\'' +
                 ", manageStaffName='" + manageStaffName + '\'' +
                 ", effectFlag='" + effectFlag + '\'' +
                 ", createStaffNo='" + createStaffNo + '\'' +
                 ", createStaffName='" + createStaffName + '\'' +
-                ", createDate=" + createDate +
+                ", createDate='" + createDate + '\'' +
                 '}';
     }
 
-    public SatelliteLib() {
+    public Mac() {
     }
 
-    public SatelliteLib(String storeName, String manageStaffNo,
-                        String manageStaffName, String effectFlag,
-                        String createStaffNo, String createStaffName,
-                        String createDate) {
+    public Mac(String id, String no, String name, String manageStaffNo, String manageStaffName, String effectFlag, String createStaffNo, String createStaffName, String createDate) {
 
-        this.storeName = storeName;
+        this.id = id;
+        this.no = no;
+        this.name = name;
         this.manageStaffNo = manageStaffNo;
         this.manageStaffName = manageStaffName;
         this.effectFlag = effectFlag;
@@ -48,21 +42,29 @@ public class SatelliteLib implements Serializable {
         this.createDate = createDate;
     }
 
-    public String getBIMSStoreId() {
+    public String getId() {
 
-        return BIMSStoreId;
+        return id;
     }
 
-    public void setBIMSStoreId(String BIMSStoreId) {
-        this.BIMSStoreId = BIMSStoreId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getStoreName() {
-        return storeName;
+    public String getNo() {
+        return no;
     }
 
-    public void setStoreName(String storeName) {
-        this.storeName = storeName;
+    public void setNo(String no) {
+        this.no = no;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getManageStaffNo() {

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTDMapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamRocket.mapper.mac.MacDao">
+
+    <sql id="macColumn">
+        MAC_ID,MAC_NO,MAC_NAME,MAC_MANAGE_STAFF_NO,MAC_MANAGE_STAFF_NAME,EFFECT_FLAG,CREATE_STAFF_NO,CREATE_STAFF_NAME,CREATE_DATE
+    </sql>
+
+    <resultMap id="mac" type="com.teamRocket.domain.Mac">
+        <result property="id" column="MAC_ID"/>
+        <result property="no" column="MAC_NO"/>
+        <result property="name" column="MAC_NAME"/>
+        <result property="manageStaffNo" column="MAC_MANAGE_STAFF_NO"/>
+        <result property="manageStaffName" column="MAC_MANAGE_STAFF_NAME"/>
+        <result property="effectFlag" column="EFFECT_FLAG"/>
+        <result property="createStaffNo" column="CREATE_STAFF_NO"/>
+        <result property="createStaffName" column="CREATE_STAFF_NAME"/>
+        <result property="createDate" column="CREATE_DATE"/>
+    </resultMap>
+
+    <select id="select" resultMap="mac" parameterType="com.teamRocket.utils.page.PageBean">
+        SELECT
+        <include refid="macColumn"/>
+        FROM
+        pms_mac
+        <where>
+            1=1
+            <if test="parameter.name != null and parameter.name != ''">
+                AND MAC_NAME LIKE '%${parameter.name}%'
+            </if>
+            <if test="parameter.manageStaffName != null and parameter.manageStaffName != ''">
+                AND MAC_MANAGE_STAFF_NAME = '${parameter.manageStaffName}'
+            </if>
+        </where>
+        LIMIT #{startIndex},#{pageSize}
+    </select>
+
+    <!-- 返回总条数 -->
+    <select id="getTotal" resultType="java.lang.Integer" parameterType="com.teamRocket.domain.Mac">
+
+        SELECT count(MAC_NAME) FROM pms_mac
+        <where>
+            1=1
+            <if test="name != null and name != ''">
+                AND MAC_NAME LIKE '%${name}%'
+            </if>
+            <if test="manageStaffName != null and manageStaffName != ''">
+                AND MAC_MANAGE_STAFF_NAME = '${manageStaffName}'
+            </if>
+        </where>
+
+    </select>
+
+    <!-- 根据数据库名查询 -->
+    <select id="findOne" resultMap="mac"
+            parameterType="com.teamRocket.domain.Mac">
+        SELECT
+        <include refid="macColumn"/>
+        FROM pms_mac WHERE MAC_NAME = '${name}'
+    </select>
+
+    <!-- 插入数据 -->
+    <insert id="insert" parameterType="com.teamRocket.domain.Mac" keyProperty="BIMSStoreId">
+        INSERT INTO pms_mac (<include refid="macColumn"/>)
+        VALUES
+        (#{id},#{no},#{name},#{manageStaffNo},#{manageStaffName},#{effectFlag},#{createStaffNo},#{createStaffName},#{createDate})
+    </insert>
+
+    <!-- 删除数据 -->
+    <delete id="delete" parameterType="java.lang.String">
+        DELETE FROM pms_mac WHERE MAC_NAME = #{name};
+    </delete>
+</mapper>

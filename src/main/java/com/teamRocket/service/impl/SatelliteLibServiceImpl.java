@@ -40,9 +40,10 @@ public class SatelliteLibServiceImpl implements SatelliteLibService {
     public int insert(SatelliteLib satelliteLib) {
 
         // 判断卫星库是否存在
-        int satelliteLibTotal = satelliteLibDao.getSatelliteLib(satelliteLib);
+        SatelliteLib s = satelliteLibDao.findOne(satelliteLib);
+        System.out.println(s);
 
-        if (satelliteLibTotal == 0) {
+        if (s == null) {
             // 重新设置 是否有效
             if (satelliteLib.getEffectFlag().equals("1")) {
                 satelliteLib.setEffectFlag("Y");
@@ -63,6 +64,7 @@ public class SatelliteLibServiceImpl implements SatelliteLibService {
         return 1;
     }
 
+    /* 删除 */
     @Override
     public boolean delete(String storeName) {
         // 判断是否成功删除

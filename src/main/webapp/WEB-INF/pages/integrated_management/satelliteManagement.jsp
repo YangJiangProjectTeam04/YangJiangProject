@@ -84,24 +84,26 @@
             </td>
             <td class="td1">管理人员</td>
             <td class="td2">
-                <input id="manager" name="manager" allowInput="false"
-                       class="mini-buttonedit user_add" onbuttonclick="onButtonEdit" width="200px"/>
+                <input id="manager" name="manageStaffName" class="mini-textbox" width="200px"/>
+                <a class="mini-button" onclick="onButtonEdit" plain="true"
+                   img="../../../scripts/miniui/res/images/user_add.png"></a>
             </td>
         </tr>
     </table>
     <%--增加删除按钮--%>
     <div style="background-color: #ededed;width: 100%;height: 26px">
         <a class="mini-button" img="../../scripts/miniui/res/images/add.png"
-           style="float: right;margin-right: 10px" onclick="add()">新增</a>
+           style="float: right;" onclick="add()">新增</a>
 
         <span style="float: right">&nbsp;&nbsp;</span>
 
         <a class="mini-button" img="../../scripts/miniui/res/images/delete.png"
-           style="float: right;" onclick="remove()">删除</a>
+           style="float: right;margin-right: 10px" onclick="remove()">删除</a>
 
         <span style="float: right">&nbsp;&nbsp;</span>
 
-        <a class="mini-button" img="../../../scripts/miniui/res/images/system_search.gif" style="float:right;"
+        <a class="mini-button" img="../../../scripts/miniui/res/images/system_search.gif"
+           style="float:right;margin-right: 10px"
            onclick="search()">查询</a>
     </div>
 
@@ -130,10 +132,10 @@
 
     /* 管理人员查询 */
     function onButtonEdit(e) {
-        var manager = this;
+        var manageStaffName = mini.get("manageStaffName");
         mini.open({
             url: "select_user_gridwindow",
-            title: "管理人员",
+            title: "人员信息",
             width: 300,
             height: 400,
             ondestroy: function (action) {
@@ -142,15 +144,13 @@
                     var data = iframe.contentWindow.GetData();
                     data = mini.clone(data);    //必须
                     if (data) {
-                        manager.setValue(data.userId);
-                        manager.setText(data.username);
+                        manageStaffName.setValue(data.username);
                     }
                 } else {
-                    manager.setText(null);
+                    manageStaffName.setValue("");
                 }
             }
         });
-
     }
 
     function onKeyEnter(e) {
@@ -161,6 +161,7 @@
     function search() {
         var storeName = mini.get("storeName").getValue();
         var manager = mini.get("manager").getText();
+
         grid.load({storeName: storeName, manageStaffName: manager});
     }
 
@@ -193,9 +194,9 @@
                 for (var i = 0, l = rows.length; i < l; i++) {
 
                     $.ajax({
-                        url: "delete",
+                        url: "deleteSatelliteLib",
                         type: "get",
-                        data: {data: rows[i].storeName},
+                        data: {name: rows[i].storeName},
                         success: function (text) {
                             if (text.resultCode == 1) {
 
