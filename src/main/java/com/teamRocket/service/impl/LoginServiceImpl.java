@@ -25,7 +25,7 @@ public class LoginServiceImpl implements LoginService {
     @Resource
     private UserDao userDao;
 
-    public void findUser(User user) throws TRException {
+    public User findUser(User user) throws TRException {
 
         //进行密码md5加密
         String passwordEncode = CheckSumBuilder.getMD5(user.getPassword());
@@ -40,6 +40,7 @@ public class LoginServiceImpl implements LoginService {
             throw new TRException("用户名密码不匹配");
 
         }
+        return users.get(0);
 
     }
 

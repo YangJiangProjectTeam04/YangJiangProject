@@ -1,5 +1,7 @@
 package com.teamRocket.controller.declare_and_review;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DeclareAndReviewController {
 
     /*部门经理审批页面*/
+    @RequiresRoles("manager")
+    @RequiresPermissions("user:*")
     @RequestMapping(value = "/declareAndReview")
     public String declare() {
         return "declare_and_review/declareAndReview";
@@ -20,10 +24,14 @@ public class DeclareAndReviewController {
     }
 
     /*科技办经理审批页面*/
+    @RequiresRoles("admin")
+    @RequiresPermissions("user:*")
     @RequestMapping(value = "/scienceMangerReview")
     public String bridgeReview() {
         return "declare_and_review/scienceMangerReview";
     }
+    @RequiresRoles("admin")
+    @RequiresPermissions("user:*")
     @RequestMapping(value = "/bridgeManager")
     public String bridgeManager() {
         return "declare_and_review/bridgeManager";

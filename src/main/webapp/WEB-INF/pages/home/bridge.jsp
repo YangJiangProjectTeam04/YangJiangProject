@@ -8,8 +8,9 @@
 
 <%--桥梁:点击左边个人中心之后,在右边出现tab1,tab2,
 这里用的是data中的tabs.txt描述写左边的tab1,和tab2标题的名字--%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"  isErrorPage="true"%>
 <%@ page isELIgnored="false" %>
+<%@page errorPage="../error.jsp" %>
 <html>
 <head>
     <title>桥梁,点击出现分枝表</title>

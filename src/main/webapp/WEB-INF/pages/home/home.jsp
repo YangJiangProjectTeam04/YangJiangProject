@@ -8,7 +8,7 @@
 
 <%--主页:登录进来之后进入的页面,主要大框--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page isELIgnored="false" %>
+<%@ page isELIgnored="false"  isErrorPage="true"%>
 <html>
 <head>
     <title>主页呢</title>

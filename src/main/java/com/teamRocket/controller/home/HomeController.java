@@ -6,6 +6,9 @@ import com.teamRocket.domain.User;
 import com.teamRocket.service.DepartmentService;
 import com.teamRocket.service.HomeService;
 import com.teamRocket.utils.page.MINIBaseResult;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +29,7 @@ public class HomeController {
         return "home/person";
     }
 
+    @RequiresPermissions(value = {"user:*"},logical = Logical.AND)
     @RequestMapping(value = "/bridge")
     public String bridge() {
         return "home/bridge";

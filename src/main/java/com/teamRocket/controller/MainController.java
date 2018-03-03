@@ -5,19 +5,28 @@ import com.teamRocket.domain.User;
 import com.teamRocket.service.DepartmentService;
 import com.teamRocket.service.HomeService;
 import com.teamRocket.utils.page.MINIBaseResult;
+import org.apache.shiro.authz.UnauthenticatedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller("mainController")
 public class MainController {
+
 
     /* 用于测试项目是否能进入启动页 */
     @RequestMapping(value = {"","/"})
     public String login(){
         return "login/login";
+    }
+
+    /* 配置错误页 */
+    @RequestMapping(value = "/error")
+    public String error(){
+        return "error";
     }
 
     /*从登陆页面跳转到个人中心home界面*/

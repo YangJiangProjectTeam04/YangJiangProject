@@ -3,6 +3,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
+<%@page errorPage="../error.jsp" %>
 <html>
 <head>
     <title>项目基本信息</title>

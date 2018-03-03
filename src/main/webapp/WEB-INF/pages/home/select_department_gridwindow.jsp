@@ -3,7 +3,8 @@
 --%>
 <%--此页面是点击申请人之后弹出的窗口页面,进行用户的查询添加功能--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page isELIgnored="false" %>
+<%@ page isELIgnored="false" isErrorPage="true"%>
+<%@page errorPage="../error.jsp" %>
 
 <html>
 <head>

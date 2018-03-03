@@ -7,7 +7,8 @@
 --%>
 <%--个人中心的待办业务--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page isELIgnored="false" %>
+<%@ page isELIgnored="false" isErrorPage="true"%>
+<%@page errorPage="../error.jsp" %>
 <html>
 <head>
     <title>待办任务</title>

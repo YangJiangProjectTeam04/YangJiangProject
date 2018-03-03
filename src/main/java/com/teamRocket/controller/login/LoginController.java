@@ -7,7 +7,15 @@ import com.teamRocket.service.LoginService;
 import com.teamRocket.service.TRException;
 import com.teamRocket.utils.TRStringUtils;
 import net.sf.json.JSONObject;
+import org.apache.log4j.Logger;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.UnauthenticatedException;
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.web.util.SavedRequest;
+import org.apache.shiro.web.util.WebUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -22,14 +30,18 @@ import java.io.IOException;
 @Controller("loginController")
 public class LoginController {
 
+    private static final Logger logger = Logger.getLogger(LoginController.class);
     @Resource
     private LoginService loginService;
     private String code;
 
+
     /* 登录判断方法 */
     @RequestMapping(value = "/loginHome", method = RequestMethod.POST)
     @ResponseBody
-    public BaseResult home(@RequestBody User user) {
+    public BaseResult home(@RequestBody User user, HttpServletRequest request, Model model) {
+
+        String msg;
 
         //空值判断
         if (!TRStringUtils.regular(user.getLoginName())) {
@@ -48,16 +60,27 @@ public class LoginController {
 
             //开始查询
             loginService.findUser(user);
+            //获取用户登录名和密码的token令牌
+            UsernamePasswordToken token = new UsernamePasswordToken(user.getLoginName(), user.getPassword());
+            //用户名密码记住我
+            token.setRememberMe(true);
+            //登录获得令牌
+            Subject subject = SecurityUtils.getSubject();
 
-            //处理自定义异常
+            subject.login(token);
+
+            if (subject.isAuthenticated()) {
+                //获取session,将前台获取的user存到session中
+                request.getSession().setAttribute("user", user);
+                SavedRequest savedRequest = WebUtils.getSavedRequest(request);
+            }
+            return new BaseResult(0, "成功");
+
         } catch (TRException e) {
-
+            //处理自定义异常
             return new BaseResult(2, e.getMessage());
 
         }
-
-        return new BaseResult(0, "成功");
-
     }
 
     /* 判断用户名是否存在于表中 */
@@ -106,7 +129,7 @@ public class LoginController {
     //邮箱验证码验证
     @RequestMapping(value = "/getEmailCode", method = RequestMethod.POST)
     @ResponseBody
-    public BaseResult getEmailCode(@RequestBody User user,HttpServletRequest request) {
+    public BaseResult getEmailCode(@RequestBody User user, HttpServletRequest request) {
 
         String code = (String) request.getSession(true).getAttribute("emailCode");
 
@@ -114,9 +137,9 @@ public class LoginController {
 
             loginService.codePass(user.getEmail());
 
-            if (code.equals(user.getEmail().trim())){
+            if (code.equals(user.getEmail().trim())) {
 
-                return new BaseResult(0,"成功");
+                return new BaseResult(0, "成功");
 
             }
 
@@ -133,7 +156,7 @@ public class LoginController {
     /* 发送短信验证码 */
     @RequestMapping(value = "/phonePass", method = RequestMethod.POST)
     @ResponseBody
-    public BaseResult phoneMessagePass(@RequestBody User user, HttpServletRequest request){
+    public BaseResult phoneMessagePass(@RequestBody User user, HttpServletRequest request) {
 
         try {
 
@@ -141,7 +164,7 @@ public class LoginController {
 
             //编译JSON对象
             CodeMessage codeMessage = (CodeMessage) JSONObject.toBean(
-                    JSONObject.fromObject(codeBody),CodeMessage.class);
+                    JSONObject.fromObject(codeBody), CodeMessage.class);
 
             request.getSession().setAttribute("phoneCode", codeMessage.getObj());
 
@@ -164,7 +187,7 @@ public class LoginController {
     /* 短信验证码验证 */
     @RequestMapping(value = "/getPhoneCode", method = RequestMethod.POST)
     @ResponseBody
-    public BaseResult getPhoneCode(@RequestBody User user,HttpServletRequest request){
+    public BaseResult getPhoneCode(@RequestBody User user, HttpServletRequest request) {
 
         String code = (String) request.getSession(true).getAttribute("phoneCode");
 
@@ -172,9 +195,9 @@ public class LoginController {
 
             loginService.codePass(user.getPhoneNumber());
 
-            if (code.equals(user.getPhoneNumber().trim())){
+            if (code.equals(user.getPhoneNumber().trim())) {
 
-                return new BaseResult(0,"成功");
+                return new BaseResult(0, "成功");
 
             }
 

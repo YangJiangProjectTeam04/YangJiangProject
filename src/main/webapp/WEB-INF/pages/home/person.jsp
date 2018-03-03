@@ -8,7 +8,8 @@
 
 <%--个人中心中的代办和已办任务的框架--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page isELIgnored="false"%>
+<%@ page isELIgnored="false" isErrorPage="true"%>
+<%@page errorPage="../error.jsp" %>
 <html>
 <head>
     <title>个人工作平台的代办任务和已办任务</title>

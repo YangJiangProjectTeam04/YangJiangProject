@@ -96,4 +96,28 @@
         STAFF_PHONE=#{phoneNumber}
     </select>
 
+    <!-- 查询是否存在该登录名 -->
+    <select id="selectByloginName"
+            parameterType="com.teamRocket.domain.User"
+            resultMap="userMap">
+        SELECT
+        <include refid="userColumn"/>
+        FROM staff_info
+        WHERE LOGIN_NAME=#{loginName}
+    </select>
+
+    <select id="getRoles" parameterType="String" resultType="String">
+        SELECT r.ROLE_NAME
+        FROM staff_u_info u,staff_role r
+        WHERE u.ROLE_ID=r.ROLE_ID
+        AND u.LOGIN_NAME=#{username}
+    </select>
+
+    <select id="getPermissions" parameterType="String" resultType="String">
+        SELECT p.PERMISSION_NAME
+        FROM staff_u_info u,staff_role r,staff_permission p
+        WHERE u.ROLE_ID=r.ROLE_ID
+        AND p.ROLE_ID=r.ROLE_ID
+        AND u.LOGIN_NAME=#{username}
+    </select>
 </mapper>

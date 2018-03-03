@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public interface LoginService {
 
-    void findUser(User user) throws TRException;
+    User findUser(User user) throws TRException;
 
     BaseResult<User> findUsername(User user);
 

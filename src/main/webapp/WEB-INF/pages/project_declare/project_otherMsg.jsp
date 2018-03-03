@@ -2,7 +2,8 @@
   Created by 蓝鸥科技有限公司  www.lanou3g.com.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page isELIgnored="false" %>
+<%@ page isELIgnored="false" isErrorPage="true"%>
+<%@page errorPage="../error.jsp" %>
 <html>
 <head>
     <title>项目其他信息</title>

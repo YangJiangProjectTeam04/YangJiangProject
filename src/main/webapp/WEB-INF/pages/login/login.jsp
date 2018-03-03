@@ -6,7 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page isELIgnored="false" %>
+<%@ page isELIgnored="false" isErrorPage="true"%>
+<%@page errorPage="../error.jsp" %>
 <html>
 <head>
     <title>首页</title>
@@ -211,6 +212,7 @@
 
     });
 
+    /*shiro部分*/
     function submitForm() {
 
         var form = new mini.Form("#form1");

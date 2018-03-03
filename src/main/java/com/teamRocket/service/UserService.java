@@ -1,21 +1,16 @@
-package com.teamRocket.mapper.login;
+package com.teamRocket.service;
 
 import com.teamRocket.domain.User;
-import com.teamRocket.mapper.BaseDao;
 
 import java.util.List;
 import java.util.Set;
 
-
-public interface UserDao extends BaseDao<User> {
+/**
+ * Created by dllo on 18/2/28.
+ */
+public interface UserService {
 
     List<User> selNameAndPassword(User user);
-
-    List<User> selUsername(User user);
-
-    List<User> selEmail(User user);
-
-    List<User> selPhone(User user);
 
     /*根据登录名搜索*/
     User selectByloginName(String loginName);
@@ -25,6 +20,4 @@ public interface UserDao extends BaseDao<User> {
 
     /*获得角色权限*/
     Set<String> getPermissions(String loginName);
-
-
 }
