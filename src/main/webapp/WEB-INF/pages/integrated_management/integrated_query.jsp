@@ -146,13 +146,14 @@
 
     // grid.load();
 
+    /* 点击申请人跳出界面 */
     function onButtonEdit1(e) {
         var btnEdit = this;
         mini.open({
-            // url: "select_1_gridwindow",
-            title: "选择申请人列表",
-            width: '80%',
-            height: '80%',
+            url: "/select_user_gridwindow",
+            title: "选择用户列表",
+            width: '60%',
+            height: '60%',
             showMaxButton: true,
             ondestroy: function (action) {
                 if (action == "ok") {
@@ -160,22 +161,23 @@
                     var data = iframe.contentWindow.GetData();
                     data = mini.clone(data);    //必须
                     if (data) {
-                        console.log(data.cid + "--" + data.cname);
-                        btnEdit.setValue(data.cid);
-                        btnEdit.setText(data.cname);
+                        console.log(data.userId + "--" + data.username);
+                        btnEdit.setValue(data.userId);
+                        btnEdit.setText(data.username);
                     }
                 }
             }
         });
 
     }
+    /* 点击所属部门跳出界面 */
     function onButtonEdit2(e) {
         var btnEdit = this;
         mini.open({
-            // url: "select_2_gridwindow",
-            title: "选择所属部门列表",
-            width: '80%',
-            height: '80%',
+            url: "/select_department_gridwindow",
+            title: "部门选择表",
+            width: '60%',
+            height: '60%',
             showMaxButton: true,
             ondestroy: function (action) {
                 if (action == "ok") {
@@ -183,15 +185,15 @@
                     var data = iframe.contentWindow.GetData();
                     data = mini.clone(data);    //必须
                     if (data) {
-                        btnEdit.setValue(data.sid);
-                        btnEdit.setText(data.sname);
+                        console.log(data.depId + "--" + data.depName);
+                        btnEdit.setValue(data.depId);
+                        btnEdit.setText(data.depName);
                     }
                 }
             }
         });
 
     }
-
 </script>
 </body>
 </html>

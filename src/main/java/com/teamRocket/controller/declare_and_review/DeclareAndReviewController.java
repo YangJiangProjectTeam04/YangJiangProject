@@ -24,8 +24,6 @@ public class DeclareAndReviewController {
     }
 
     /*科技办经理审批页面*/
-    @RequiresRoles("admin")
-    @RequiresPermissions("user:*")
     @RequestMapping(value = "/scienceMangerReview")
     public String bridgeReview() {
         return "declare_and_review/scienceMangerReview";
@@ -48,6 +46,9 @@ public class DeclareAndReviewController {
     }
 
     /*总经理审批页面*/
+    @RequiresRoles("general")
+    @RequiresPermissions("user:select \n" +
+            "user:create")
     @RequestMapping(value = "/bridgeGM")
     public String bridgeGM() {
         return "declare_and_review/bridgeGM";
@@ -58,6 +59,8 @@ public class DeclareAndReviewController {
     }
 
     /*评审小组评审页面*/
+    @RequiresRoles("admin")
+    @RequiresPermissions("user:*")
     @RequestMapping(value = "/bridgeReviewTeam")
     public String bridgeReviewTeam() {
         return "declare_and_review/bridgeReviewTeam";

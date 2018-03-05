@@ -10,9 +10,20 @@
 <html>
 <head>
     <title>没有授权页面</title>
+    <style>
+      body{
+          width: 100%;
+          height: 100%;
+          background-image: url("../../img/home/error.jpg");
+          background-size: 100%;
+          background-attachment: fixed;
+      }
+    </style>
 </head>
 <body>
 
-<p>您没有改授权,无法访问该页面</p>
+    <p>您没有改授权,无法访问该页面</p>
+
+
 </body>
 </html>
