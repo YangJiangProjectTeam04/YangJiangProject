@@ -1,15 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: dllo
-  Date: 18/2/27
-  Time: 21:00
+  Date: 18/3/1
+  Time: 20:39
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isErrorPage="true"%>
-<%@page errorPage="../error.jsp" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>卫星库信息</title>
+    <title>机组信息</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <script src="/scripts/boot.js" type="text/javascript"></script>
 
@@ -38,9 +37,9 @@
     <input name="id" class="mini-hidden"/>
     <table>
         <tr>
-            <td>卫星库名称</td>
+            <td>机组名称</td>
             <td>
-                <input name="storeName" class="mini-textbox" required="true"/>
+                <input name="name" class="mini-textbox" required="true"/>
             </td>
         </tr>
 
@@ -123,7 +122,7 @@
         }
 
         $.ajax({
-            url: "insertSatelliteLib",
+            url: "insertMac",
             type: 'post',
             data: {data: json, date: date},
 
@@ -226,3 +225,4 @@
 </script>
 </body>
 </html>
+

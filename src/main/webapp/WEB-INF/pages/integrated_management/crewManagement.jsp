@@ -57,6 +57,7 @@
         html body .group_add .mini-buttonedit-icon {
             background: url(../../../scripts/miniui/res/images/group_add.png) no-repeat 50% 50%;
         }
+
         #location {
             height: 30px;
             background-image: url("../../../img/query/head_color.jpg");
@@ -65,7 +66,7 @@
         }
     </style>
 </head>
-
+<body>
 <div id="location">
     <img src="../../../img/query/crewManagement.png">
 </div>
@@ -77,93 +78,143 @@
     <table id="query_condition_table" border="0" cellpadding="1" cellspacing="2"
            style="font-size: 13px;width: 100%;height: 30px;text-align: center">
         <tr>
-            <td class="td1">申请时间</td>
+            <td class="td1">机组名称</td>
             <td class="td2">
-                <input name="" class="mini-datepicker" width="200px" allowInput="false" required="true"/>
+                <input id="name" name="name" class="mini-textbox" width="200px"/>
             </td>
-            <td class="td1">申请人</td>
+            <td class="td1">机组管理人</td>
             <td class="td2">
-                <input id="btnEdit1" name="" allowInput="false"
-                       class="mini-buttonedit user_add" onbuttonclick="onButtonEdit1" width="200px"/>
+                <input id="manageStaffName" name="manageStaffName" class="mini-textbox" width="200px"/>
+                <a class="mini-button" onclick="onButtonEdit" plain="true"
+                   img="../../../scripts/miniui/res/images/user_b.png"></a>
             </td>
         </tr>
     </table>
-    <%--拒绝删除按钮--%>
+    <%--增加删除按钮--%>
     <div style="background-color: #ededed;width: 100%;height: 26px">
-        <a class="mini-button" img="../../scripts/miniui/res/images/accept.png" style="float: right;margin-right: 10px">同意</a>
+        <a class="mini-button" img="../../scripts/miniui/res/images/add.png"
+           style="float: right;" onclick="add()">新增</a>
+
         <span style="float: right">&nbsp;&nbsp;</span>
-        <a class="mini-button" img="../../scripts/miniui/res/images/cancel.png" style="float: right;">拒绝</a>
+
+        <a class="mini-button" img="../../scripts/miniui/res/images/delete.png"
+           style="float: right;margin-right: 10px" onclick="remove()">删除</a>
+
         <span style="float: right">&nbsp;&nbsp;</span>
-        <a class="mini-button" img="../../../scripts/miniui/res/images/system_search.gif" style="float:right;">查询</a>
+
+        <a class="mini-button" img="../../../scripts/miniui/res/images/system_search.gif"
+           style="float:right;margin-right: 10px"
+           onclick="search()">查询</a>
     </div>
 
-    <%----%>
-    <div id="datagrid1" class="mini-datagrid" style="width:100%;height:280px;"
-         url="" idField="id" multiSelect="true"
+    <%--表格--%>
+    <div id="datagrid" class="mini-datagrid" style="width:100%;height:280px;"
+         url="selectMacs" idField="id" multiSelect="true" allowResize="true"
+         sizeList="[2,5,10]"
+         pageSize="5"
     >
         <div property="columns">
             <div type="checkcolumn"></div>
-            <div field="" width="120" headerAlign="center" allowSort="true">机组名称</div>
-            <div field="" width="120" headerAlign="center" allowSort="true">机组管理人</div>
-            <div field="" width="120" headerAlign="center" allowSort="true">创建日期</div>
+            <div field="name" width="120" headerAlign="center" allowSort="true">机组名称</div>
+            <div field="manageStaffName" width="120" headerAlign="center" allowSort="true">机组管理人</div>
+            <div field="createDate" width="120" headerAlign="center" allowSort="true">创建日期</div>
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
+
     mini.parse();
-    var grid = mini.get('datagrid1');
+    var grid = mini.get('datagrid');
 
-    //    grid.setUrl("searchClazz.action");
+    grid.load();
 
-    // grid.load();
-
-    function onButtonEdit1(e) {
-        var btnEdit = this;
+    // 查询管理人信息
+    function onButtonEdit(e) {
+        var manageStaffName = mini.get("manageStaffName");
         mini.open({
-            // url: "select_1_gridwindow",
-            title: "选择申请人列表",
-            width: '80%',
-            height: '80%',
-            showMaxButton: true,
+            url: "select_user_gridwindow",
+            title: "人员信息",
+            width: 300,
+            height: 400,
             ondestroy: function (action) {
                 if (action == "ok") {
                     var iframe = this.getIFrameEl();
                     var data = iframe.contentWindow.GetData();
                     data = mini.clone(data);    //必须
                     if (data) {
-                        console.log(data.cid + "--" + data.cname);
-                        btnEdit.setValue(data.cid);
-                        btnEdit.setText(data.cname);
+                        manageStaffName.setText(data.username);
                     }
+                } else {
+                    manageStaffName.setValue("");
                 }
             }
         });
-
     }
-    function onButtonEdit2(e) {
-        var btnEdit = this;
+
+    // 查询
+    function onKeyEnter(e) {
+        search();
+    }
+
+    /* 查询方法 */
+    function search() {
+        var name = mini.get("name").getValue();
+        var manager = mini.get("manageStaffName").getText();
+
+        grid.load({name: name, manageStaffName: manager});
+    }
+
+    /* 增加 */
+    function add() {
         mini.open({
-            // url: "select_2_gridwindow",
-            title: "选择所属部门列表",
-            width: '80%',
-            height: '80%',
-            showMaxButton: true,
+            targetWindow: window,
+            url: "macInformation",
+            title: "新增机组", width: 575, height: 230,
+            onload: function () {
+                var iframe = this.getIFrameEl();
+                var data = {action: "new"};
+                iframe.contentWindow.SetData(data);
+            },
             ondestroy: function (action) {
-                if (action == "ok") {
-                    var iframe = this.getIFrameEl();
-                    var data = iframe.contentWindow.GetData();
-                    data = mini.clone(data);    //必须
-                    if (data) {
-                        btnEdit.setValue(data.sid);
-                        btnEdit.setText(data.sname);
-                    }
-                }
+                grid.reload();
             }
         });
-
     }
 
+    /* 删除 */
+    function remove() {
+
+        var rows = grid.getSelecteds();
+
+        if (rows.length > 0) {
+
+            if (confirm("确定删除选中记录？")) {
+
+                for (var i = 0, l = rows.length; i < l; i++) {
+
+                    $.ajax({
+                        url: "deleteMac",
+                        type: "get",
+                        data: {name: rows[i].name},
+                        success: function (text) {
+                            if (text.resultCode == 1) {
+
+                                window.console.log(text.resultMsg);
+                                grid.reload();
+
+                            } else {
+                                alert(text.resultMsg);
+                            }
+                        }
+                    });
+
+                }
+            }
+        } else {
+            alert("请选中一条记录");
+        }
+    }
 </script>
 </body>
 </html>

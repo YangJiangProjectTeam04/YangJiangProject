@@ -10,14 +10,4 @@ import java.util.List;
  * Created by bobbi on 18/2/8.
  */
 public interface SatelliteLibDao extends BaseDao<SatelliteLib> {
-    /* 查询所有卫星库 */
-    Integer getTotal(SatelliteLib satelliteLib);
-
-    List<SatelliteLib> select(PageBean<SatelliteLib> pageBean);
-
-    /* 根据卫星库名查询卫星库*/
-    Integer getSatelliteLib(SatelliteLib satelliteLib);
-
-    /* 删除卫星库 */
-    Integer delete(String storeName);
 }

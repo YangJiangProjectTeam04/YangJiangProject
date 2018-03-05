@@ -2,6 +2,8 @@ package com.teamRocket.controller.integratedManagement;
 
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import com.teamRocket.domain.BaseResult;
+import com.teamRocket.domain.Mac;
+import com.teamRocket.service.MacService;
 import com.teamRocket.utils.page.MINIBaseResult;
 import com.teamRocket.domain.SatelliteLib;
 import com.teamRocket.service.SatelliteLibService;
@@ -44,6 +46,11 @@ public class IntegratedManagementController {
         return "integrated_management/crewManagement";
     }
 
+    @RequestMapping(value = "/macInformation")
+    public String macInformation() {
+        return "integrated_management/macInformation";
+    }
+
     /*卫星库管理人管理*/
     @RequestMapping(value = "/bridgeSatelliteManagement")
     public String bridgeSatelliteManagement() {
@@ -55,6 +62,10 @@ public class IntegratedManagementController {
         return "integrated_management/satelliteManagement";
     }
 
+    @RequestMapping(value = "/satelliteInformation")
+    public String satelliteInformation() {
+        return "integrated_management/satelliteInformation";
+    }
 
     /*射线探伤人员管理*/
     @RequestMapping(value = "/bridgeRayManagement")
@@ -83,27 +94,23 @@ public class IntegratedManagementController {
         return "integrated_management/select_bims_manager_gridwindow";
     }
 
-    /* 查询 */
+    /* 卫星库操作 */
     @Resource
     private SatelliteLibService satelliteLibService;
 
+    /* 查询卫星库 */
     @RequestMapping(value = "/selectSatelliteLibs")
     @ResponseBody
-    public MINIBaseResult<SatelliteLib> selectAllSatelliteLibs(SatelliteLib satelliteLib, int pageIndex, int pageSize) {
+    public MINIBaseResult<SatelliteLib> selectSatelliteLibs(SatelliteLib satelliteLib, int pageIndex, int pageSize) {
         MINIBaseResult<SatelliteLib> baseResult = satelliteLibService.select(satelliteLib, pageIndex, pageSize);
+        System.out.println(baseResult);
         return baseResult;
     }
 
-    /* 增加 */
-    @RequestMapping(value = "/satelliteInformation")
-    public String satelliteInformation() {
-        return "integrated_management/satelliteInformation";
-    }
-
-
-    @RequestMapping(value = "/insert")
+    /* 增加卫星库 */
+    @RequestMapping(value = "/insertSatelliteLib")
     @ResponseBody
-    public BaseResult insert(String data, String date) {
+    public BaseResult insertSatelliteLib(String data, String date) {
         JSONObject object = JSONObject.fromObject(data);
         SatelliteLib satelliteLib = (SatelliteLib) JSONObject.toBean(object, SatelliteLib.class);
 
@@ -112,6 +119,7 @@ public class IntegratedManagementController {
 
         int flag = satelliteLibService.insert(satelliteLib);
 
+        // 判断是否成功保存
         if (flag == 0) {
             return new BaseResult(0, "保存成功");
         } else if (flag == 1) {
@@ -121,47 +129,61 @@ public class IntegratedManagementController {
         }
     }
 
-    /* 删除 */
-    @RequestMapping(value = "/delete")
+    /* 删除卫星库 */
+    @RequestMapping(value = "/deleteSatelliteLib")
     @ResponseBody
-    public BaseResult delete(String data) {
+    public BaseResult deleteSatelliteLib(String name) {
 
-        System.out.println("删除？");
-        System.out.println(data);
-
-
-//        List<String> strs = stringToList(data);
-//        for (String str : strs) {
-//            System.out.println(str);
-//            System.out.println();
-//        }
-
-//        for (Object data : names) {
-//        JSONObject object = JSONObject.fromObject(data);
-//
-//        SatelliteLib satelliteLibs = (SatelliteLib) JSONObject.toBean(object, SatelliteLib.class);
-//        System.out.println(satelliteLibs);
-
-//        for (SatelliteLib satelliteLib : satelliteLibs) {
-//            System.out.println(satelliteLib);
-//            System.out.println("-----------------");
-//        }
-//
-//            System.out.println("data " + data);
-//            System.out.println("sate " + satelliteLib);
-//        }
-
-        boolean flag = satelliteLibService.delete(data);
+        boolean flag = satelliteLibService.delete(name);
         if (flag) {
             return new BaseResult(1, "已删除");
         }
-        return new BaseResult(2, "发送错误");
+        return new BaseResult(2, "发生错误");
     }
 
-    /* String转List */
-    public List<String> stringToList(String strs) {
-        String str[] = strs.split(",");
-        return Arrays.asList(str);
+    /*机组操作*/
+    @Resource
+    private MacService macService;
+
+    /* 查询 */
+    @RequestMapping(value = "/selectMacs")
+    @ResponseBody
+    public MINIBaseResult<Mac> selectMacs(Mac mac, int pageIndex, int pageSize) {
+        MINIBaseResult<Mac> baseResult = macService.select(mac, pageIndex, pageSize);
+        return baseResult;
+    }
+
+    /* 增加 */
+    @RequestMapping(value = "/insertMac")
+    @ResponseBody
+    public BaseResult insertMac(String data, String date) {
+        JSONObject object = JSONObject.fromObject(data);
+        Mac mac = (Mac) JSONObject.toBean(object, Mac.class);
+
+        mac.setCreateDate(date);
+
+        int flag = macService.insert(mac);
+
+        // 判断
+        if (flag == 0) {
+            return new BaseResult(0, "保存成功");
+        } else if (flag == 1) {
+            return new BaseResult(1, "机组已存在");
+        } else {
+            return new BaseResult(2, "保存失败");
+        }
+    }
+
+    /* 删除 */
+    @RequestMapping(value = "/deleteMac")
+    @ResponseBody
+    public BaseResult deleteMac(String name) {
+        boolean flag = macService.delete(name);
+
+        if (flag) {
+            return new BaseResult(1, "已删除");
+        }
+        return new BaseResult(2, "发生错误");
     }
 
 }
